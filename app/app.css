@@ -1,6 +1,88 @@
-/* app css stylesheet */
+/* Global Styling */
+/* We are currently just using this for a test, we will need to implement SASS styling after test is complete and a arch for styling */
+/* You will see that using SASS will clean this styling up a lot */
+/* Ski Tracker will be abrieviated with 'st' */
 
-.menu {
+/* Ski Tracker basic construct styling */
+.st-view-container {
+  border: solid 1px purple;
+  border-radius: 5px;
+  background-color: rgb(245, 245, 245);
+  font-family: Arial;
+  font-size: 16px;
+  padding: 15px;
+}
+
+.st-view-header {
+  border-bottom: solid 1px rgb(221, 221, 221);
+  font-size: 20px;
+  font-weight: 800;
+  color: rgb(80, 176, 255);
+}
+
+.st-view-body {
+  margin-top: 10px;
+  color: rgb(77, 77, 77);
+  font-weight: 600;
+}
+
+/* flex container (holds 2 btns for view2) */
+.st-flex-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.st-flex-container > button{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Button Styling */
+.st-btn {
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.st-btn-powder {
+  border: solid 1px black;
+  background-color: rgb(224, 224, 224);
+  color: black;
+}
+
+.st-btn-powder:hover {
+  background-color: #fff;
+}
+
+.st-btn-woohoo {
+  border: solid 1px rgb(240, 204, 4);
+  background-color: rgb(255, 249, 218);
+  color: black;
+}
+
+.st-btn-woohoo:hover {
+  background-color: rgb(255, 244, 187);
+}
+
+
+.st-btn-powder-woohoo {
+  border: solid 1px black;
+  background-color: rgb(224, 224, 224);
+  color: black;
+}
+
+.st-btn-powder-woohoo:hover {
+  border: solid 1px rgb(240, 204, 4);
+  background-color: rgb(255, 249, 218);
+}
+/* OLD BELOW */
+
+/* .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
@@ -22,4 +104,4 @@
 .menu > li + li:before {
   content: "|";
   padding-right: 0.3em;
-}
+} */

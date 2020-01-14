@@ -1,11 +1,10 @@
 'use strict';
 
-// Declare app level module which depends on views, and core components
-angular.module('myApp', [
+angular.module('app', [
   'ngRoute',
   'view1',
   'view2',
-  'myApp.version'
+  'app.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
