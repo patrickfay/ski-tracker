@@ -11,6 +11,8 @@
   font-family: Arial;
   font-size: 16px;
   padding: 15px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .st-view-header {
@@ -26,14 +28,14 @@
   font-weight: 600;
 }
 
-/* flex container (holds 2 btns for view2) */
+/* flex container (used to contain btns) */
 .st-flex-container {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-.st-flex-container > button{
+.st-flex-container > button {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -60,15 +62,16 @@
 }
 
 .st-btn-woohoo {
-  border: solid 1px rgb(240, 204, 4);
-  background-color: rgb(255, 249, 218);
+  border: 1px solid rgb(47, 161, 255);
+  background-color: rgb(228, 243, 255);
   color: black;
 }
 
 .st-btn-woohoo:hover {
-  background-color: rgb(255, 244, 187);
+  border: solid 1px black;
+  background-color: #fff;
+  color: rgb(80, 176, 255);
 }
-
 
 .st-btn-powder-woohoo {
   border: solid 1px black;
@@ -77,31 +80,6 @@
 }
 
 .st-btn-powder-woohoo:hover {
-  border: solid 1px rgb(240, 204, 4);
-  background-color: rgb(255, 249, 218);
+  background-color: #fff;
+  color: rgb(80, 176, 255);
 }
-/* OLD BELOW */
-
-/* .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
-} */
