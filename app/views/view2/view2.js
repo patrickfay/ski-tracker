@@ -7,8 +7,8 @@ angular.module('view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', ['$scope', function($scope) {
 
-  console.log('in view 2 mafq');
+  $scope.testArr = ['yoooo', 'ayoo', 'sgood?', 'aight den'];
 
 }]);

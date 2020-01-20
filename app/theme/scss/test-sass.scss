@@ -1,17 +1,16 @@
 .test-class {
-  background-color: gold;
+  background-color: rgb(191, 240, 255);
   color: black;
   border: 1px solid black;
   border-radius: 3px;
-
   margin: 20px;
 
   p {
     border: 1px solid white;
     border-radius: 3px;
-    background-color: rgb(62, 255, 149);
+    background-color: rgb(255, 201, 102);
     font-size: 16px;
     padding: 10px;
-    margin: 10px 0px;
+    margin: 10px 5px;
   }
 }
