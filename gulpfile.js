@@ -28,7 +28,7 @@ gulp.task('clean', done => {
 // styling - convert sass to css
 gulp.task('sass', () => {
   // return gulp.src('app/theme/scss/**/*.scss')
-  return gulp.src('app/theme/scss/theme.scss')
+  return gulp.src('app/theme/theme.scss')
     .pipe(sass())
     .pipe(rename('app.style.css'))
     .pipe(gulp.dest('app'))
@@ -48,7 +48,7 @@ gulp.task('browserSync', () => {
 gulp.task('watch', () => {
   gulp.watch('app/*.html', browserSync.reload); 
   gulp.watch('app/js/**/*.js', browserSync.reload); 
-  gulp.watch('app/theme/scss/**/*.scss', gulp.series(['sass']));
+  gulp.watch('app/theme/**/*.scss', gulp.series(['sass']));
 });
 
 // run watch and browserSync in parrallel
