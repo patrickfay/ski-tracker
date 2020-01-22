@@ -1,0 +1,40 @@
+// global styling for the application. all styling in this file will sequentially come before all other styling in ../../app.style.css
+
+.st {
+  &-view {
+    &-container {
+      border: solid 1px purple;
+      border-radius: 5px;
+      background-color: rgb(245, 245, 245);
+      font-family: Arial;
+      font-size: 16px;
+      padding: 15px;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    
+    &-header {
+      border-bottom: solid 1px rgb(221, 221, 221);
+      font-size: 20px;
+      font-weight: 800;
+      color: rgb(80, 176, 255);
+    }
+
+    &-body {
+      color: rgb(77, 77, 77);
+      font-weight: 600;
+      margin-top: 10px;
+    }
+  }
+
+  &-flex-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    & > button {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
