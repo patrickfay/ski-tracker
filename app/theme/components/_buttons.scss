@@ -1,0 +1,27 @@
+.st-btn {
+  @include st-btn-tmp;
+
+  &-powder {
+    @include st-btn-style($black, darken($grey, 5%), $black);
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+
+  &-woohoo {
+    @include st-btn-style(rgb(47, 161, 255), lighten($powder-blue, 30%), $black);
+
+    &:hover {
+      @include st-btn-style($black, $white, $powder-blue);
+    }
+  }
+
+  &-powder-woohoo {
+    @include st-btn-style($black, darken($grey, 5%), $black);
+
+    &:hover {
+      @include st-btn-style($black, $white, $powder-blue);
+    }
+  }
+}
