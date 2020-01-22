@@ -1,40 +1,19 @@
 // global styling for the application. all styling in this file will sequentially come before all other styling in ../../app.style.css
 // NOTE - this file should only contain styling for base elements (p, body, a, etc.)
 
-.st {
-  &-view {
-    &-container {
-      @include margin-x(10%);
+.test-class {
+  background-color: rgb(191, 240, 255);
+  color: black;
+  border: 1px solid rgb(0, 195, 255);
+  border-radius: 3px;
+  margin: 20px;
 
-      border: solid 1px purple;
-      border-radius: 5px;
-      background-color: rgb(245, 245, 245);
-      font-family: Arial;
-      font-size: 16px;
-      padding: 15px;
-    }
-    
-    &-header {
-      border-bottom: solid 1px rgb(221, 221, 221);
-      font-size: 20px;
-      font-weight: 800;
-      color: $powder-blue;
-    }
-
-    &-body {
-      color: rgb(77, 77, 77);
-      font-weight: 600;
-      margin-top: 10px;
-    }
-  }
-
-  &-flex-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-
-    & > button {
-      @include margin-x(10px);
-    }
+  p {
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: rgb(255, 201, 102);
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px 10px;
   }
 }
