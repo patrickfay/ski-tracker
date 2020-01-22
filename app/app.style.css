@@ -1,31 +1,16 @@
-.st-view-container {
-  margin-left: 10%;
-  margin-right: 10%;
-  border: solid 1px purple;
-  border-radius: 5px;
-  background-color: whitesmoke;
-  font-family: Arial;
-  font-size: 16px;
-  padding: 15px; }
-
-.st-view-header {
-  border-bottom: solid 1px #dddddd;
-  font-size: 20px;
-  font-weight: 800;
-  color: #50b0ff; }
-
-.st-view-body {
-  color: #4d4d4d;
-  font-weight: 600;
-  margin-top: 10px; }
-
-.st-flex-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px; }
-  .st-flex-container > button {
-    margin-left: 10px;
-    margin-right: 10px; }
+.test-class {
+  background-color: #bff0ff;
+  color: black;
+  border: 1px solid #00c3ff;
+  border-radius: 3px;
+  margin: 20px; }
+  .test-class p {
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: #ffc966;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px 10px; }
 
 .st-btn {
   border-radius: 3px;
@@ -58,16 +43,31 @@
       background-color: #fff;
       color: #50b0ff; }
 
-.test-class {
-  background-color: #bff0ff;
-  color: black;
-  border: 1px solid #00c3ff;
-  border-radius: 3px;
-  margin: 20px; }
-  .test-class p {
-    border: 1px solid white;
-    border-radius: 3px;
-    background-color: #ffc966;
-    font-size: 16px;
-    padding: 10px;
-    margin: 10px 10px; }
+.st-panel-container {
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid 1px purple;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 15px; }
+
+.st-panel-header {
+  border-bottom: solid 1px #dddddd;
+  font-size: 20px;
+  font-weight: 800;
+  color: #50b0ff; }
+
+.st-panel-body {
+  color: #4d4d4d;
+  font-weight: 600;
+  margin-top: 10px; }
+
+.st-flex-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; }
+  .st-flex-container > button {
+    margin-left: 10px;
+    margin-right: 10px; }
