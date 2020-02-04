@@ -9,6 +9,6 @@ angular.module('view2', ['ngRoute'])
 
 .controller('View2Ctrl', ['$scope', function($scope) {
 
-  $scope.testArr = ['yoooo', 'ayoo', 'sgood?', 'aight den'];
+  $scope.testArr = ['yabo!', 'ayoo', 'sgood?', 'aight den'];
 
 }]);
