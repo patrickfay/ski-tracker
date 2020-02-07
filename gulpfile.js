@@ -22,13 +22,12 @@ gulp.task('clean', done => {
 //   // use browserfy to combine all files (maybe call seperate task for this, or may just need to pipe all to here)
 //   // uglify
 //   // pipe to dist
-//   // HOPEFULLY not too bad to finish this ish, just find right plugins and hopefully all is well, will need to make sure using browserfy properly but otherwiser should be aight
 // });
 
 // styling - convert sass to css
 gulp.task('sass', () => {
-  // return gulp.src('app/theme/scss/**/*.scss')
-  return gulp.src('app/theme/theme.scss')
+  // return gulp.src('app/theme/theme.scss')
+  return gulp.src('app/app.style.scss')
     .pipe(sass())
     .pipe(rename('app.style.css'))
     .pipe(gulp.dest('app'))
@@ -48,7 +47,7 @@ gulp.task('browserSync', () => {
 gulp.task('watch', () => {
   gulp.watch('app/*.html', browserSync.reload); 
   gulp.watch('app/js/**/*.js', browserSync.reload); 
-  gulp.watch('app/theme/**/*.scss', gulp.series(['sass']));
+  gulp.watch('app/**/*.scss', gulp.series(['sass']));
 });
 
 // run watch and browserSync in parrallel
