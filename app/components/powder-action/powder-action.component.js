@@ -1,33 +1,25 @@
-angular.module('powder-action', ['ngRoute'])
-
-.component('powder-action', {
-  template: './components/powder-action/powder-action.html',
-  // template: 'powder-action.component.html',
-  // bindings: {
-  //   val: '@',
-  //   msg: '@',
-  //   class: '@'
-  // },
+skiTrackerApp.component('powderAction', {
+  templateUrl: './components/powder-action/powder-action.component.html',
+  bindings: {
+    val: '@',       // value of btn in template
+    msg: '@',       // msg to display
+    className: '@'  // class of btn in template
+  },
   controller: 'powderActionController'
 })
-
-// .controller('powder-action-controller', ['$scope', function($scope) {
 
 .controller('powderActionController', [function() {
   let $ctrl = this;
 
-  $ctrl.$onInit = () => {
-    // console.log('inited dawg', $ctrl.val, $ctrl.msg, $ctrl.style);
-    console.log('inited dawg');
-  }
 
-  console.log('sooo...');
+  $ctrl.$onInit = () => {
+    console.log('inited powderAction');
+    console.log($ctrl.val, $ctrl.msg, $ctrl.className);
+
+    $ctrl.showMsg = false;
+  };
+
+  // update var used to display/hide msg in template
+  $ctrl.toggleMsg = () => $ctrl.showMsg = !$ctrl.showMsg;
 
 }]);
-
-// .config(['$routeProvider', function($routeProvider) {
-//   $routeProvider.when('/powder-action', {
-//     templateUrl: 'components/powder-action/powder-action.html',
-//     controller: 'powder-action'
-//   });
-// }])

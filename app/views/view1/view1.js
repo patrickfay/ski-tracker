@@ -1,9 +1,7 @@
-skiTrackerApp.controller('View1Ctrl', [function() {
+skiTrackerApp.controller('View1Ctrl', ['$scope', function($scope) {
 
-  console.log('view1 set up dawg');
-
-  $scope.value = 'I am the value dud';
-  $scope.msg = 'msg? How about a tip? get a job bud';
-  $scope.class = 'st-btn-powder-woohoo';
+  $scope.value = 'I am your value dude';
+  $scope.message = 'msg? How about a tip? get a job there bud';
+  $scope.powderBtnClass = 'st-btn-powder-woohoo';
   
 }]);
