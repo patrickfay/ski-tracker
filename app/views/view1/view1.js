@@ -1,14 +1,5 @@
-angular.module('view1', ['ngRoute'])
+skiTrackerApp.controller('View1Ctrl', [function() {
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'views/view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
-
-.controller('View1Ctrl', [function() {
-
-  console.log('in view 1 noeimsayn');
+  console.log('view1 set up dawg');
 
 }]);
