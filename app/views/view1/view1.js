@@ -1,4 +1,6 @@
+// angular.module('app', ['ngRoute'])
 angular.module('view1', ['ngRoute'])
+
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {
@@ -7,8 +9,12 @@ angular.module('view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', function($scope) {
 
   console.log('in view 1 noeimsayn');
 
+  $scope.value = 'I am the value dud';
+  $scope.msg = 'msg? How about a tip? get a job bud';
+  $scope.class = 'st-btn-powder-woohoo';
+  
 }]);

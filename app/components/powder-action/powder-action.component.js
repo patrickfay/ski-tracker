@@ -1,25 +1,27 @@
-
-
 angular.module('powder-action', ['ngRoute'])
 
-
 .component('powder-action', {
-  template: 'powder-action.component.html',
-  bindings: {
-    val: '@',
-    msg: '@',
-    style : '@'
-  },
-  controller: 'powder-action-controller'
+  template: './components/powder-action/powder-action.html',
+  // template: 'powder-action.component.html',
+  // bindings: {
+  //   val: '@',
+  //   msg: '@',
+  //   class: '@'
+  // },
+  controller: 'powderActionController'
 })
 
-.controller('powder-action-controller', ['$scope', function($scope) {
+// .controller('powder-action-controller', ['$scope', function($scope) {
 
+.controller('powderActionController', [function() {
   let $ctrl = this;
 
   $ctrl.$onInit = () => {
-    console.log('inited dawg', $ctrl.val, $ctrl.msg, $ctrl.style);
+    // console.log('inited dawg', $ctrl.val, $ctrl.msg, $ctrl.style);
+    console.log('inited dawg');
   }
+
+  console.log('sooo...');
 
 }]);
 

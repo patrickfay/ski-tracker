@@ -26,7 +26,6 @@ gulp.task('clean', done => {
 
 // styling - convert sass to css
 gulp.task('sass', () => {
-  // return gulp.src('app/theme/theme.scss')
   return gulp.src('app/app.style.scss')
     .pipe(sass())
     .pipe(rename('app.style.css'))
