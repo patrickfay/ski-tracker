@@ -1,4 +1,5 @@
-skiTrackerApp.component('powderAction', {
+angular.module('skiTrackerApp').component('powderAction', {
+
   templateUrl: './components/powder-action/powder-action.component.html',
   bindings: {
     val: '@',       // value of btn in template

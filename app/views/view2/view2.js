@@ -1,4 +1,4 @@
-skiTrackerApp.controller('View2Ctrl', ['$scope', function($scope) {
+angular.module('skiTrackerApp').controller('View2Ctrl', ['$scope', function($scope) {
 
   $scope.testArr = ['yoooo', 'ayoo', 'sgood?', 'aight den'];
   
