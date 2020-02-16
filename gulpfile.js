@@ -11,19 +11,15 @@ let browserSync = require('browser-sync').create();
 let runSequence = require('run-sequence');
 
 
-// TODO - sourcemaps, browserfy, etc.
-// will need to use browserfy for concatenating js files, then uglify them. will then need to set scss org for proj
-// STEPS
-// 1) use browserfy to bundle all modules and js files into one. output to dist/app.js or dist/bundle.js
-// 2) uglify bundled files to dist/app.min.js or dist/bundle.min.js
+// TODO - sourcemaps
 
-
+// clean - remove contents form dist directory
 gulp.task('clean', done => {
-  del(['app/dist']);
+  del(['app/dist/**', '!app/dist']);
   done();
 });
 
-
+// browserify - bundle all angularjs modules into one file
 gulp.task('browserify', () => {
   return browserify('app/app.module.js', {debug: true})
     .bundle()
@@ -31,13 +27,13 @@ gulp.task('browserify', () => {
     .pipe(gulp.dest('app/dist/'));
 });
 
-
-// TODO
-// gulp.task('uglify', () => {
-//   // use browserfy to combine all files (maybe call seperate task for this, or may just need to pipe all to here)
-//   // uglify
-//   // pipe to dist
-// });
+// uglify - minimize bundled js file
+gulp.task('uglify', () => {
+  return gulp.src('app/dist/bundle.js')
+    .pipe(rename('bundle.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('app/dist/'));
+});
 
 // styling - convert sass to css
 gulp.task('sass', () => {
@@ -66,7 +62,7 @@ gulp.task('watch', () => {
 gulp.task('serve-and-watch', gulp.parallel(['browserSync', 'watch']));
 
 // DEV TASK
-gulp.task('dev', gulp.series(['clean', 'sass', 'browserify', 'serve-and-watch']));
+gulp.task('dev', gulp.series(['clean', 'sass', 'browserify', 'uglify', 'serve-and-watch']));
 
 
 // DEPLOY TASK - TODO - need to imp this
