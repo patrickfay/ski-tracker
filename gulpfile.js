@@ -7,40 +7,44 @@ let browserify = require('browserify');
 let uglify = require('gulp-uglify-es').default;
 let sass = require('gulp-sass');
 let browserSync = require('browser-sync').create();
-
 let runSequence = require('run-sequence');
 
+let paths = {
+  root: 'app/',
+  dist: 'app/dist/'
+};
 
 // TODO - sourcemaps
 
-// clean - remove contents form dist directory
+// clean - delete contents from dist dir (not direcotry itself)
 gulp.task('clean', done => {
-  del(['app/dist/**', '!app/dist']);
+  del([`${paths.dist}**`, `!${paths.dist}`]);
   done();
 });
 
 // browserify - bundle all angularjs modules into one file
 gulp.task('browserify', () => {
-  return browserify('app/app.module.js', {debug: true})
+  return browserify(paths.root + 'app.module.js', {debug: true})
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('app/dist/'));
+    .pipe(gulp.dest(paths.dist));
+
 });
 
 // uglify - minimize bundled js file
 gulp.task('uglify', () => {
-  return gulp.src('app/dist/bundle.js')
+  return gulp.src(paths.dist + 'bundle.js')
     .pipe(rename('bundle.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('app/dist/'));
+    .pipe(gulp.dest(paths.dist));
 });
 
 // styling - convert sass to css
 gulp.task('sass', () => {
-  return gulp.src('app/app.style.scss')
+  return gulp.src(paths.root + 'app.style.scss')
     .pipe(sass())
     .pipe(rename('app.style.css'))
-    .pipe(gulp.dest('app'))
+    .pipe(gulp.dest(paths.root))
     .pipe(browserSync.reload({stream: true}));
 });
 
@@ -53,9 +57,9 @@ gulp.task('browserSync', () => {
 
 // watch - watch for changes
 gulp.task('watch', () => {
-  gulp.watch('app/*.html', browserSync.reload); 
-  gulp.watch('app/js/**/*.js', browserSync.reload); 
-  gulp.watch('app/**/*.scss', gulp.series(['sass']));
+  gulp.watch(paths.root + '**/*.html', browserSync.reload); 
+  gulp.watch(paths.root + '**/*.js', browserSync.reload); 
+  gulp.watch(paths.root + '**/*.scss', gulp.series(['sass']));
 });
 
 // run watch and browserSync in parrallel
