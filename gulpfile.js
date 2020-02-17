@@ -4,9 +4,10 @@ let gulp = require('gulp'),
   rename = require('gulp-rename'),
   source = require('vinyl-source-stream'),
   buffer = require('vinyl-buffer'),
-  browserify = require('browserify'),
-  uglify = require('gulp-uglify-es').default,
   sourcemaps = require('gulp-sourcemaps'),
+  browserify = require('browserify'),
+  ngAnnotate = require('gulp-ng-annotate'),
+  uglify = require('gulp-uglify-es').default,
   sass = require('gulp-sass'),
   cleanCss = require('gulp-clean-css'),
   browserSync = require('browser-sync').create();
@@ -41,6 +42,7 @@ gulp.task('build-js', () => {
     .bundle()
     .pipe(source('bundle.min.js'))
     .pipe(buffer())
+    .pipe(ngAnnotate())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
     .pipe(sourcemaps.write())

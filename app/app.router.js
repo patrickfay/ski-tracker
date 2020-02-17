@@ -1,5 +1,5 @@
 angular.module('skiTrackerApp')
-  .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+  .config(function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
     $routeProvider.otherwise({redirectTo: '/view1'});
@@ -12,5 +12,5 @@ angular.module('skiTrackerApp')
       .when('/view2', {
         templateUrl: 'views/view2/view2.html',
         controller: 'View2Ctrl'
-      })
-  }]);
+      });
+  });
