@@ -1,0 +1,27 @@
+.st-nav-bar {
+  &-container {
+    display: flex;
+    border: 1px solid $grey;
+    border-radius: 5px;
+    background-color: lighten($grey, 5%);
+    padding: 5px;
+  }
+
+  &-title {
+    font-size: 25px;
+    color: rgb(75, 174, 255);
+    width: 60%;
+  }
+
+  &-options-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+    width: 40%;
+  }
+
+  &-option {
+
+  }
+}
