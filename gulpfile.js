@@ -8,6 +8,7 @@ let gulp = require('gulp'),
   uglify = require('gulp-uglify-es').default,
   sourcemaps = require('gulp-sourcemaps'),
   sass = require('gulp-sass'),
+  cleanCss = require('gulp-clean-css'),
   browserSync = require('browser-sync').create();
 
 let paths = {
@@ -16,10 +17,22 @@ let paths = {
 };
 
 
-// clean - delete contents from dist dir (not direcotry itself)
+// clean - delete contents from dist dir (not directory itself)
 gulp.task('clean', done => {
   del([paths.dist + '**', '!' + paths.dist.substring(0, paths.dist.length - 1)]);
   done();
+});
+
+// styling - convert sass to css and minify css
+gulp.task('sass', () => {
+  return gulp.src(paths.root + 'app.style.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(rename('app.style.min.css'))
+    .pipe(cleanCss())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.dist))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 // build-js - bundle all angularjs modules into one file and minify the file. output minified file to dist directory
@@ -34,26 +47,11 @@ gulp.task('build-js', () => {
     .pipe(gulp.dest(paths.dist));
 });
 
-// styling - convert sass to css
-gulp.task('sass', () => {
-  return gulp.src(paths.root + 'app.style.scss')
-    .pipe(sass())
-    .pipe(rename('app.style.css'))
-    .pipe(gulp.dest(paths.root))
-    .pipe(browserSync.reload({stream: true}));
-});
-
 // browser sync - start server used for development
 gulp.task('browserSync', () => {
   browserSync.init({
     server: {baseDir: './app'}
   });
-});
-
-// reload the browser (called when html or js files are changed)
-gulp.task('reload', (done) => {
-  browserSync.reload();
-  done();
 });
 
 // watch - watch for changes
@@ -68,6 +66,12 @@ gulp.task('watch', () => {
 
 // run watch and browserSync in parrallel
 gulp.task('serve-and-watch', gulp.parallel(['browserSync', 'watch']));
+
+// reload the browser (called when html or js files are changed)
+gulp.task('reload', (done) => {
+  browserSync.reload();
+  done();
+});
 
 
 // DEV TASK
