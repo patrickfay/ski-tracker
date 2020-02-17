@@ -3,11 +3,13 @@ let gulp = require('gulp');
 let del = require('del');
 let rename = require('gulp-rename');
 let source = require('vinyl-source-stream');
+let buffer = require('vinyl-buffer');
 let browserify = require('browserify');
 let uglify = require('gulp-uglify-es').default;
 let sass = require('gulp-sass');
 let browserSync = require('browser-sync').create();
-let runSequence = require('run-sequence');
+
+// let runSequence = require('run-sequence');
 
 let paths = {
   root: 'app/',
@@ -18,23 +20,16 @@ let paths = {
 
 // clean - delete contents from dist dir (not direcotry itself)
 gulp.task('clean', done => {
-  del([`${paths.dist}**`, `!${paths.dist}`]);
+  del([paths.dist + '**', '!app/dist']);
   done();
 });
 
-// browserify - bundle all angularjs modules into one file
-gulp.task('browserify', () => {
+// browserify-min  - bundle all angularjs modules into one file and minify the file. output minified file to dist directory
+gulp.task('browserify-min', () => {
   return browserify(paths.root + 'app.module.js', {debug: true})
     .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest(paths.dist));
-
-});
-
-// uglify - minimize bundled js file
-gulp.task('uglify', () => {
-  return gulp.src(paths.dist + 'bundle.js')
-    .pipe(rename('bundle.min.js'))
+    .pipe(source('bundle.min.js'))
+    .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest(paths.dist));
 });
@@ -55,10 +50,18 @@ gulp.task('browserSync', () => {
   });
 });
 
+function reload(done) {
+  browserSync.reload();
+  done();
+}
+
 // watch - watch for changes
 gulp.task('watch', () => {
-  gulp.watch(paths.root + '**/*.html', browserSync.reload); 
-  gulp.watch(paths.root + '**/*.js', browserSync.reload); 
+
+  gulp.watch(paths.root + '**/*.html', reload);
+  gulp.watch(paths.root + '**/*.js', reload);
+  // gulp.watch(paths.root + '**/*.html', browserSync.reload);
+  // gulp.watch(paths.root + '**/*.js', browserSync.reload);
   gulp.watch(paths.root + '**/*.scss', gulp.series(['sass']));
 });
 
@@ -66,7 +69,7 @@ gulp.task('watch', () => {
 gulp.task('serve-and-watch', gulp.parallel(['browserSync', 'watch']));
 
 // DEV TASK
-gulp.task('dev', gulp.series(['clean', 'sass', 'browserify', 'uglify', 'serve-and-watch']));
+gulp.task('dev', gulp.series(['clean', 'sass', 'browserify-min', 'serve-and-watch']));
 
 
 // DEPLOY TASK - TODO - need to imp this
