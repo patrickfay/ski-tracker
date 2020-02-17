@@ -5,6 +5,10 @@ angular.module('skiTrackerApp')
     $routeProvider.otherwise({redirectTo: '/view1'});
 
     $routeProvider
+      .when('/playground', {
+        templateUrl: 'views/playground/playground.html',
+        controller: 'playgroundCtrl'
+      })
       .when('/view1', {
         templateUrl: 'views/view1/view1.html',
         controller: 'View1Ctrl'
