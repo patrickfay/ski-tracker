@@ -2,7 +2,10 @@ angular.module('skiTrackerApp')
   .config(function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
+<<<<<<< HEAD
     // route definitions
+=======
+>>>>>>> release/1.0.0
     $routeProvider
       .when('/home', {
         templateUrl: 'views/home/home.html',
@@ -21,6 +24,9 @@ angular.module('skiTrackerApp')
         controller: 'View2Ctrl'
       });
 
+<<<<<<< HEAD
     // redirect to home page on load
+=======
+>>>>>>> release/1.0.0
     $routeProvider.otherwise({redirectTo: '/home'});
   });
