@@ -1,0 +1,10 @@
+.pa {
+  &-msg-container {
+    @include margin-y(10px);
+
+    border-radius: 3px;
+    background-color: $white;
+    color: $black;
+    padding: 10px;
+  }
+}

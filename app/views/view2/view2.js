@@ -1,14 +1,11 @@
-angular.module('view2', ['ngRoute'])
+angular.module('skiTrackerApp')
+  .controller('View2Ctrl', function($scope) {
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
-    templateUrl: 'views/view2/view2.html',
-    controller: 'View2Ctrl'
+    $scope.testArr = ['yoooo', 'ayoo', 'sgood?', 'aight den'];
+    
+    // used to pass to powder action component
+    $scope.pwdrBtnVal = 'Randy Man';
+    $scope.pwdrMsg = 'Frig off Mr. Lahey!!';
+    $scope.pwdrBtnClass = 'st-btn-powder-woohoo';
+
   });
-}])
-
-.controller('View2Ctrl', ['$scope', function($scope) {
-
-  $scope.testArr = ['yabo!', 'ayoo', 'sgood?', 'aight den'];
-
-}]);

@@ -1,14 +1,8 @@
-angular.module('view1', ['ngRoute'])
+angular.module('skiTrackerApp')
+  .controller('View1Ctrl', function($scope) {
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'views/view1/view1.html',
-    controller: 'View1Ctrl'
+    $scope.value = 'I am your value dude';
+    $scope.message = 'Yaboo!!';
+    $scope.powderBtnClass = 'st-btn-powder-woohoo';
+    
   });
-}])
-
-.controller('View1Ctrl', [function() {
-
-  console.log('in view 1 noeimsayn');
-
-}]);

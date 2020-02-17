@@ -26,3 +26,55 @@ An **entry** will store data for the user's day of skiing. This data will likely
   * The user will be able to select ski areas from some kind of list (dropdown? modal? whateva?)
 * Description
 * Possibly other stats? (ie. vertical, distance skied, etc.)
+
+## Application Directory and File Structure
+
+```text
++ app
+| + components                      App Global Components (nav bar, etc.)
+| | + componentA
+| | | componentA.component.html
+| | | componentA.component.js
+| | | componentA.component.scss
+| | `
+| | + ...
+| | |
+| | components.module.js            All components module definition
+| | components.scss                 SCSS wrapper for all components styles
+| `
+| |
+| + modules                         App Modules
+| | + moduleA
+| | | + components                  Components of the module
+| | | + services                    Services of the module
+| | | moduleA.module.js             Module definition for the module
+| | | moduleA.scss                  SCSS styles for the module
+| | `
+| | + ...
+| | |
+| | modules.module.js               Module definition for all modules
+| | modules.scss                    SCSS wrapper for all modules
+| `
+| |
+| + services                        Services for the global App module
+| |
+| + theme                           SCSS global style rules
+| |
+| + views                           Components used as views
+| | + componentB
+| | | componentB.component.html
+| | | componentB.component.js
+| | | componentB.component.scss
+| | `
+| | + ...
+| | |
+| | views.module.js                 All views module definition
+| | views.scss                      SCSS wrapper for all views styles
+| `
+| |
+| app.module.js                     AngularJS modules entry point. Used to build app.
+| app.router.js                     Route definition for global App
+| app.style.scss                    Wraps all app SCSS styles (components, modules, theme, views)
+| index.html                        html entry point
+`
+```
