@@ -1,4 +1,5 @@
-skiTrackerApp.component('powderAction', {
+angular.module('skiTrackerApp').component('powderAction', {
+
   templateUrl: './components/powder-action/powder-action.component.html',
   bindings: {
     val: '@',       // value of btn in template
@@ -13,7 +14,8 @@ skiTrackerApp.component('powderAction', {
 
 
   $ctrl.$onInit = () => {
-    console.log('inited powderAction');
+    console.log('inited powderAction', 'woohoo!!', 'lordy');
+    console.log('yaboo!!');
     console.log($ctrl.val, $ctrl.msg, $ctrl.className);
 
     $ctrl.showMsg = false;

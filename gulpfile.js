@@ -1,60 +1,74 @@
 // get packages fom ./node_modules
-let gulp = require('gulp');
-let del = require('del');
-let rename = require('gulp-rename');
-let uglify = require('gulp-uglify-es').default;
-let sass = require('gulp-sass');
-let browserSync = require('browser-sync').create();
+let gulp = require('gulp'),
+  del = require('del'),
+  rename = require('gulp-rename'),
+  source = require('vinyl-source-stream'),
+  buffer = require('vinyl-buffer'),
+  browserify = require('browserify'),
+  uglify = require('gulp-uglify-es').default,
+  sourcemaps = require('gulp-sourcemaps'),
+  sass = require('gulp-sass'),
+  browserSync = require('browser-sync').create();
 
-let runSequence = require('run-sequence');
+let paths = {
+  root: 'app/',
+  dist: 'app/dist/'
+};
 
 
-// TODO - sourcemaps, browserfy, etc.
-// will need to use browserfy for concatenating js files, then uglify them. will then need to set scss org for proj
-
+// clean - delete contents from dist dir (not direcotry itself)
 gulp.task('clean', done => {
-  del(['dist']);
+  del([paths.dist + '**', '!' + paths.dist.substring(0, paths.dist.length - 1)]);
   done();
 });
 
-// TODO
-// gulp.task('uglify', () => {
-//   // use browserfy to combine all files (maybe call seperate task for this, or may just need to pipe all to here)
-//   // uglify
-//   // pipe to dist
-// });
+// build-js - bundle all angularjs modules into one file and minify the file. output minified file to dist directory
+gulp.task('build-js', () => {
+  return browserify(paths.root + 'app.module.js', {debug: true})
+    .bundle()
+    .pipe(source('bundle.min.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.dist));
+});
 
 // styling - convert sass to css
 gulp.task('sass', () => {
-  return gulp.src('app/app.style.scss')
+  return gulp.src(paths.root + 'app.style.scss')
     .pipe(sass())
     .pipe(rename('app.style.css'))
-    .pipe(gulp.dest('app'))
+    .pipe(gulp.dest(paths.root))
     .pipe(browserSync.reload({stream: true}));
 });
 
 // browser sync - start server used for development
 gulp.task('browserSync', () => {
   browserSync.init({
-    server: {
-      baseDir: './app'
-    }
+    server: {baseDir: './app'}
   });
+});
+
+// reload the browser (called when html or js files are changed)
+gulp.task('reload', (done) => {
+  browserSync.reload();
+  done();
 });
 
 // watch - watch for changes
 gulp.task('watch', () => {
-  gulp.watch('app/*.html', browserSync.reload); 
-  gulp.watch('app/js/**/*.js', browserSync.reload); 
-  gulp.watch('app/**/*.scss', gulp.series(['sass']));
+  gulp.watch(
+    [paths.root + '**/*.js', '!' + paths.dist + '**/*.js'],
+    gulp.series(['build-js', 'reload'])
+  );
+  gulp.watch(paths.root + '**/*.html', gulp.series(['reload']));
+  gulp.watch(paths.root + '**/*.scss', gulp.series(['sass']));
 });
 
 // run watch and browserSync in parrallel
 gulp.task('serve-and-watch', gulp.parallel(['browserSync', 'watch']));
 
+
 // DEV TASK
-gulp.task('dev', gulp.series(['clean', 'sass', 'serve-and-watch']));
-
-
-// DEPLOY TASK - TODO - need to imp this
-// gulp.task('deploy', gulp.series(['clean', 'sass', etc.]))
+gulp.task('dev', gulp.series(['clean', 'sass', 'build-js', 'serve-and-watch']));
