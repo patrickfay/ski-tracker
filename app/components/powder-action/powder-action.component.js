@@ -14,7 +14,8 @@ angular.module('skiTrackerApp').component('powderAction', {
 
 
   $ctrl.$onInit = () => {
-    console.log('inited powderAction');
+    console.log('inited powderAction', 'woohoo!!', 'lordy');
+    console.log('yaboo!!');
     console.log($ctrl.val, $ctrl.msg, $ctrl.className);
 
     $ctrl.showMsg = false;

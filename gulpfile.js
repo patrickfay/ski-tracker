@@ -6,17 +6,16 @@ let source = require('vinyl-source-stream');
 let buffer = require('vinyl-buffer');
 let browserify = require('browserify');
 let uglify = require('gulp-uglify-es').default;
+let sourcemaps = require('gulp-sourcemaps');
 let sass = require('gulp-sass');
 let browserSync = require('browser-sync').create();
 
-// let runSequence = require('run-sequence');
 
 let paths = {
   root: 'app/',
   dist: 'app/dist/'
 };
 
-// TODO - sourcemaps
 
 // clean - delete contents from dist dir (not direcotry itself)
 gulp.task('clean', done => {
@@ -30,7 +29,9 @@ gulp.task('browserify-min', () => {
     .bundle()
     .pipe(source('bundle.min.js'))
     .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
 });
 
@@ -57,11 +58,8 @@ function reload(done) {
 
 // watch - watch for changes
 gulp.task('watch', () => {
-
   gulp.watch(paths.root + '**/*.html', reload);
   gulp.watch(paths.root + '**/*.js', reload);
-  // gulp.watch(paths.root + '**/*.html', browserSync.reload);
-  // gulp.watch(paths.root + '**/*.js', browserSync.reload);
   gulp.watch(paths.root + '**/*.scss', gulp.series(['sass']));
 });
 
