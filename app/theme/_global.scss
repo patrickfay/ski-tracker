@@ -1,6 +1,10 @@
 // global styling for the application. all styling in this file will sequentially come before all other styling in ../../app.style.css
 // NOTE - this file should only contain styling for base elements (p, body, a, etc.)
 
+body {
+  font-family: Arial;
+}
+
 .test-class {
   background-color: rgb(191, 240, 255);
   color: black;
