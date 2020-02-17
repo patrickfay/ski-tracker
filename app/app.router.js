@@ -2,8 +2,6 @@ angular.module('skiTrackerApp')
   .config(function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({redirectTo: '/view1'});
-
     $routeProvider
       .when('/playground', {
         templateUrl: 'views/playground/playground.html',
@@ -17,4 +15,6 @@ angular.module('skiTrackerApp')
         templateUrl: 'views/view2/view2.html',
         controller: 'View2Ctrl'
       });
+
+    $routeProvider.otherwise({redirectTo: '/home'});
   });
