@@ -10,7 +10,6 @@ let gulp = require('gulp'),
   sass = require('gulp-sass'),
   browserSync = require('browser-sync').create();
 
-
 let paths = {
   root: 'app/',
   dist: 'app/dist/'
@@ -19,7 +18,6 @@ let paths = {
 
 // clean - delete contents from dist dir (not direcotry itself)
 gulp.task('clean', done => {
-  // del([paths.dist + '**', '!app/dist']);
   del([paths.dist + '**', '!' + paths.dist.substring(0, paths.dist.length - 1)]);
   done();
 });
