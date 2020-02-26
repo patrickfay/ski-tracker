@@ -1,0 +1,61 @@
+.st-home {
+
+  // "Get Started" styling
+  &-gs {
+
+    &-container {
+      @include margin-x(25%);
+      @include margin-y(50px);
+
+      border: solid 1px black;
+      border-radius: 3px;
+      background-color: $white;
+      padding: 15px 20px;
+      margin-top: 50px;
+    }
+
+    &-title {
+      @include flex-just-center();
+
+      border-bottom: solid 1px $black;
+      font-size: 24px;
+      color: darken($powder-blue, 35%);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    // "Get Started" bullet point descriptions
+    &-desc {
+      ul {
+        padding-left: 15px;
+
+        & li::marker {
+          color: darken($powder-blue, 10%);
+        }
+
+        & li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    // "Get Started" buttons
+    &-btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+
+      & > button {
+        @include st-btn-style(rgb(47, 161, 255), lighten($powder-blue, 30%), $black);
+
+        width: 45%;
+        min-width: 135px;
+
+        &:hover {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+}

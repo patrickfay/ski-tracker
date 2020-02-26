@@ -17,3 +17,8 @@
   margin-top: $size;
   margin-bottom: $size;
 }
+
+@mixin flex-just-center() {
+  display: flex;
+  justify-content: center;
+}

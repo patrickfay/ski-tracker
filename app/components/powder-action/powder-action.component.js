@@ -13,10 +13,6 @@ angular.module('skiTrackerApp')
     let $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('inited powderAction', 'woohoo!!', 'lordy');
-      console.log('yaboo!!');
-      console.log($ctrl.val, $ctrl.msg, $ctrl.className);
-
       $ctrl.showMsg = false;
     };
 
