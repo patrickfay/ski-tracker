@@ -1,0 +1,18 @@
+// used for uib tooltip custom styling
+
+.tooltip {
+  &.powder-tooltip {
+    & .tooltip-inner {
+      border: solid 1px $powder-blue;
+      background-color: $white;
+      opacity: 1 !important;
+      color: $title-blue;
+      max-height: 100px;
+      max-width: 250px;
+    }
+  }
+
+  &.in {
+    opacity: 1 !important;
+  }
+}

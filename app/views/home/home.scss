@@ -1,6 +1,4 @@
 .st-home {
-  $title-blue: darken($powder-blue, 35%);
-
   // "Get Started" styling
   &-gs {
 
@@ -111,6 +109,7 @@
         & .fa-question-circle {
           font-size: 12px;
           vertical-align: middle;
+          cursor: pointer;
         }
       }
     }
