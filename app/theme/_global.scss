@@ -6,3 +6,8 @@ body {
   background-color: lighten($grey, 5%);
   margin: 0px;
 }
+
+// all list bullets
+ul li::marker {
+  color: darken($powder-blue, 10%);
+}
