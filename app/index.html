@@ -3,22 +3,28 @@
 <head>
   <meta charset="utf-8">
   <title>Ski Tracker!</title>
+
+  <!-- vendors -->
   <script src="https://kit.fontawesome.com/8b147ccffd.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="lib/angular-uib-modules/ui-bootstrap-custom-2.5.0-csp.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  
+  <!-- minified app styling -->
   <link rel="stylesheet" href="dist/app.style.min.css">
 </head>
 <body>
 
-  <!-- nav bar -->
+  <!-- nav bar (present on all views) -->
   <nav-bar></nav-bar>
 
-  <!-- current view being displayed -->
+  <!-- current view -->
   <div ng-view></div>
 
-  <!-- production
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
+  <!-- Vendors -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-uib-modules/ui-bootstrap-custom-2.5.0.js"></script>
+  <script src="lib/angular-uib-modules/ui-bootstrap-custom-tpls-2.5.0.js"></script>
 
   <!-- bundled and minified angularjs app -->
   <script src="dist/bundle.min.js"></script>

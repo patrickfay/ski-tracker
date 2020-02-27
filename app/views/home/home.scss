@@ -12,7 +12,6 @@
       border-radius: 3px;
       background-color: $white;
       padding: 15px 20px;
-      // margin-top: 50px;
     }
 
     &-title {
@@ -81,7 +80,7 @@
     &-list {
 
       &-container {
-        @include margin-x(10px);
+        @include margin-x(20px);
 
         background-color: $white;
         border-radius: 5px;
@@ -100,12 +99,19 @@
         }
       }
 
+      // feature list titles
       &-title {
         border-bottom: solid 1px darken($title-blue, 8%);
         color: darken($title-blue, 8%);
         font-size: 20px;
         text-align: center;
         padding-bottom: 5px;
+
+        // question icon
+        & .fa-question-circle {
+          font-size: 12px;
+          vertical-align: middle;
+        }
       }
     }
   }
