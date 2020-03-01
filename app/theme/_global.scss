@@ -1,23 +1,16 @@
-// global styling for the application. all styling in this file will sequentially come before all other styling in ../../app.style.css
-// NOTE - this file should only contain styling for base elements (p, body, a, etc.)
+// this file only contains styling for base elements (p, body, a, etc.)
 
 body {
   font-family: Arial;
+  background-color: lighten($grey, 5%);
+  margin: 0px;
 }
 
-.test-class {
-  background-color: rgb(191, 240, 255);
-  color: black;
-  border: 1px solid rgb(0, 195, 255);
-  border-radius: 3px;
-  margin: 20px;
+// all list bullets
+ul {
+  @include margin-y(10px);
 
-  p {
-    border: 1px solid white;
-    border-radius: 3px;
-    background-color: rgb(255, 201, 102);
-    font-size: 16px;
-    padding: 10px;
-    margin: 10px 10px;
+  & li::marker {
+    color: darken($powder-blue, 10%);
   }
 }

@@ -1,0 +1,118 @@
+.st-home {
+  // "Get Started" styling
+  &-gs {
+
+    &-container {
+      @include margin-x(25%);
+      @include margin-y(60px);
+
+      border: solid 1px black;
+      border-radius: 3px;
+      background-color: $white;
+      padding: 15px 20px;
+    }
+
+    &-title {
+      @include flex-just-center();
+
+      border-bottom: solid 1px $black;
+      font-size: 24px;
+      color: $title-blue;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    // "Get Started" bullet point descriptions
+    &-desc {
+      ul {
+        padding-left: 15px;
+
+        & li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    // "Get Started" buttons
+    &-btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+
+      & > button {
+        @include st-btn-style(rgb(47, 161, 255), lighten($powder-blue, 30%), $black);
+
+        width: 45%;
+        min-width: 135px;
+
+        &:hover {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  // Features styling
+  &-feats {
+
+    &-container {
+      @include padding-y(20px);
+
+      background: linear-gradient(lighten($grey, 3%), lighten($powder-blue, 25%));
+      border-top: solid 1px $title-blue;
+    }
+
+    // "The Ski Tracker Features" div
+    &-title {
+      font-size: 26px;
+      text-align: center;
+      color: $title-blue;
+    }
+
+    // body holding lists of features
+    &-body {
+      @include flex-just-center();
+    }
+
+    // list specific styling
+    &-list {
+
+      &-container {
+        @include margin-x(20px);
+
+        background-color: $white;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        width: 25%;
+
+        // lists styling
+        & ul {
+          padding-left: 30px;
+          margin-bottom: 5px;
+          
+          & li {
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      // feature list titles
+      &-title {
+        border-bottom: solid 1px darken($title-blue, 8%);
+        color: darken($title-blue, 8%);
+        font-size: 20px;
+        text-align: center;
+        padding-bottom: 5px;
+
+        // question icon
+        & .fa-question-circle {
+          font-size: 12px;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
