@@ -1,9 +1,10 @@
 # Theme
 
-This directory will hold SASS files that will contain all custom styling rules for this application.
+This directory holds SASS files that will contain all custom styling rules for this application.
 
-All styling rules within this directory will be wrapped in the file **`theme.scss`**. This file will be interpreted to css and stored in **`../app.style.css`**  
-This process will occur each time the command `gulp dev` is run from the root of this application. That command will also watch for changes to any sass files and will reinterpret the files to css each time a change is detected.
+All styling rules within this directory will be wrapped in the file **`theme.scss`**. This file will be interpreted to css and stored in the dist directory.
+
+**NOTE** - The files within this directory are used 'globally' within this application. If you are looking for styling for a specific component, look within that specific components directory.
 
 ## Theme Dir Structure
 
