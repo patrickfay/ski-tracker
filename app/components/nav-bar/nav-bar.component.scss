@@ -9,6 +9,9 @@
     color: lighten($black, 5%);
     margin-bottom: 10px;
     height: 50px;
+
+    // override vendor styling
+    box-sizing: content-box;
   }
 
   &-title-container {

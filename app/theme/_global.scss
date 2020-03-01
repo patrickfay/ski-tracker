@@ -7,6 +7,10 @@ body {
 }
 
 // all list bullets
-ul li::marker {
-  color: darken($powder-blue, 10%);
+ul {
+  @include margin-y(10px);
+
+  & li::marker {
+    color: darken($powder-blue, 10%);
+  }
 }
