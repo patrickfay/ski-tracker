@@ -3,6 +3,7 @@ angular.module('skiTrackerApp')
 
     $scope.UserData = null;
 
+    // test data is passed between controllers
     console.log(userDataService.getSkiPartners(), userDataService.getEntries());
   
   });

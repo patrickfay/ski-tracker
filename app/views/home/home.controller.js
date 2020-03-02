@@ -15,15 +15,10 @@ angular.module('skiTrackerApp')
     $scope.redirectToEntries = (_startFresh) => {
       let _path = 'entries?startFresh=' + (_startFresh ? 'true' : 'false');
 
+      // test user service ability to pass data btw controllers
       userDataService.addSkiPartner('Premo Dude');
       userDataService.setEntries({skiArea: "pow mow", description: "There was powder!! Woohoo!!"});
 
       $location.url(_path);
     };
-  
-
-    // $scope.testFunction = () => {
-    //   console.log('uhhh in here');
-    //   console.log('..')
-    // };
   });
