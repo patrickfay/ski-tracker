@@ -1,8 +1,8 @@
 # Theme
 
-This directory holds SASS files that will contain all custom styling rules for this application.
+This directory holds SASS files that contain all custom styling rules for this application.
 
-All styling rules within this directory will be wrapped in the file **`theme.scss`**. This file will be interpreted to css and stored in the dist directory.
+All styling rules within this directory are wrapped in the file **`theme.scss`**. This file is interpreted to css and stored in the dist directory.
 
 **NOTE** - The files within this directory are used 'globally' within this application. If you are looking for styling for a specific component, look within that specific components directory.
 
@@ -12,7 +12,7 @@ All styling rules within this directory will be wrapped in the file **`theme.scs
 + theme
 | + components          UI components
 | | _buttons.scss       style for buttons
-| | _panels.scss
+| | _panels.scss        style for panels
 | | ...
 |
 | + mixins              reusable style rules

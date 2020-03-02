@@ -1,10 +1,6 @@
 # Views
 
-This directory will hold the different views for this app. The views will be:
-
-* Home Page
-* Entries page (holding all ski day entries for the user)
-* About page
+This directory holds different views for the app.
 
 ## View structure
 
@@ -19,4 +15,4 @@ Each view will contain 3 files:
   * Contains any custom styling this component needs
   * This file can be omitted if no custom styling is needed
 
-**NOTE** - These views should be simple and short files. These components will be comprised of different modules, which will hold more complex and reusable components.
+These views will be comprised of different modules and components, which will hold more complex and reusable components.
