@@ -1,8 +1,8 @@
 angular.module('skiTrackerApp')
-  .controller('entriesCtrl', function($scope) {
+  .controller('entriesCtrl', function($scope, $location, userDataService) {
 
     $scope.UserData = null;
 
-    console.log('in our new entries page! YABOO!', $scope.UserData);
+    console.log(userDataService.getSkiPartners(), userDataService.getEntries());
   
   });
