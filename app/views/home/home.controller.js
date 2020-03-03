@@ -6,19 +6,18 @@ angular.module('skiTrackerApp')
       'Filter the days you want to see! Trying to remember a specific day somewhere or with someone? Fastest speed? Apply a filter to find the day you did that!'
     ];
 
+    // TOOD - upload funcitonality (will want to populate service with data then redirect)
+    $scope.upload = () => {
+      // upload some data here boss
+      console.log('uploading! :^)-+<');
+    };
 
     /**
-     * redirect the user to the specified view
-     * @param {string} _path the path to a view
-     * @param {string} _qryStrParams the query string parameters to append to the URL
+     * clear data stored in service and redirect user to 'entries' view
      */
-    $scope.redirectToEntries = (_startFresh) => {
-      let _path = 'entries?startFresh=' + (_startFresh ? 'true' : 'false');
-
-      // test user service ability to pass data btw controllers
-      userDataService.addSkiPartner('Premo Dude');
-      userDataService.setEntries({skiArea: "pow mow", description: "There was powder!! Woohoo!!"});
-
-      $location.url(_path);
+    $scope.startFresh = () => {
+      userDataService.clearData();
+      $location.url('entries');
     };
+
   });

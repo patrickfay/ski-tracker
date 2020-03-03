@@ -1,6 +1,6 @@
 angular.module('skiTrackerApp')
   .service('userDataService', function() {
-    let $service = this;  // so we don't confuse 'this' vars scopes across functions
+    let $service = this;  // so we don't confuse 'this' w/ scopes across functions and service module
 
     // we use this variable to hold the user's data across the application
     $service.userData = {
@@ -27,5 +27,11 @@ angular.module('skiTrackerApp')
     // get all user's ski partners
     $service.getSkiPartners = () => {
       return $service.userData.skiPartners;
+    };
+
+    // clear data stored in this service
+    $service.clearData = () => {
+      $service.userData.entries = null;
+      $service.userData.skiPartners = [];
     };
   });
