@@ -1,9 +1,10 @@
 angular.module('skiTrackerApp')
-  .controller('entriesCtrl', function($scope, $location, userDataService) {
+  .controller('entriesCtrl', function($scope, userDataService) {
 
-    $scope.UserData = null;
-
-    // test data is passed between controllers
-    console.log(userDataService.getSkiPartners(), userDataService.getEntries());
+    // get user data
+    $scope.userData = {
+      entries: userDataService.getEntries(),
+      skiPartners: userDataService.getSkiPartners()
+    };
   
   });

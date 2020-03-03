@@ -1,1 +1,9 @@
 <p>I am the Entries Page! Woohoo!</p>
+
+<div ng-if="userData.entries.length > 0">
+  <p>We have user data!</p>
+</div>
+
+<div ng-if="userData.entries.length === 0">
+  <start-fresh></start-fresh>
+</div>

@@ -4,14 +4,14 @@ angular.module('skiTrackerApp')
 
     // we use this variable to hold the user's data across the application
     $service.userData = {
-      entries: null,
+      entries: [],
       skiPartners: []
     };
+    
 
-
-    // add user's entries
-    $service.setEntries = (_entries) => {
-      $service.userData.entries = _entries;
+    // add one new entry
+    $service.addEntry = (_entry) => {
+      $service.userData.entries.push(_entry);
     };
 
     // add new ski partner
@@ -31,7 +31,7 @@ angular.module('skiTrackerApp')
 
     // clear data stored in this service
     $service.clearData = () => {
-      $service.userData.entries = null;
+      $service.userData.entries = [];
       $service.userData.skiPartners = [];
     };
   });

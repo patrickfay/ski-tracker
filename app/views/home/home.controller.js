@@ -9,7 +9,7 @@ angular.module('skiTrackerApp')
     // TOOD - upload funcitonality (will want to populate service with data then redirect)
     $scope.upload = () => {
       // upload some data here boss
-      console.log('uploading! :^)-+<');
+      console.log('uploading! :^)+<');
     };
 
     /**
