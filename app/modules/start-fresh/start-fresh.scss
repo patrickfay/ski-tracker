@@ -1,0 +1,52 @@
+.st-fresh {
+  &-container {
+    border: solid 1px $black;
+    border-radius: 3px;
+    margin: 30px;
+  }
+
+  // HEADER AND INFO STYLING
+  &-header-info-container {
+    padding: 10px;
+  }
+
+  &-header {
+    border-bottom: solid 1px $black;
+    color: $title-blue;
+    font-size: 24px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  &-info {
+    & > p {
+      font-size: 16px;
+    }
+
+    // no margin on last paragraph tag (overriding vendor styling of <p>)
+    & > p:last-of-type {
+      margin-bottom: 5px;
+    }
+  }
+
+  
+  // ENTRY STYLING
+  &-entry-container {
+    border-top: solid 1px $black;
+
+    & > div {
+      padding: 10px;
+    }
+  }
+
+  &-entry-header {
+    background-color: $powder-blue;
+    color: $white;
+    font-size: 24px;
+  }
+
+  &-entry-body {
+    background-color: lighten($powder-blue, 30%);
+    border-radius: 0 0 3px 3px;
+  }
+}
