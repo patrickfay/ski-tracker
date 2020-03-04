@@ -1,0 +1,15 @@
+// repeating linear gradient header
+@mixin rep-lin-grad-header($light-color, $dark-color, $font-color: $white) {
+  font-size: 42px;
+  font-weight: 800;
+  color: $font-color;
+  padding: 20px;
+
+  background: repeating-linear-gradient(
+    45deg,
+    $light-color,
+    $light-color 20px,
+    $dark-color 20px,
+    $dark-color 40px
+  );
+}
