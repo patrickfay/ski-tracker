@@ -14,3 +14,21 @@ ul {
     color: darken($powder-blue, 10%);
   }
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  // remove outline from firefox
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+}

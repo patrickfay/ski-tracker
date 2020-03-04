@@ -1,5 +1,5 @@
 angular.module('skiTrackerApp')
-  .controller('playgroundCtrl', function($scope) {
+  .controller('playgroundCtrl', function() {
 
     // cmon, do something...
     
