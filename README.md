@@ -62,6 +62,17 @@ Please look over the directory and file structe of this application to gain a se
 | | components.module.js            All components module definition
 | | components.scss                 SCSS wrapper for all components styles
 | `
+| + directives                      App Global Directives (custom dropdowns, etc.)
+| | + directiveA
+| | | directiveA.directive.html
+| | | directiveA.directive.js
+| | | directiveA.directive.scss
+| | `
+| | + ...
+| | |
+| | directives.module.js            All directives module definition
+| | directives.scss                 SCSS wrapper for all directives styles
+| `
 | |
 | + modules                         App Modules
 | | + moduleA
