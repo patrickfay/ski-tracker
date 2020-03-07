@@ -8,7 +8,9 @@ angular.module('skiTrackerApp')
         dateSelect: '&onDateSelect'
       },
       templateUrl: './directives/datepicker/datepicker.directive.html',
-      link: function(scope) {
+      link: function(scope, element) {
+        scope.isOpen = true;
+
         scope.datepickerObj = {
           value: null,
           options: {
@@ -20,6 +22,11 @@ angular.module('skiTrackerApp')
             yearColumns: 4
           }
         }
+
+        // open datepicker when user clicks on text input field
+        element.on('click', function() {
+          scope.isOpen = true;
+        });
       }
     };
   });

@@ -3,7 +3,8 @@
        uib-datepicker-popup="{{!!format ? format : 'MM/dd/yyyy'}}"
        datepicker-options="datepickerObj.options"
        popup-placement="bottom-right"
-       is-open="true"
+       is-open="isOpen"
        show-button-bar="false"
        on-open-focus="false"
-       placeholder="{{!!format ? format : 'mm/dd/yyyy'}}">
+       placeholder="{{!!format ? format : 'mm/dd/yyyy'}}"
+       ng-click="toggleDatepicker">

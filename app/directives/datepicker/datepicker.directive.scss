@@ -1,7 +1,8 @@
-$min-width: 200px;
+$min-width: 230px;
 
 // override uib-datepicker styling
 ul {
+  // selecting a specific date (day view)
   &.uib-datepicker-popup.dropdown-menu {
     padding: 0 !important;
     min-width: $min-width;
@@ -10,16 +11,11 @@ ul {
 
       // header and month rows
       thead {
-        // border: solid 1px red;
         tr {
           th {
             & > button {
               border-top: none;
               border-radius: 0px;
-
-              // &:hover {
-              //   background-color: lighten($powder-blue, 30%);
-              // }
             }
           }
 
@@ -41,17 +37,25 @@ ul {
 
       tbody {
         tr td button {
-          // border-radius: 0px;
-          // border: none;
           border: solid 1px transparent;
 
+          // currently selected date
+          &.active {
+            background-color: lighten($powder-blue, 30%);
+            border: solid 1px lighten($powder-blue, 15%);
+
+            & > span {
+              color: $title-blue;
+            }
+          }
+
           &:hover {
-            // background-color: lighten($powder-blue, 25%);
             background-color: lighten($grey, 4%);
             border: solid 1px $powder-blue;
           }
         }
 
+        // rounded borders for btns at bottom left and bottom right of calendar
         tr:last-of-type {
           td:first-of-type button {
             border-bottom-left-radius: 4px;
@@ -63,5 +67,16 @@ ul {
         }
       }
     }
+  }
+
+  // selecting a month (month view)
+  .uib-monthpicker table {
+    min-width: $min-width;
+  }
+
+
+  // selecting a year (year view)
+  .uib-yearpicker table {
+    min-width: $min-width;
   }
 }
