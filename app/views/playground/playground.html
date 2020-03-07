@@ -1,29 +1,16 @@
 <div class="st-playground">
 
+  <!-- text input field -->
   <div class="st-playground-test-container">
     <input type=text class="st-input">
   </div>
 
+  <!-- dropdown -->
   <div class="st-playground-test-container">
-    
-    <div class="st-dropdown-container">
-      <select class="st-input st-dropdown">
-        <option>Randy</option>
-        <option>Lahey</option>
-        <option>Ricky</option>
-        <option>Julian</option>
-        <option>Bubbles</option>
-        <option>Patrick Schwayze</option>
-      </select>
-      <i class="fas fa-caret-down"></i>
-      <!-- <i class="fas fa-chevron-down"></i> -->
-    </div>
-
-  </div>
-
-
-  <div class="st-playground-test-container">
-    <dropdown-simple></dropdown-simple>
+    <dropdown-simple default-val="-- select character --"
+                     options-arr="testOptions"
+                     on-item-select="printSelectedVal(_value)">
+    </dropdown-simple>
   </div>
 
 

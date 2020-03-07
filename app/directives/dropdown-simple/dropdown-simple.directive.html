@@ -1,1 +1,9 @@
-<p>I am the dropdown-simple directive! Woohoo!</p>
+<div class="st-dropdown-container">
+  <select class="st-input st-dropdown"
+        ng-model="selectModel"
+        ng-options="item for item in optionsArr"
+        ng-change="itemSelect({_value: selectModel})">
+  </select>
+  
+  <i class="fas fa-chevron-down"></i>
+</div>
