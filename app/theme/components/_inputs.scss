@@ -15,6 +15,7 @@
   &-dropdown {
     &-container {
       position: relative;
+      cursor: pointer;
 
       & > i {
         position: absolute;
@@ -22,6 +23,7 @@
         right: 3%;
         color: darken($powder-blue, 10%);
         font-size: 16px;
+
       }
     }
 

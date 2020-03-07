@@ -6,7 +6,11 @@
 
 
   &-test-container {
-    @include margin-y(15px);
+    @include margin-y(25px);
     width: 50%;
+
+    &:first-of-type {
+      margin-top: 10px;
+    }
   }
 }
