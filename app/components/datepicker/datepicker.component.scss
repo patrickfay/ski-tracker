@@ -6,10 +6,11 @@ $min-width: 230px;
 
 // override uib-datepicker styling
 ul {
-  // override uib box-shadow styling surrounding popup
-  box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
-  -webkit-box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
-
+  &.uib-datepicker-popup {
+    // override uib box-shadow styling surrounding popup
+    box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
+    -webkit-box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
+  }
 
   // datepicker day view (selecting speciifc date)
   &.uib-datepicker-popup.dropdown-menu {
