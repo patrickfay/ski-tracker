@@ -56,26 +56,4 @@
       }
     }
   }
-
-
-  &-dropdown {
-    &-container {
-      position: relative;
-      cursor: pointer;
-
-      & > i {
-        position: absolute;
-        top: 25%;
-        right: 3%;
-        color: darken($powder-blue, 10%);
-        font-size: 16px;
-      }
-    }
-
-    // fix firefox alignment issues
-    @-moz-document url-prefix() {
-      @include padding-x(4px);
-      padding-top: 5px;
-    }
-  }
 }
