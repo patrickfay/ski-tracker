@@ -1,10 +1,20 @@
-<input class="st-input st-datepicker" type="text"
-       ng-model="$ctrl.datepickerObj.value"
-       ng-click="$ctrl.toggleDatepicker()"
-       uib-datepicker-popup="{{!!$ctrl.format ? $ctrl.format : 'MM/dd/yyyy'}}"
-       datepicker-options="$ctrl.datepickerObj.options"
-       popup-placement="bottom-right"
-       is-open="$ctrl.isOpen"
-       show-button-bar="false"
-       on-open-focus="false"
-       placeholder="{{!!$ctrl.format ? $ctrl.format.toLowerCase() : 'mm/dd/yyyy'}}">
+<div class="st-datepicker st-input-cust-container"
+     ng-class="{'st-input-cust-container-shadow': $ctrl.isOpen}">
+
+  <input class="st-input" type="text"
+        ng-model="$ctrl.datepickerObj.value"
+        ng-click="$ctrl.toggleDatepicker()"
+        uib-datepicker-popup="{{!!$ctrl.format ? $ctrl.format : 'MM/dd/yyyy'}}"
+        datepicker-options="$ctrl.datepickerObj.options"
+        popup-placement="bottom-right"
+        is-open="$ctrl.isOpen"
+        show-button-bar="false"
+        on-open-focus="false"
+        placeholder="{{!!$ctrl.format ? $ctrl.format.toLowerCase() : 'mm/dd/yyyy'}}"
+        readonly>
+
+  <button class="st-input-icon-btn" type="button" ng-click="$ctrl.toggleDatepicker()">
+    <i class="far fa-calendar-alt"></i>
+  </button>
+
+</div>

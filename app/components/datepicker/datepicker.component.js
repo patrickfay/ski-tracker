@@ -29,10 +29,7 @@ angular.module('skiTrackerApp')
       }
     };
 
-    $ctrl.toggleDatepicker = () => {
-      console.log('in toggle datepicker');
-      $ctrl.isOpen = true;
-    }
-
+    // open datepicker
+    $ctrl.toggleDatepicker = () => $ctrl.isOpen = true;
 
   });

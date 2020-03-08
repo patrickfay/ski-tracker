@@ -18,7 +18,7 @@ angular.module('skiTrackerApp')
     ];
 
     $scope.printSelectedVal = (_value) => {
-      console.log('value:', _value);
+      console.log('selected value:', _value);
     };
 
   });

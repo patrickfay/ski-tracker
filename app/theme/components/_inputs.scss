@@ -1,4 +1,7 @@
 .st {
+  $box-shadow-val: 0px 0px 5px lighten($powder-blue, 10%);
+
+  // class applied to all input fields
   &-input {
     border: solid 1px darken($grey, 10%);
     border-radius: 3px;
@@ -8,9 +11,52 @@
     width: 100%;
 
     &:focus {
-      box-shadow: 0px 0px 5px lighten($powder-blue, 10%);
+      box-shadow: $box-shadow-val; 
+    }
+
+    // container used for input fields containing a btn and icon within it (ie. datepicker, simple-dropdown, etc.)
+    &-cust-container {
+      $border-rad: 3px;
+  
+      display: flex;
+      border-radius: $border-rad;
+  
+      // override .st-input styling
+      & .st-input {
+        border-right: none !important;
+        border-radius: $border-rad 0px 0px $border-rad;
+        box-shadow: none;
+      }
+  
+      // class for button in this container
+      & .st-input-icon-btn {
+        @include padding-x(20px);
+  
+        display: flex;
+        align-items: center;
+        background-color: $white;
+        border: solid 1px darken($grey, 10%);
+        border-radius: 0px $border-rad $border-rad 0px;
+        
+        &:hover {
+          background-color: lighten($powder-blue, 32%);
+        }
+  
+        & > i {
+          color: darken($powder-blue, 10%);
+          font-size: 16px;
+          vertical-align: middle;
+        }
+      }
+      
+      // used by ng-class to toggle box shadow that replicates regular input field box-shadow
+      &-shadow {
+        box-shadow: $box-shadow-val;
+        -webkit-box-shadow: $box-shadow-val;
+      }
     }
   }
+
 
   &-dropdown {
     &-container {
