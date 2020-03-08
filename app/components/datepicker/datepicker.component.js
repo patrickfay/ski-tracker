@@ -1,6 +1,7 @@
 angular.module('skiTrackerApp')
   .component('datepicker', {
     bindings: {
+      date: '<',
       format: '@',
       dateSelect: '&onDateSelect'
       // TODO - date range functionality
@@ -16,7 +17,7 @@ angular.module('skiTrackerApp')
       $ctrl.isOpen = true;
 
       $ctrl.datepickerObj = {
-        value: null,
+        value: $ctrl.date,
         options: {
           datepickerMode: 'day',
           formatDay: 'd',

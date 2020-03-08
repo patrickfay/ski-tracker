@@ -2,7 +2,7 @@ angular.module('skiTrackerApp')
   .controller('playgroundCtrl', function($scope) {
 
     $scope.datepicker = {
-      value: null,
+      date: new Date(),
       format: 'MM/dd/yyyy',
     };
 
