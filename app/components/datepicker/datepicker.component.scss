@@ -1,8 +1,17 @@
 $min-width: 230px;
 
+.st-datepicker {
+  cursor: pointer;
+}
+
 // override uib-datepicker styling
 ul {
-  // selecting a specific date (day view)
+  // override uib box-shadow styling surrounding popup
+  box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
+  -webkit-box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
+
+
+  // datepicker day view (selecting speciifc date)
   &.uib-datepicker-popup.dropdown-menu {
     padding: 0 !important;
     min-width: $min-width;
@@ -40,13 +49,20 @@ ul {
           border: solid 1px transparent;
 
           // currently selected date
-          &.active {
+          &.btn-info {
             background-color: lighten($powder-blue, 30%);
             border: solid 1px lighten($powder-blue, 15%);
 
             & > span {
               color: $title-blue;
             }
+          }
+
+          // override 'active' class set by uib datepicker logic
+          &.active {
+            background-color: $white;
+            box-shadow: none;
+            -webkit-box-shadow: none;
           }
 
           &:hover {
@@ -69,14 +85,20 @@ ul {
     }
   }
 
-  // selecting a month (month view)
+  // datepicker month view (selecting a month)
   .uib-monthpicker table {
     min-width: $min-width;
   }
 
 
-  // selecting a year (year view)
+  // datepicker year view (selecting a year)
   .uib-yearpicker table {
     min-width: $min-width;
+
+    // override uib year title disabled style
+    thead th button.uib-title[disabled] {
+      opacity: 1;
+      cursor: unset;
+    }
   }
 }
