@@ -1,18 +1,18 @@
-# dropdown-simple Directive
+# dropdown-simple Component
 
-The `dropdown-simple` component can be used like any other dropdown. This directive has custom styling and makes it easier and cleaner to use in components than a normal dropdown would be.
+The `dropdown-simple` component can be used like any other dropdown. This component has custom styling and makes it easier and cleaner to use in components than a normal dropdown would be.
 
-This README contains info on how to use the `dropdown-simple` directive.
+This README contains info on how to use the `dropdown-simple` component.
 
-## Using this directive
+## Using This Component
 
-To use this directive you can only include it in your template as the element
+To use this component you can only include it in your template as the element
 
 ```HTML
 <dropdown-simple></dropdown-simple>
 ```
 
-This directive uses an isolated scope. There are **three** attributes that can be passed to this directive. One attribute can be omitted and two are required.
+This component has **three** bindings. One binding can be omitted and two are required.
 
 * **`defaultVal`** a one way binding, must be a **string**. This attribute can be omitted.
   * The value of this attribute will be used as the first option displayed in the dropdown. If omitted the first value of the dropdown will be `-- select --`.
@@ -21,7 +21,7 @@ This directive uses an isolated scope. There are **three** attributes that can b
 * **`itemSelect`** an output binding used to pass the selected value to a callback function.
   * The value of the selected item that is passed to the callback function will be stored in the variable `_value`.
 
-### Example Using This Directive in a Component
+### Example Using This Component
 
 Your component.js file:
 
