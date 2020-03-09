@@ -5,7 +5,7 @@ angular.module('skiTrackerApp')
     bindings: {
       defaultVal: '@',
       optionsArr: '<',
-      itemSelect: '&onItemSelect'
+      onItemSelect: '&onItemSelect'
     }
   })
 
@@ -13,25 +13,25 @@ angular.module('skiTrackerApp')
     let $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('in dropdown simple component');
-      $ctrl.isToggled = false;
-
       // push default value to options array on init
       $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : '-- select --');
   
-      // set model for select to first arr ele
-      $ctrl.selectModel = $ctrl.optionsArr[1];
+      $ctrl.selectModel = $ctrl.optionsArr[0];
+      $ctrl.isToggled = false;
     };
-
-    // $ctrl.isToggled = false;
-
-    // // push default value to options array on init
-    // $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : '-- select --');
-
-    // // set model for select to first arr ele
-    // $ctrl.selectModel = $ctrl.optionsArr[0];
 
     // toggle dropdown
     $ctrl.toggleDropdown = () => $ctrl.isToggled = !$ctrl.isToggled;
 
+    /**
+     * Passes the item selected by the user to the parent component's onItemSelect() callback function.
+     * 
+     * @param {<any>} _item The item selected from the dropdown by the user
+     */
+    $ctrl.itemSelected = (_item) => {
+      $ctrl.selectModel = _item;
+
+      // pass an empty string if user selected the default val, else pass _item to parent component callback function
+      $ctrl.onItemSelect({_value: (_item === $ctrl.optionsArr[0] ? '' : _item)});
+    }
   });

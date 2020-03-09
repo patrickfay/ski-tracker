@@ -18,8 +18,9 @@ This component has **three** bindings. One binding can be omitted and two are re
   * The value of this attribute will be used as the first option displayed in the dropdown. If omitted the first value of the dropdown will be `-- select --`.
 * **`optionsArr`** a one way binding, must be an **array**.
   * The selectable options for the dropdown.
-* **`itemSelect`** an output binding used to pass the selected value to a callback function.
+* **`onItemSelect`** an output binding used to pass the selected value to a callback function.
   * The value of the selected item that is passed to the callback function will be stored in the variable `_value`.
+  * If the use selects the default value (ie. -- select --) from the dropdown, an empty string (`''`) will be passed to the callback function.
 
 ### Example Using This Component
 
