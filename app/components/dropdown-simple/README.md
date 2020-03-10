@@ -12,15 +12,13 @@ To use this component you can only include it in your template as the element
 <dropdown-simple></dropdown-simple>
 ```
 
-This component has **three** bindings. One binding can be omitted and two are required.
+This component has **three** bindings. Two are required and one is optional.
 
-* **`defaultVal`** a one way binding, must be a **string**. This attribute can be omitted.
-  * The value of this attribute will be used as the first option displayed in the dropdown. If omitted the first value of the dropdown will be `-- select --`.
-* **`optionsArr`** a one way binding, must be an **array**.
-  * The selectable options for the dropdown.
-* **`onItemSelect`** an output binding used to pass the selected value to a callback function.
-  * The value of the selected item that is passed to the callback function will be stored in the variable `_value`.
-  * If the use selects the default value (ie. -- select --) from the dropdown, an empty string (`''`) will be passed to the callback function.
+| Binding Name | Type | Required | Description |
+| ------------ | ---- | -------- | ----------- |
+| `defaultVal` | String | False | The first option displayed in the dropdown. If omitted the default value is `-- select --`. |
+| `optionsArr` | Array | True | The selectable options for the dropdown. |
+| `onItemSelect` | Callback Function | True | Passes the selected item in the dropdown to the parent component through the parameter `_value`. If the use selects the default value (ie. -- select --) from the dropdown, an empty string (`''`) will be passed to the callback function. |
 
 ### Example Using This Component
 
