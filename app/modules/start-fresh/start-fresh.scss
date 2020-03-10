@@ -5,14 +5,17 @@
 
   &-body {
     border-top: solid 1px darken($powder-blue, 8%);
-    background: linear-gradient($light-green, lighten($light-green, 15%));
+    // background: linear-gradient($light-green, lighten($light-green, 15%));
     padding-bottom: 20px;
+    background-color: $grey;
   }
 
   &-description {
     font-size: 18px;
     font-weight: 600;
-    color: white;
+    // color: white;
+    // background-color: lighten($powder-blue, 32%);
+    color: $title-blue;
     padding: 20px;
 
     & > p:last-of-type {
