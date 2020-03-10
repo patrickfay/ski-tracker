@@ -22,6 +22,8 @@
     border-top: none;
     border-radius: $border-rad;
     background-color: $white;
+    box-shadow: 0 1px 3px $grey !important;
+    -webkit-box-shadow: 0 1px 3px $grey !important;
   }
 
   // each option

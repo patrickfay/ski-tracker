@@ -3,6 +3,8 @@ angular.module('skiTrackerApp')
     bindings: {
       date: '<',
       format: '@',
+      minDate: '<',
+      maxDate: '<',
       dateSelect: '&onDateSelect'
       // TODO - date range functionality
     },
@@ -14,7 +16,7 @@ angular.module('skiTrackerApp')
     let $ctrl = this;
 
     $ctrl.$onInit = () => {
-      $ctrl.isOpen = true;
+      $ctrl.isOpen = false;
 
       $ctrl.datepickerObj = {
         value: $ctrl.date,
@@ -22,11 +24,13 @@ angular.module('skiTrackerApp')
           datepickerMode: 'day',
           formatDay: 'd',
           formatMonth: 'MMM',
+          minDate: $ctrl.minDate,
+          maxDate: $ctrl.maxDate,
           showWeeks: false,
           monthColumns: 3,
           yearColumns: 4
         }
-      }
+      };
     };
 
     // open datepicker

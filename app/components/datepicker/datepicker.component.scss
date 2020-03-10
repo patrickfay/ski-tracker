@@ -6,12 +6,7 @@ $min-width: 230px;
 
 // override uib-datepicker styling
 ul {
-  &.uib-datepicker-popup {
-    // override uib box-shadow styling surrounding popup
-    box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
-    -webkit-box-shadow: 0 1px 3px lighten($powder-blue, 10%) !important;
-  }
-
+  
   // datepicker day view (selecting speciifc date)
   &.uib-datepicker-popup.dropdown-menu {
     padding: 0 !important;
@@ -69,6 +64,12 @@ ul {
           &:hover {
             background-color: lighten($grey, 4%);
             border: solid 1px $powder-blue;
+          }
+
+          // buttons will be disabled if their date is out of the date range
+          &[disabled]:hover {
+            background-color: $white;
+            border: none;
           }
         }
 
