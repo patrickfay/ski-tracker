@@ -4,13 +4,9 @@ angular.module('skiTrackerApp')
     $scope.datepicker = {
       date: new Date(),
       format: 'MM/dd/yyyy',
-      minDate: getOffestedDate(-2),
-      maxDate: getOffestedDate(5)
+      minDate: getOffestDate(-2),
+      maxDate: getOffestDate(5)
     };
-
-    console.log($scope.datepicker);
-
-    $scope.dateFormat = 'MM/dd/yyyy';
 
     $scope.testOptions = [
       'Randy',
@@ -21,12 +17,12 @@ angular.module('skiTrackerApp')
       'Patrick Schwayze'
     ];
 
-    $scope.printSelectedVal = (_value) => {
-      console.log('selected value:', _value);
-    };
+    $scope.printSelectedVal = (_value) => console.log('selected dropdown value:', _value);
+
+    $scope.dateChanged = (_value) => console.log('selected date:', _value);
 
     // return a date offseted by the number of days specified by the parameter _offset
-    function getOffestedDate(_offset) {
+    function getOffestDate(_offset) {
       let _date = new Date();
 
       _date.setDate(_date.getDate() + _offset);

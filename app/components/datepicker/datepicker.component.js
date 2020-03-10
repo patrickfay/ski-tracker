@@ -2,11 +2,10 @@ angular.module('skiTrackerApp')
   .component('datepicker', {
     bindings: {
       date: '<',
-      format: '@',
-      minDate: '<',
-      maxDate: '<',
-      dateSelect: '&onDateSelect'
-      // TODO - date range functionality
+      format: '@?',
+      minDate: '<?',
+      maxDate: '<?',
+      onDateSelect: '&onDateSelect'
     },
     templateUrl: './components/datepicker/datepicker.component.html',
     controller: 'datepickerCtrl'
@@ -18,18 +17,15 @@ angular.module('skiTrackerApp')
     $ctrl.$onInit = () => {
       $ctrl.isOpen = false;
 
-      $ctrl.datepickerObj = {
-        value: $ctrl.date,
-        options: {
-          datepickerMode: 'day',
-          formatDay: 'd',
-          formatMonth: 'MMM',
-          minDate: $ctrl.minDate,
-          maxDate: $ctrl.maxDate,
-          showWeeks: false,
-          monthColumns: 3,
-          yearColumns: 4
-        }
+      $ctrl.options = {
+        datepickerMode: 'day',
+        formatDay: 'd',
+        formatMonth: 'MMM',
+        minDate: $ctrl.minDate,
+        maxDate: $ctrl.maxDate,
+        showWeeks: false,
+        monthColumns: 3,
+        yearColumns: 4
       };
     };
 

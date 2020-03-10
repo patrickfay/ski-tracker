@@ -2,10 +2,11 @@
      ng-class="{'st-input-cust-container-shadow': $ctrl.isOpen}">
 
   <input class="st-input" type="text"
-        ng-model="$ctrl.datepickerObj.value"
+        ng-model="$ctrl.date"
         ng-click="$ctrl.toggleDatepicker()"
+        ng-change="$ctrl.onDateSelect({_value: $ctrl.date})"
         uib-datepicker-popup="{{!!$ctrl.format ? $ctrl.format : 'MM/dd/yyyy'}}"
-        datepicker-options="$ctrl.datepickerObj.options"
+        datepicker-options="$ctrl.options"
         is-open="$ctrl.isOpen"
         show-button-bar="false"
         on-open-focus="false"
