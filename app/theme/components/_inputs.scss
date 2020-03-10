@@ -26,17 +26,17 @@
         border-right: none !important;
         border-radius: $border-rad 0px 0px $border-rad;
         box-shadow: none;
+        min-width: 75%;
       }
   
       // class for button in this container
       & .st-input-icon-btn {
-        @include padding-x(20px);
-  
         display: flex;
         align-items: center;
         background-color: $white;
         border: solid 1px darken($grey, 10%);
         border-radius: 0px $border-rad $border-rad 0px;
+        max-width: 25%;
         
         &:hover {
           background-color: lighten($powder-blue, 32%);
