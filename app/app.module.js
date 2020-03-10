@@ -8,4 +8,5 @@ require('./app.router');
 require('./services/services.module');
 require('./modules/modules.module');
 require('./components/components.module');
+require('./directives/directives.module');
 require('./views/views.module');

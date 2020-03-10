@@ -1,9 +1,16 @@
 .st-playground {
+  background-color: lighten($grey, 5%);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
 
-  &-container {
-    border: solid 1px red;
-    margin-top: 10px;
-    padding: 10px;
+
+  &-test-container {
+    @include margin-y(25px);
+    width: 50%;
+
+    &:first-of-type {
+      margin-top: 10px;
+    }
   }
-
 }
