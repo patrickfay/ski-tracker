@@ -1,1 +1,82 @@
-<p>I am a new entry!</p>
+<div class="st-new-entry-container">
+
+  <!-- date and ski areas labels -->
+  <div class="row">
+    <div class="col-md-4">Date:</div>
+    <div class="col-md-8">Ski Area:</div>
+  </div>
+
+  <!-- date and ski areas input fields -->
+  <div class="row st-new-entry-input-row">
+    <div class="col-md-4">
+      <datepicker date="$ctrl.date"
+                  on-date-select="$ctrl.setDate(_value)">
+      </datepicker>
+    </div>
+
+    <div class="col-md-8">
+      <dropdown-simple default-val="-- select ski area --"
+                       options-arr="$ctrl.testSkiAreas"
+                       on-item-select="$ctrl.setSkiArea(_value)">
+      </dropdown-simple>
+    </div>
+  </div>
+
+
+  <!-- skied with, ski vert, and max altitude labels -->
+  <div class="row">
+    <div class="col-md-4">Skied With:</div>
+    <div class="col-md-4">Ski Vertical:</div>
+    <div class="col-md-4">Heighest Altitude:</div>
+  </div>
+
+  <!-- skied with, ski vert, and max altitude input fields -->
+  <div class="row st-new-entry-input-row">
+    <div class="col-md-4">
+      <dropdown-simple options-arr="$ctrl.testSkiedWith"
+                       on-item-select="$ctrl.setSkiedWith(_value)">
+      </dropdown-simple>
+    </div>
+    
+    <div class="col-md-4">
+      <input class="st-input" ng-model="$ctrl.skiVert">
+    </div>
+    
+    <div class="col-md-4">
+      <input class="st-input" ng-model="$ctrl.maxAlt">
+    </div>
+  </div>
+
+
+  <!-- ski distance, top speed lables -->
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">Ski Distance:</div>
+    <div class="col-md-4">Top Speed:</div>
+  </div>
+
+  <!-- ski distance, top speed input fields -->
+  <div class="row st-new-entry-input-row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <input class="st-input" ng-model="$ctrl.skiDist">
+    </div>
+    <div class="col-md-4">
+      <input class="st-input" ng-model="$ctrl.topSpeed">
+    </div>
+  </div>
+
+
+  <!-- description label -->
+  <div class="row">
+    <div class="col-md-12">Description:</div>
+  </div>
+
+  <!-- description input field -->
+  <div class="row">
+    <div class="col-md-12">
+      <textarea class="st-input st-input-textarea" ng-model="$ctrl.description"></textarea>
+    </div>
+  </div>
+
+</div>

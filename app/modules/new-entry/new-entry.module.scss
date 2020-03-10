@@ -1,0 +1,13 @@
+.st-new-entry {
+    
+  &-container {
+    border: solid 1px darken($grey, 15%);    // TODO - delete this after testing in playground
+    background-color: lighten($grey, 5%);
+    padding: 10px;
+  }
+
+  &-input-row {
+    margin-bottom: 10px;
+  }
+
+}
