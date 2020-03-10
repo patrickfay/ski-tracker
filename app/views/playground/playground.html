@@ -28,5 +28,12 @@
   </div>
 
   <!-- TODO uib typeahead -->
+  <div class="st-playground-test-container">
+    <p>Typeahead:</p>
+
+    <input type=text class="st-input"
+           ng-model="typeahead"
+           uib-typeahead="person for person in testOptions | filter:$viewValue">
+  </div>
 
 </div>

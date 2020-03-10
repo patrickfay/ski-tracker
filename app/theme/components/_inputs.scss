@@ -57,3 +57,14 @@
     }
   }
 }
+
+// uib typeahead cust styling
+ul.dropdown-menu {
+  // each item in the typeahead
+  li.uib-typeahead-match {
+    // highlighted option
+    &.active > a {
+      background-color: darken($powder-blue, 5%);
+    }
+  }
+}
