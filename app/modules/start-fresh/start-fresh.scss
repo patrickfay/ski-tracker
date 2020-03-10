@@ -1,12 +1,11 @@
 .st-fresh {
   &-header {
-    @include rep-lin-grad-header($powder-blue, darken($powder-blue, 8%));
+    @include rep-lin-grad-header($powder-blue, darken($powder-blue, 5%));
   }
 
   &-body {
     border-top: solid 1px darken($powder-blue, 8%);
     padding-bottom: 20px;
-    background-color: $grey;
   }
 
   &-description {
