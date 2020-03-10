@@ -8,13 +8,22 @@ angular.module('skiTrackerApp')
       maxDate: getOffestDate(5)
     };
 
-    $scope.testOptions = [
+    $scope.testOptions1 = [
       'Randy',
       'Lahey',
       'Ricky',
       'Julian',
       'Bubbles',
       'Patrick Schwayze'
+    ];
+
+    $scope.testOptions2 = [
+      'Stan',
+      'Kyle',
+      'Cartman',
+      'Kenny',
+      'Butters',
+      'Mr. Garrison'
     ];
 
     $scope.printSelectedVal = (_value) => console.log('selected dropdown value:', _value);

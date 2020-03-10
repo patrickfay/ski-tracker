@@ -17,6 +17,7 @@
     top: calc(100% - 1px);
     left: 0;
     right: 0;
+    z-index: 10;
 
     border: $container-border;
     border-top: none;
