@@ -12,6 +12,8 @@ To use this component you can only include it in your template as the element
 <dropdown-simple></dropdown-simple>
 ```
 
+### Bindings
+
 This component has **three** bindings. Two are required and one is optional.
 
 | Binding Name | Type | Required | Description |

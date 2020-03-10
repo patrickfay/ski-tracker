@@ -12,6 +12,8 @@ To use this component you can include it in your template as the element
 <datepicker></datepicker>
 ```
 
+### Bindings
+
 This component has **five** bindings. Two are required and three are optional.
 
 | Binding Name | Type | Required | Description |
