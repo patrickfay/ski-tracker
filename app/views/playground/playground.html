@@ -1,5 +1,11 @@
 <div class="st-playground">
 
+  <div class="st-playground-test-container">
+    <p>New Entry:</p>
+
+    <new-entry></new-entry>
+  </div>
+
   <!-- text input field -->
   <div class="st-playground-test-container">
     <p>Text Input Field:</p>
@@ -34,34 +40,6 @@
     <input type=text class="st-input"
            ng-model="typeahead1"
            uib-typeahead="person for person in testOptions1 | filter:$viewValue">
-  </div>
-
-
-  <!-- test bootstrap cols -->
-  <div class="row">
-    <div class="col-md-3">
-      <input type=text class="st-input">
-    </div>
-
-    <div class="col-md-3">
-      <dropdown-simple default-val="-- select character --"
-                       options-arr="testOptions2"
-                       on-item-select="printSelectedVal(_value)">
-      </dropdown-simple>
-    </div>
-
-    <div class="col-md-3">
-      <datepicker date="datepicker.date"
-                  format="{{datepicker.format}}"
-                  on-date-select="dateChanged(_value)">
-      </datepicker>
-    </div>
-
-    <div class="col-md-3">
-      <input type=text class="st-input"
-             ng-model="typeahead2"
-             uib-typeahead="person for person in testOptions2 | filter:$viewValue">
-    </div>
   </div>
 
 </div>
