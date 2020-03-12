@@ -33,5 +33,5 @@ angular.module('skiTrackerApp')
 
       // pass an empty string if user selected the default val, else pass _item to parent component callback function
       $ctrl.onItemSelect({_value: (_item === $ctrl.optionsArr[0] ? '' : _item)});
-    }
+    };
   });
