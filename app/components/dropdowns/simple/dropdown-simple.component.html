@@ -14,7 +14,7 @@
   <div class="st-dropdown-options-container"
        ng-class="{'hidden': !$ctrl.isToggled}">
        
-    <div class="st-dropdown-option"
+    <div class="st-dropdown-simple-option"
          ng-repeat="item in $ctrl.optionsArr"
          ng-class="{'selected': item == $ctrl.selectModel}"
          ng-if="!$first || ($first && $ctrl.selectModel != $ctrl.defaultVal)"
