@@ -1,0 +1,31 @@
+// anchor dropdown div to container
+.st-dropdown {
+  $container-border: solid 1px darken($grey, 10%);
+  $border-rad: 0 0 3px 3px;
+  
+  &-container {
+    position: relative;
+
+    & > input {
+      cursor: pointer;
+    }
+  }
+
+  &-options-container {
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    border: $container-border;
+    border-top: none;
+    border-radius: $border-rad;
+    background-color: $white;
+    box-shadow: 0 1px 3px $grey !important;
+    -webkit-box-shadow: 0 1px 3px $grey !important;
+  }
+}
+
+@import './multiselect/dropdown-multiselect.component';
+@import './simple/dropdown-simple.component';

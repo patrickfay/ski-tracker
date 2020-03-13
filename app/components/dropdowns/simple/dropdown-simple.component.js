@@ -1,6 +1,6 @@
 angular.module('skiTrackerApp')
   .component('dropdownSimple', {
-    templateUrl: './components/dropdown-simple/dropdown-simple.component.html',
+    templateUrl: './components/dropdowns/simple/dropdown-simple.component.html',
     controller: 'dropdownSimpleCtrl',
     bindings: {
       defaultVal: '@',

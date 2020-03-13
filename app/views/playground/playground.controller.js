@@ -26,6 +26,15 @@ angular.module('skiTrackerApp')
       'Mr. Garrison'
     ];
 
+    $scope.testOptions3 = [
+      'Erin',
+      'John',
+      'Mon',
+      'Dad',
+      'Matt',
+      'Premo Guy'
+    ];
+
     $scope.printSelectedVal = (_value) => console.log('selected dropdown value:', _value);
 
     $scope.dateChanged = (_value) => console.log('selected date:', _value);
