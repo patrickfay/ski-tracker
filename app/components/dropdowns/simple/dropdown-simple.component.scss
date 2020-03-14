@@ -1,34 +1,16 @@
 .st-dropdown {
-  $container-border: solid 1px darken($grey, 10%);
-  $border-rad: 0 0 3px 3px;
 
   // each option
-  &-simple-option {
-    border-top: solid 1px $grey;
-    padding: 2px 8px;
+  &-option-simple {
 
     // an option that was already selected by the user (ie. current val of the input field)
     &.selected {
       background-color: lighten($powder-blue, 28%);
 
       &:hover {
-      background-color: lighten($powder-blue, 24%);
+        background-color: lighten($powder-blue, 24%);
       }
     }
 
-    // add border to first option to make it appear like this option is not covering .st-input-cust-container border
-    &:first-of-type {
-      border-top: $container-border;
-      padding-top: 5px;
-    }
-
-    &:last-of-type {
-      border-radius: $border-rad;
-    }
-
-    &:hover {
-      background-color: #eee;
-      cursor: pointer;
-    }
   }
 }

@@ -25,6 +25,26 @@
     box-shadow: 0 1px 3px $grey !important;
     -webkit-box-shadow: 0 1px 3px $grey !important;
   }
+
+  // general styling for an option
+  &-option {
+    border-top: solid 1px $grey;
+    padding: 2px 8px;
+
+    &:first-of-type {
+      border-top: $container-border;
+      padding-top: 5px;
+    }
+
+    &:last-of-type {
+      border-radius: $border-rad;
+    }
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+  }
 }
 
 @import './multiselect/dropdown-multiselect.component';

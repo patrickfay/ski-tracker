@@ -9,12 +9,18 @@
 
   <!-- btn w/ icon -->
   <button class="st-input-icon-btn" type="button" ng-click="$ctrl.toggleBoxShadow()">
-    <i class="fas fa-chevron-down"></i>
+    <!-- <i class="fas fa-chevron-down"></i> -->
+    <i class="fas fa-chevron-circle-down"></i>
   </button>
 
   <!-- dropdown options (their position is absolute) -->
   <div class="st-dropdown-options-container"
        ng-class="{'hidden': !$ctrl.isToggled}">
+
+    <div class="st-dropdown-option st-dropdown-option-multiselect"
+         ng-repeat="item in $ctrl.optionsArr">
+      {{item}}
+    </div>
   </div>
 
 </div>
