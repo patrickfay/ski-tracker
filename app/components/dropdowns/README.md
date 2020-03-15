@@ -1,24 +1,26 @@
-# dropdown-simple Component
+# dropdown Component
 
-The `dropdown-simple` component can be used like any other dropdown. This component has custom styling and makes it easier and cleaner to use in components than a normal dropdown would be.
+The `dropdown` component can be used to implement two types of dropdowns.
 
-This README contains info on how to use the `dropdown-simple` component.
+The **simple** dropdown acts like a normal `<select>` dropdown with custom styling.  
+The **multiselect** dropdown also acts like a `<select>` dropdown except a user can select multiple options from the dropdown.
 
 ## Using This Component
 
 To use this component you can only include it in your template as the element
 
 ```HTML
-<dropdown-simple></dropdown-simple>
+<dropdown></dropdown>
 ```
 
-This component has **three** bindings. Two are required and one is optional.
+This component has **four** bindings. Three are required and one is optional.
 
 | Binding Name | Type | Required | Description |
 | ------------ | ---- | -------- | ----------- |
-| `defaultVal` | String | False | The first option displayed in the dropdown. If omitted the default value is `-- select --`. |
+| `dropdownType` | String | True | Defines what type of dropdown is being displayed. The value of this string **MUST** be `simple` or `multiselect` |
+| `defaultVal` | String | False | The first option displayed in the dropdown. If omitted the default value is `-- select --` for a simple dropdown or `Select Options` for a multiselect dropdown. |
 | `optionsArr` | Array | True | The selectable options for the dropdown. |
-| `onItemSelect` | Callback Function | True | Passes the selected item in the dropdown to the parent component through the parameter `_value`. If the use selects the default value (ie. -- select --) from the dropdown, an empty string (`''`) will be passed to the callback function. |
+| `onItemSelect` | Callback Function | True | Passes the selected item in the dropdown to the parent component through the parameter `_value`. If the user selects the default value in the **simple** dropdown (ie. -- select --), an empty string (`''`) will be passed to the callback function. |
 
 ### Example Using This Component
 
@@ -27,7 +29,8 @@ Your component.js file:
 ```javascript
 .controller('controllerName', function($scope) {
 
-  $scope.dropdownOptions = ['John Doe', 'Rick James', 'Eli Manning'];
+  $scope.dropdownSimpleOptions = ['John Doe', 'Rick James', 'Eli Manning'];
+  $scope.dropdownMultiselectOptions = ['Dan Katz', 'Stevie Nicks', 'Brandon Jacobs'];
 
   $scope.handleSelectedValue = function(_value) {
     // do something with _value here
@@ -39,8 +42,15 @@ Your component.js file:
 Your component.html file:
 
 ```HTML
-<dropdown-simple default-val="-- select ski area --"
-                 options-arr="dropdownOptions"
-                 on-item-select="handleSelectedValue(_value)">
-</dropdown-simple>
+<dropdown dropdown-type="simple"
+          default-val="-- select friends --"
+          options-arr="dropdownSimpleOptions"
+          on-item-select="handleSelectedValue(_value)">
+</dropdown>
+
+<dropdown dropdown-type="multiselect"
+          default-val="Choose Your Friends"
+          options-arr="dropdownMultiselectOptions"
+          on-item-select="handleSelectedValue(_value)">
+</dropdown>
 ```
