@@ -19,7 +19,7 @@
           ng-repeat="item in $ctrl.optionsArr"
           ng-class="{'selected': item == $ctrl.selectModel}"
           ng-if="!$first || ($first && $ctrl.selectModel != $ctrl.defaultVal)"
-          ng-click="$ctrl.itemSelected(item)">
+          ng-click="$ctrl.itemSelectedSimple(item)">
         {{item}}
       </div>
     </div>
@@ -36,12 +36,8 @@
 
         <!-- icon -->
         <div class="st-dropdown-option-multiselect-icon">
-          <i class="far fa-square"
-             ng-if="!$ctrl.selectedOptions.includes(item)"></i>
-          <!-- ng-if="!$ctrl.selectedOptions.includes(item)" -->
-          <i class="far fa-check-square"
-             ng-if="$ctrl.selectedOptions.includes(item)"></i>
-             <!-- ng-click="$ctrl.removeItem(item)" -->
+          <i ng-if="!$ctrl.selectedOptions.includes(item)" class="far fa-square"></i>
+          <i ng-if="$ctrl.selectedOptions.includes(item)" class="far fa-check-square"></i>
         </div>
 
         <!-- item -->

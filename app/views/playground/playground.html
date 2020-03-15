@@ -7,8 +7,8 @@
     <input type=text class="st-input">
   </div>
 
-  
-  <!-- dropdown -->
+
+  <!-- dropdown simple -->
   <div class="st-playground-test-container">
     <p>Dropdown Simple:</p>
 
@@ -19,37 +19,19 @@
     </dropdown>
   </div>
 
-  <!-- dropdown -->
+  
+  <!-- dropdown multiselect -->
   <div class="st-playground-test-container">
     <p>Dropdown Multiselect:</p>
 
-    <dropdown dropdown-type="multiselect" 
-              options-arr="testOptions3">
+    <dropdown dropdown-type="multiselect"
+              default-val="Select Ski Partners"
+              options-arr="testOptions3"
+              on-item-select="printSelectedVal(_value)">
     </dropdown>
   </div>
+
   
-  
-  <!-- dropdown -->
-  <!-- <div class="st-playground-test-container">
-    <p>Dropdown Simple:</p>
-
-    <dropdown-simple default-val="-- select character --"
-                     options-arr="testOptions1"
-                     on-item-select="printSelectedVal(_value)">
-    </dropdown-simple>
-  </div> -->
-
-  <!-- dropdown -->
-  <!-- <div class="st-playground-test-container">
-    <p>Dropdown Multiselect:</p>
-
-    <dropdown-multiselect options-arr="testOptions3"></dropdown-multiselect>
-  </div> -->
-
-
-
-
-
   <!-- datepicker -->
   <div class="st-playground-test-container">
     <p>Datepicker:</p>

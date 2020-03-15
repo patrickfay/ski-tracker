@@ -22,6 +22,8 @@
     border-top: none;
     border-radius: $border-rad;
     background-color: $white;
+    max-height: 200px;
+    overflow-y: scroll;
     box-shadow: 0 1px 3px $grey !important;
     -webkit-box-shadow: 0 1px 3px $grey !important;
   }
@@ -33,7 +35,7 @@
 
     &:first-of-type {
       border-top: $container-border;
-      padding-top: 5px;
+      padding-top: 3px;
     }
 
     &:last-of-type {
@@ -64,7 +66,6 @@
 
       &-icon {
         padding-right: 5px;
-        // color: darken($powder-blue, 15%);
 
         & .far.fa-check-square {
           color: darken($powder-blue, 15%);
