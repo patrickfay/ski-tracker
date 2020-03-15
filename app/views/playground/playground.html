@@ -7,22 +7,48 @@
     <input type=text class="st-input">
   </div>
 
+  
   <!-- dropdown -->
   <div class="st-playground-test-container">
+    <p>Dropdown Simple:</p>
+
+    <dropdown dropdown-type="simple"
+              default-val="-- select character --"
+              options-arr="testOptions1"
+              on-item-select="printSelectedVal(_value)">
+    </dropdown>
+  </div>
+
+  <!-- dropdown -->
+  <div class="st-playground-test-container">
+    <p>Dropdown Multiselect:</p>
+
+    <dropdown dropdown-type="multiselect" 
+              options-arr="testOptions3">
+    </dropdown>
+  </div>
+  
+  
+  <!-- dropdown -->
+  <!-- <div class="st-playground-test-container">
     <p>Dropdown Simple:</p>
 
     <dropdown-simple default-val="-- select character --"
                      options-arr="testOptions1"
                      on-item-select="printSelectedVal(_value)">
     </dropdown-simple>
-  </div>
+  </div> -->
 
-    <!-- dropdown -->
-    <div class="st-playground-test-container">
-      <p>Dropdown Multiselect:</p>
-  
-      <dropdown-multiselect></dropdown-multiselect>
-    </div>
+  <!-- dropdown -->
+  <!-- <div class="st-playground-test-container">
+    <p>Dropdown Multiselect:</p>
+
+    <dropdown-multiselect options-arr="testOptions3"></dropdown-multiselect>
+  </div> -->
+
+
+
+
 
   <!-- datepicker -->
   <div class="st-playground-test-container">

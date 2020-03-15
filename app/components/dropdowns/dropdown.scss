@@ -1,8 +1,8 @@
-// anchor dropdown div to container
 .st-dropdown {
   $container-border: solid 1px darken($grey, 10%);
   $border-rad: 0 0 3px 3px;
   
+  // use dropdown container as anchor for options container
   &-container {
     position: relative;
 
@@ -44,8 +44,37 @@
       background-color: #eee;
       cursor: pointer;
     }
+
+    // styling for a simple dropdown option
+    &-simple {
+      // an option that was already selected by the user (ie. current val of the input field)
+      &.selected {
+        background-color: lighten($powder-blue, 28%);
+  
+        &:hover {
+          background-color: lighten($powder-blue, 24%);
+        }
+      }
+    }
+
+    // styling for a multiselect dropdown option
+    &-multiselect {
+      display: flex;
+      align-items: flex-start;
+
+      &-icon {
+        padding-right: 5px;
+        // color: darken($powder-blue, 15%);
+
+        & .far.fa-check-square {
+          color: darken($powder-blue, 15%);
+        }
+      }
+
+      &-item {
+        padding-left: 5px;
+      }
+
+    }
   }
 }
-
-@import './multiselect/dropdown-multiselect.component';
-@import './simple/dropdown-simple.component';

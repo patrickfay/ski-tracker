@@ -1,0 +1,55 @@
+<div class="st-input-cust-container st-dropdown-container"
+     ng-class="{'st-input-cust-container-shadow': $ctrl.isToggled}">
+  
+  <!-- text input field used to hold value of dropdown -->
+  <input class="st-input" ng-model="$ctrl.selectModel" ng-click="$ctrl.toggleDropdown()" readonly>
+
+  <!-- btn w/ icon -->
+  <button class="st-input-icon-btn" type="button" ng-click="$ctrl.toggleDropdown()">
+    <i class="fas fa-chevron-down"></i>
+  </button>
+
+  <!-- dropdown options container -->
+  <div class="st-dropdown-options-container"
+       ng-class="{'hidden': !$ctrl.isToggled}">
+       
+    <!-- simple dropdown options -->
+    <div ng-if="$ctrl.dropdownType === 'simple'">
+      <div class="st-dropdown-option st-dropdown-option-simple"
+          ng-repeat="item in $ctrl.optionsArr"
+          ng-class="{'selected': item == $ctrl.selectModel}"
+          ng-if="!$first || ($first && $ctrl.selectModel != $ctrl.defaultVal)"
+          ng-click="$ctrl.itemSelected(item)">
+        {{item}}
+      </div>
+    </div>
+
+
+    <!-- multiselect dropdown options -->
+    <div ng-if="$ctrl.dropdownType === 'multiselect'">
+
+      <!-- class="st-dropdown-option-multiselect-container"  -->
+      <div class="st-dropdown-option st-dropdown-option-multiselect"
+           ng-repeat="item in $ctrl.optionsArr"
+           ng-if="!$first"
+           ng-click="$ctrl.addRemoveItem(item)">
+
+        <!-- icon -->
+        <div class="st-dropdown-option-multiselect-icon">
+          <i class="far fa-square"
+             ng-if="!$ctrl.selectedOptions.includes(item)"></i>
+          <!-- ng-if="!$ctrl.selectedOptions.includes(item)" -->
+          <i class="far fa-check-square"
+             ng-if="$ctrl.selectedOptions.includes(item)"></i>
+             <!-- ng-click="$ctrl.removeItem(item)" -->
+        </div>
+
+        <!-- item -->
+        <div class="st-dropdown-option-multiselect-item">        
+          {{item}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
