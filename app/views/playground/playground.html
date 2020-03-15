@@ -13,16 +13,31 @@
     <input type=text class="st-input">
   </div>
 
-  <!-- dropdown -->
-  <div class="st-playground-test-container">
-    <p>Dropdown:</p>
 
-    <dropdown-simple default-val="-- select character --"
-                     options-arr="testOptions1"
-                     on-item-select="printSelectedVal(_value)">
-    </dropdown-simple>
+  <!-- dropdown simple -->
+  <div class="st-playground-test-container">
+    <p>Dropdown Simple:</p>
+
+    <dropdown dropdown-type="simple"
+              default-val="-- select character --"
+              options-arr="testOptions1"
+              on-item-select="printSelectedVal(_value)">
+    </dropdown>
   </div>
 
+  
+  <!-- dropdown multiselect -->
+  <div class="st-playground-test-container">
+    <p>Dropdown Multiselect:</p>
+
+    <dropdown dropdown-type="multiselect"
+              default-val="Select Ski Partners"
+              options-arr="testOptions3"
+              on-item-select="printSelectedVal(_value)">
+    </dropdown>
+  </div>
+
+  
   <!-- datepicker -->
   <div class="st-playground-test-container">
     <p>Datepicker:</p>

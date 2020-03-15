@@ -26,7 +26,22 @@ angular.module('skiTrackerApp')
       'Mr. Garrison'
     ];
 
-    $scope.printSelectedVal = (_value) => console.log('selected dropdown value:', _value);
+    // service will check for duplicates so no need for track by in dropdown ngrepeat
+    $scope.testOptions3 = [
+      'Erin',
+      'John',
+      'Mom',
+      'Dad',
+      'Matt',
+      'Premo Guy',
+      'Erin1',
+      'John1',
+      'Mom1',
+      'Dad1',
+      'Matt1'
+    ];
+
+    $scope.printSelectedVal = (_value) => console.log('selected dropdown value(s):', _value);
 
     $scope.dateChanged = (_value) => console.log('selected date:', _value);
 

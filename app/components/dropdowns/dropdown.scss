@@ -1,0 +1,81 @@
+.st-dropdown {
+  $container-border: solid 1px darken($grey, 10%);
+  $border-rad: 0 0 3px 3px;
+  
+  // use dropdown container as anchor for options container
+  &-container {
+    position: relative;
+
+    & > input {
+      cursor: pointer;
+    }
+  }
+
+  &-options-container {
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    border: $container-border;
+    border-top: none;
+    border-radius: $border-rad;
+    background-color: $white;
+    max-height: 200px;
+    overflow-y: scroll;
+    box-shadow: 0 1px 3px $grey !important;
+    -webkit-box-shadow: 0 1px 3px $grey !important;
+  }
+
+  // general styling for an option
+  &-option {
+    border-top: solid 1px $grey;
+    padding: 2px 8px;
+
+    &:first-of-type {
+      border-top: $container-border;
+      padding-top: 3px;
+    }
+
+    &:last-of-type {
+      border-radius: $border-rad;
+    }
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+    // styling for a simple dropdown option
+    &-simple {
+      // an option that was already selected by the user (ie. current val of the input field)
+      &.selected {
+        background-color: lighten($powder-blue, 28%);
+  
+        &:hover {
+          background-color: lighten($powder-blue, 24%);
+        }
+      }
+    }
+
+    // styling for a multiselect dropdown option
+    &-multiselect {
+      display: flex;
+      align-items: flex-start;
+
+      &-icon {
+        padding-right: 5px;
+
+        & .far.fa-check-square {
+          color: darken($powder-blue, 15%);
+        }
+      }
+
+      &-item {
+        padding-left: 5px;
+      }
+
+    }
+  }
+}
