@@ -22,9 +22,11 @@ angular.module('skiTrackerApp')
       // set vars for dropdown type
       if ($ctrl.dropdownType === 'simple') {
         $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : '-- select --');
-      } else {
+      } else if ($ctrl.dropdownType === 'multiselect') {
         $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : 'Select Options');
         $ctrl.selectedOptions = [];
+      } else {
+        console.error("No dropdown type identified! Please read the dropdown component's README to understand how to use this component");
       }
 
       // set init value for input field
@@ -46,18 +48,23 @@ angular.module('skiTrackerApp')
     // toggle dropdown
     $ctrl.toggleDropdown = () => $ctrl.isToggled = !$ctrl.isToggled;
 
-    // add or remove an item from $ctrl.selectedOptions (used for multiselect dropdown)
+    /**
+     * add or remove an item from $ctrl.selectedOptions (used for multiselect dropdown). Also passes the selected items to the parent component callback function
+     * 
+     * @param {<any>} _item The item selected from the dropdown by the user
+     */
     $ctrl.addRemoveItem = (_item) => {
       let _itemIndex = $ctrl.selectedOptions.indexOf(_item);
 
       // remove or push the item to $ctrl.selectedOptions
       _itemIndex > -1 ? $ctrl.selectedOptions.splice(_itemIndex, 1) : $ctrl.selectedOptions.push(_item);
 
+      // pass all selected items to the parent component
       $ctrl.onItemSelect({_value: $ctrl.selectedOptions});
     };
 
     /**
-     * Passes the item selected by the user to the parent component's onItemSelect() callback function.
+     * Passes the item selected by the user in the SIMPLE dropdown to the parent component's onItemSelect() callback function.
      * 
      * @param {<any>} _item The item selected from the dropdown by the user
      */
