@@ -20,6 +20,7 @@ This component has **five** bindings. Three are required for both types of dropd
 | `dropdownType` | String | True | Defines what type of dropdown is being displayed. The value of this string **MUST** be `simple` or `multiselect` |
 | `defaultVal` | String | False | The first option displayed in the dropdown. If omitted the default value is `-- select --` for a simple dropdown or `Select Options` for a multiselect dropdown. |
 | `optionsArr` | Array | True | The selectable options for the dropdown. |
+| `addNewAllowed` | Boolean | False | If true, user will be allowed to add new options to a `multiselect` dropdown. Default is falsy value. |
 | `onItemSelect` | Callback Function | True | Passes the selected item in the dropdown to the parent component through the parameter `_value`. If the user selects the default value in the **simple** dropdown (ie. -- select --), an empty string (`''`) will be passed to the callback function. |
 | `onNewItemAdded` | Callback Function | False | Passes a newly added item to the dropdown to the parent component through the parameter `_newItem` as a String. This callback function is only used for the `multiselect` dropdown. |
 
@@ -58,6 +59,7 @@ Your component.html file:
 <dropdown dropdown-type="multiselect"
           default-val="Choose Your Friends"
           options-arr="dropdownMultiselectOptions"
+          add-new-allowed="true"
           on-item-select="handleSelectedValue(_value)"
           on-new-item-added="handleAddedItem(_newItem)">
 </dropdown>

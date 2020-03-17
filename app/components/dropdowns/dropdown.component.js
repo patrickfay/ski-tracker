@@ -6,6 +6,7 @@ angular.module('skiTrackerApp')
       dropdownType: '@',
       defaultVal: '@',
       optionsArr: '<',
+      addNewAllowed: '<',
       onItemSelect: '&onItemSelect',
       onNewItemAdded: '&onNewItemAdded'
     }
@@ -83,7 +84,7 @@ angular.module('skiTrackerApp')
      * If this component is displaying the multiselect input field, there will only be 2 input fields in $element.
      * The second input field in $element will be the 'add new' text input field
      */
-    $ctrl.focus = () => angular.element($element).find('input')[1].focus();
+    $ctrl.focusAddNew = () => angular.element($element).find('input')[1].focus();
 
     /**
      * Passes a new item the user added to the multiselect dropdown options to the parent component.

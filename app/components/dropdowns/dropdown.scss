@@ -90,7 +90,17 @@
         max-height: 20px;
         width: 100%;
       }
+    }
 
+    &-add-new {
+      // not using @include padding-y() bc we need to add !important to padding-top
+      padding-top: 4px !important;
+      padding-bottom: 4px;
+
+      &:hover {
+        background-color: $white;
+        cursor: auto;
+      }
     }
   }
 }
