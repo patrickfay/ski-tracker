@@ -92,6 +92,7 @@
       }
     }
 
+    // 'Add New' option container styling
     &-add-new {
       // not using @include padding-y() bc we need to add !important to padding-top
       padding-top: 4px !important;
