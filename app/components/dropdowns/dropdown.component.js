@@ -6,7 +6,8 @@ angular.module('skiTrackerApp')
       dropdownType: '@',
       defaultVal: '@',
       optionsArr: '<',
-      onItemSelect: '&onItemSelect'
+      onItemSelect: '&onItemSelect',
+      onNewItemAdded: '&onNewItemAdded'
     }
   })
 
@@ -15,27 +16,28 @@ angular.module('skiTrackerApp')
 
     // init vars
     $ctrl.$onInit = () => {
-      $ctrl.selectModel = null;       // binded to input field
+      $ctrl.selectModel = null;       // binded to dropdown input field
       $ctrl.selectedOptions = null;   // selected items for multiselect dropdown
+      $ctrl.newOption = null;         // binded to new option input field within multiselect dropdown
       $ctrl.isToggled = false;        // boolean used to display or hide options (used for ng-class)
 
       // set vars for dropdown type
       if ($ctrl.dropdownType === 'simple') {
+        // add default val to options and set selectModel to default val
         $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : '-- select --');
+        $ctrl.selectModel = $ctrl.optionsArr[0];
       } else if ($ctrl.dropdownType === 'multiselect') {
-        $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : 'Select Options');
+        // set selectModel to defalut val and set selectedOptions to empty arr
+        $ctrl.selectModel = !!$ctrl.defaultVal ? $ctrl.defaultVal : 'Select Options';
         $ctrl.selectedOptions = [];
       } else {
         console.error("No dropdown type identified! Please read the dropdown component's README to understand how to use this component");
       }
-
-      // set init value for input field
-      $ctrl.selectModel = $ctrl.optionsArr[0];
     };
 
     // init listeners
     $ctrl.$postLink = () => {
-      // hide dropdown when user clicks outside of this dropdown
+      // hide dropdown when user clicks outside of this component
       $document.on('click', (event) => {
         if (!$element[0].contains(event.target)) {
           $ctrl.isToggled = false;
@@ -74,5 +76,23 @@ angular.module('skiTrackerApp')
 
       // pass an empty string if user selected the default val, else pass _item to parent component callback function
       $ctrl.onItemSelect({_value: (_item === $ctrl.optionsArr[0] ? '' : _item)});
+    };
+
+    $ctrl.focus = () => {
+      // get the 'add new' text input field and focus it
+      // if this component is displaying the multiselect input field, there will only be 2 input fields in $element, the second will be the 'add new' text input field
+      angular.element($element).find('input')[1].focus();
+    };
+
+    /**
+     * Passes a new item the user added to the multiselect dropdown options to the parent component.
+     * The parent component is responsible for updating the options passed to this component.
+     */
+    $ctrl.addNewItemToOptions = () => {
+      // if the user entered a value 
+      if (!!$ctrl.newOption) {
+        $ctrl.onNewItemAdded({_newItem: $ctrl.newOption});
+        $ctrl.newOption = null;
+      }
     };
   });

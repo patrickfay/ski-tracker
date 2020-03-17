@@ -16,7 +16,7 @@
     <!-- simple dropdown options -->
     <div ng-if="$ctrl.dropdownType === 'simple'">
       <div class="st-dropdown-option st-dropdown-option-simple"
-          ng-repeat="item in $ctrl.optionsArr"
+          ng-repeat="item in $ctrl.optionsArr track by $index"
           ng-class="{'selected': item == $ctrl.selectModel}"
           ng-if="!$first || ($first && $ctrl.selectModel != $ctrl.defaultVal)"
           ng-click="$ctrl.itemSelectedSimple(item)">
@@ -28,9 +28,25 @@
     <!-- multiselect dropdown options -->
     <div ng-if="$ctrl.dropdownType === 'multiselect'">
 
+      <!-- add new item option -->
+      <div class="st-dropdown-option st-dropdown-option-multiselect">
+        <div class="st-dropdown-option-multiselect-icon" ng-click="$ctrl.focus()">
+          <i class="far fa-plus-square"></i>
+        </div>
+
+        <div class="st-dropdown-option-multiselect-item">
+          <!-- Add New (listens for user to press 'enter') -->
+          <input ng-model="$ctrl.newOption"
+                 class="st-dropdown-option-multiselect-input"
+                 placeholder="Add New"
+                 ng-keydown="$event.keyCode === 13 && $ctrl.addNewItemToOptions()">
+        </div>
+      </div>
+
+
+      <!-- all selectable options -->
       <div class="st-dropdown-option st-dropdown-option-multiselect"
-           ng-repeat="item in $ctrl.optionsArr"
-           ng-if="!$first"
+           ng-repeat="item in $ctrl.optionsArr track by $index"
            ng-click="$ctrl.addRemoveItem(item)">
 
         <!-- icon -->
@@ -40,7 +56,7 @@
         </div>
 
         <!-- item -->
-        <div class="st-dropdown-option-multiselect-item">        
+        <div class="st-dropdown-option-multiselect-item">
           {{item}}
         </div>
       </div>

@@ -27,7 +27,8 @@
     <dropdown dropdown-type="multiselect"
               default-val="Select Ski Partners"
               options-arr="testOptions3"
-              on-item-select="printSelectedVal(_value)">
+              on-item-select="printSelectedVal(_value)"
+              on-new-item-added="addToTestOptions3(_newItem)">
     </dropdown>
   </div>
 
@@ -59,10 +60,11 @@
     </div>
 
     <div class="col-md-3">
-      <dropdown-simple default-val="-- select character --"
-                       options-arr="testOptions2"
-                       on-item-select="printSelectedVal(_value)">
-      </dropdown-simple>
+      <dropdown dropdown-type="simple"
+                default-val="-- select character --"
+                options-arr="testOptions2"
+                on-item-select="printSelectedVal(_value)">
+      </dropdown>
     </div>
 
     <div class="col-md-3">
