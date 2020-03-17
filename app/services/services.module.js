@@ -1,2 +1,3 @@
 // import all services
-require('./userData.service');
+require('./user-data/userData.service');
+require('./ski-areas/skiArea.service');
