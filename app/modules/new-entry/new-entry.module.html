@@ -24,21 +24,36 @@
   </div>
 
 
-  <!-- skied with, ski vert, and max altitude labels -->
+  <!-- skied with label -->
   <div class="row">
-    <div class="st-input-label col-md-4 col-sm-4">Skied With:</div>
+    <div class="col-md-4 col-sm-4"></div>
+    <div class="st-input-label col-md-8 col-sm-8">Skied With:</div>
+  </div>
+
+  <!-- skied with dropdown -->
+  <div class="row st-new-entry-input-row">
+    <div class="col-md-4 col-sm-4"></div>
+    <div class="col-md-8 col-sm-8">
+      <dropdown dropdown-type="multiselect"
+                default-val="Select Skiers"
+                options-arr="$ctrl.testSkiedWith"
+                on-item-select="$ctrl.setSkiedWith(_value)"
+                on-new-item-added="$ctrl.addSkiedWith(_newItem)">
+      </dropdown>
+    </div>
+  </div>
+
+
+  <!-- ski vert, and max altitude labels -->
+  <div class="row">
+    <div class="col-md-4 col-sm-4"></div>
     <div class="st-input-label col-md-4 col-sm-4">Ski Vertical:</div>
     <div class="st-input-label col-md-4 col-sm-4">Heighest Altitude:</div>
   </div>
 
   <!-- skied with, ski vert, and max altitude input fields -->
   <div class="row st-new-entry-input-row">
-    <div class="col-md-4 col-sm-4">
-      <dropdown dropdown-type="multiselect"
-                options-arr="$ctrl.testSkiedWith"
-                on-item-select="$ctrl.setSkiedWith(_value)">
-      </dropdown>
-    </div>
+    <div class="col-md-4 col-sm-4"></div>
     
     <div class="col-md-4 col-sm-4">
       <input class="st-input" ng-model="$ctrl.skiVert">
@@ -78,6 +93,16 @@
   <div class="row">
     <div class="col-md-12 col-sm-12">
       <textarea class="st-input st-input-textarea" ng-model="$ctrl.description"></textarea>
+    </div>
+  </div>
+
+  <!-- create entry btn row -->
+  <div class="row st-new-entry-btn-row">
+    <div class="col-md-12 col-sm-12">
+      <button class="st-btn st-btn-woohoo st-new-entry-create-btn" type="button"
+              ng-click="$ctrl.createNewEntry()">
+        Create New Entry
+      </button>
     </div>
   </div>
 

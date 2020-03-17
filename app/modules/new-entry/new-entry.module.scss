@@ -9,4 +9,18 @@
     margin-bottom: 15px;
   }
 
+  &-btn-row {
+    margin-top: 10px;
+  }
+
+  &-create-btn {
+    @include st-btn-style(darken($powder-blue, 10%), $white, lighten($black, 20%));
+
+    width: 100%;
+
+    &:hover {
+      @include st-btn-style(darken($powder-blue, 10%), lighten($powder-blue, 32%), lighten($black, 20%));
+    }
+  }
+
 }

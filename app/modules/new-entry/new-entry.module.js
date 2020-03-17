@@ -8,8 +8,6 @@ angular.module('skiTrackerApp')
     let $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('in new-entry component');
-
       // init vars needed for input fields
       $ctrl.date = new Date();
       $ctrl.testSkiAreas = ['Alta', 'Brighton', 'Deer Valley', 'Park City', 'Solitude', 'Snowbird'];
@@ -29,4 +27,9 @@ angular.module('skiTrackerApp')
     $ctrl.setDate = (_value) => $ctrl.date = _value;
     $ctrl.setSkiArea = (_value) => $ctrl.skiArea = _value;
     $ctrl.setSkiedWith = (_value) => $ctrl.skiedWith = _value;
+    $ctrl.addSkiedWith = (_newItem) => $ctrl.testSkiedWith.unshift(_newItem);
+
+    $ctrl.createNewEntry = () => {
+      // console.log('oh boy, here I go creating entries again');
+    };
   });
