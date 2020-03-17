@@ -70,10 +70,25 @@
         & .far.fa-check-square {
           color: darken($powder-blue, 15%);
         }
+
+        & .far.fa-plus-square {
+          color: rgb(36, 185, 36);
+        }
       }
 
       &-item {
+        min-width: 50%;
         padding-left: 5px;
+      }
+
+      &-input {
+        border: solid 1px darken($grey, 15%);
+        border-radius: 3px;
+        background-color: $white;
+        padding: 3px 5px;
+        min-height: 20px;
+        max-height: 20px;
+        width: 100%;
       }
 
     }

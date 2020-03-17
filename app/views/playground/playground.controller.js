@@ -45,6 +45,8 @@ angular.module('skiTrackerApp')
 
     $scope.dateChanged = (_value) => console.log('selected date:', _value);
 
+    $scope.addToTestOptions3 = (_newItem) => $scope.testOptions3.unshift(_newItem);
+
     // return a date offseted by the number of days specified by the parameter _offset
     function getOffestDate(_offset) {
       let _date = new Date();

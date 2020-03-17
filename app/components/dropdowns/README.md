@@ -13,7 +13,7 @@ To use this component you can only include it in your template as the element
 <dropdown></dropdown>
 ```
 
-This component has **four** bindings. Three are required and one is optional.
+This component has **five** bindings. Three are required for both types of dropdowns. Four are required for the multiselect dropdown.
 
 | Binding Name | Type | Required | Description |
 | ------------ | ---- | -------- | ----------- |
@@ -21,6 +21,7 @@ This component has **four** bindings. Three are required and one is optional.
 | `defaultVal` | String | False | The first option displayed in the dropdown. If omitted the default value is `-- select --` for a simple dropdown or `Select Options` for a multiselect dropdown. |
 | `optionsArr` | Array | True | The selectable options for the dropdown. |
 | `onItemSelect` | Callback Function | True | Passes the selected item in the dropdown to the parent component through the parameter `_value`. If the user selects the default value in the **simple** dropdown (ie. -- select --), an empty string (`''`) will be passed to the callback function. |
+| `onNewItemAdded` | Callback Function | False | Passes a newly added item to the dropdown to the parent component through the parameter `_newItem` as a String. This callback function is only used for the `multiselect` dropdown. |
 
 ### Example Using This Component
 
@@ -34,6 +35,12 @@ Your component.js file:
 
   $scope.handleSelectedValue = function(_value) {
     // do something with _value here
+  };
+
+  $scope.handleAddedItem = function(_newItem) {
+    // It is recommended you use unshift() so the new item
+    // appears at top of dropdown when user adds it.
+    $scope.dropdownMultiselectOptions.unshift(_newItem);
   };
 
 });
@@ -51,6 +58,7 @@ Your component.html file:
 <dropdown dropdown-type="multiselect"
           default-val="Choose Your Friends"
           options-arr="dropdownMultiselectOptions"
-          on-item-select="handleSelectedValue(_value)">
+          on-item-select="handleSelectedValue(_value)"
+          on-new-item-added="handleAddedItem(_newItem)">
 </dropdown>
 ```
