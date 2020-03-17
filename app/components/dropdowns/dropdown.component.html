@@ -29,8 +29,9 @@
     <div ng-if="$ctrl.dropdownType === 'multiselect'">
 
       <!-- add new item option -->
-      <div class="st-dropdown-option st-dropdown-option-multiselect">
-        <div class="st-dropdown-option-multiselect-icon" ng-click="$ctrl.focus()">
+      <div class="st-dropdown-option st-dropdown-option-multiselect st-dropdown-option-add-new"
+           ng-if="$ctrl.addNewAllowed">
+        <div class="st-dropdown-option-multiselect-icon" ng-click="$ctrl.focusAddNew()">
           <i class="far fa-plus-square"></i>
         </div>
 
