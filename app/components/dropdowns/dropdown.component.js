@@ -78,11 +78,12 @@ angular.module('skiTrackerApp')
       $ctrl.onItemSelect({_value: (_item === $ctrl.optionsArr[0] ? '' : _item)});
     };
 
-    $ctrl.focus = () => {
-      // get the 'add new' text input field and focus it
-      // if this component is displaying the multiselect input field, there will only be 2 input fields in $element, the second will be the 'add new' text input field
-      angular.element($element).find('input')[1].focus();
-    };
+    /**
+     * Focuses the text input field for 'Add New'. This function is called when the user clicks the green '+' icon next to the text input field
+     * If this component is displaying the multiselect input field, there will only be 2 input fields in $element.
+     * The second input field in $element will be the 'add new' text input field
+     */
+    $ctrl.focus = () => angular.element($element).find('input')[1].focus();
 
     /**
      * Passes a new item the user added to the multiselect dropdown options to the parent component.
