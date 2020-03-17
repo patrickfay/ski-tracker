@@ -5,7 +5,7 @@ angular.module('skiTrackerApp')
     $service.skiAreas = [
       {
         name: 'Alta',
-        locatin: {
+        location: {
           city: 'Alta',
           state: 'Utah',
           country: 'USA'
@@ -14,7 +14,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Beaver',
-        locatin: {
+        location: {
           city: 'Garden City',
           state: 'Utah',
           country: 'USA'
@@ -23,7 +23,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Big Sky',
-        locatin: {
+        location: {
           city: 'Big Sky',
           state: 'Montana',
           country: 'USA'
@@ -32,7 +32,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Brian Head',
-        locatin: {
+        location: {
           city: 'Brian Head',
           state: 'Utah',
           country: 'USA'
@@ -41,7 +41,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Brighton',
-        locatin: {
+        location: {
           city: 'Brighton',
           state: 'Utah',
           country: 'USA'
@@ -50,7 +50,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Deer Vally',
-        locatin: {
+        location: {
           city: 'Park City',
           state: 'Utah',
           country: 'USA'
@@ -59,7 +59,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Jackson Hole',
-        locatin: {
+        location: {
           city: 'Teton Village',
           state: 'Wyoming',
           country: 'USA'
@@ -68,7 +68,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Nordic Valley',
-        locatin: {
+        location: {
           city: 'Eden',
           state: 'Utah',
           country: 'USA'
@@ -77,7 +77,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Park City',
-        locatin: {
+        location: {
           city: 'Park City',
           state: 'Utah',
           country: 'USA'
@@ -86,7 +86,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Powder Mountain',
-        locatin: {
+        location: {
           city: 'Eden',
           state: 'Utah',
           country: 'USA'
@@ -95,7 +95,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Snowbasin',
-        locatin: {
+        location: {
           city: 'Huntsville',
           state: 'Utah',
           country: 'USA'
@@ -104,7 +104,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Snowbird',
-        locatin: {
+        location: {
           city: 'Snowbird',
           state: 'Utah',
           country: 'USA'
@@ -113,7 +113,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Solitude',
-        locatin: {
+        location: {
           city: 'Solitude',
           state: 'Utah',
           country: 'USA'
@@ -122,7 +122,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Sundance',
-        locatin: {
+        location: {
           city: 'Sundance',
           state: 'Utah',
           country: 'USA'
@@ -131,7 +131,7 @@ angular.module('skiTrackerApp')
       },
       {
         name: 'Woodward',
-        locatin: {
+        location: {
           city: 'Park City',
           state: 'Utah',
           country: 'USA'
