@@ -13,4 +13,8 @@ angular.module('skiTrackerApp')
       console.log('fresh start ctrl inited');
     };
 
+    $ctrl.onFirstEntryCreated = (_entry) => {
+      console.log('entry created dawg', _entry);
+    };
+
   });
