@@ -4,17 +4,29 @@ angular.module('skiTrackerApp')
     controller: 'startFreshCtrl'
   })
 
-  .controller('startFreshCtrl', function(userDataService) {
+  .controller('startFreshCtrl', function($scope, $uibModal, userDataService) {
     let $ctrl = this;
-
-    // TODO - have modal generated on init here and 
 
     $ctrl.$onInit = () => {
       console.log('fresh start ctrl inited');
     };
 
+    /**
+     * Toggle a modal that displays success msg then handles newly created entry.
+     * 
+     * @param {entry} _entry The entry created by the user.
+     */
     $ctrl.onFirstEntryCreated = (_entry) => {
-      console.log('entry created dawg', _entry);
+      $uibModal.open({
+        component: 'firstEntryModal',
+        size: 'lg',
+        resolve: {
+          entry: _entry
+        }
+      });
     };
-
   });
+
+
+// import all other components needed for this module
+require('./components/first-entry-modal/first-entry-modal.controller');

@@ -3,15 +3,16 @@
 @import '_utilities';
 
 // mixins
-@import 'mixins/_headers';
 @import 'mixins/_buttons';
+@import 'mixins/_headers';
 
 // global styling
 @import '_global';
 
 // components
-@import 'components/_panels';
 @import 'components/_buttons';
 @import 'components/_inputs';
-@import 'components/_tooltips';
 @import 'components/_lables';
+@import 'components/_modals';
+@import 'components/_panels';
+@import 'components/_tooltips';

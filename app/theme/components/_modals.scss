@@ -1,0 +1,37 @@
+.st-modal {
+  &-container {
+
+  }
+
+  &-header {
+    @include padding-y(15px);
+
+    border-radius: 5px 5px 0 0;
+    background-color: $powder-blue;
+    color: gold;
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    border-bottom: solid 1px $black;
+  }
+
+  &-body {
+    padding: 10px;
+    background-color: gold;
+  }
+
+  &-footer {
+    & > button {
+      @include st-btn-style($black, $white, lighten($black, 5%));
+
+      &:hover {
+        @include st-btn-style($black, $grey, lighten($black, 5%));
+      }
+    }
+  }
+}
+
+// override uib modal styling
+.modal-dialog {
+  margin-top: 8%;
+}
