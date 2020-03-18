@@ -9,7 +9,7 @@
   <!-- date and ski areas input fields -->
   <div class="row st-new-entry-input-row">
     <div class="col-md-4 col-sm-4">
-      <datepicker date="$ctrl.date"
+      <datepicker date="$ctrl.entryObj.date"
                   on-date-select="$ctrl.setDate(_value)">
       </datepicker>
     </div>
@@ -57,11 +57,11 @@
     <div class="col-md-4 col-sm-4"></div>
     
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.skiVert">
+      <input class="st-input" ng-model="$ctrl.entryObj.stats.skiVert">
     </div>
     
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.maxAlt">
+      <input class="st-input" ng-model="$ctrl.entryObj.stats.maxAlt">
     </div>
   </div>
 
@@ -77,10 +77,10 @@
   <div class="row st-new-entry-input-row">
     <div class="col-md-4 col-sm-4"></div>
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.skiDist">
+      <input class="st-input" ng-model="$ctrl.entryObj.stats.skiDist">
     </div>
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.topSpeed">
+      <input class="st-input" ng-model="$ctrl.entryObj.stats.topSpeed">
     </div>
   </div>
 
@@ -93,7 +93,7 @@
   <!-- description input field -->
   <div class="row">
     <div class="col-md-12 col-sm-12">
-      <textarea class="st-input st-input-textarea" ng-model="$ctrl.description"></textarea>
+      <textarea class="st-input st-input-textarea" ng-model="$ctrl.entryObj.description"></textarea>
     </div>
   </div>
 
