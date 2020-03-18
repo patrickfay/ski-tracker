@@ -1,7 +1,7 @@
 angular.module('skiTrackerApp')
   .component('newEntry', {
     bindings: {
-      onEntryCreated: '&onEntryCreated'
+      onEntryCreation: '&onEntryCreation'
     },
     templateUrl: './modules/new-entry/new-entry.module.html',
     controller: 'newEntryCtrl',
@@ -48,12 +48,10 @@ angular.module('skiTrackerApp')
     };
 
     $ctrl.createNewEntry = () => {
-      console.log('oh boy, here I go creating entries again');
-
+      // get ski area obj using ski are name
       $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
 
-      console.log($ctrl.entryObj);
-      console.log('-------------');
-      // $ctrl.onEntryCreated({_value: 'hgfhfhgf'});
+      // pass entry obj to parent component
+      $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
     };
   });
