@@ -1,2 +1,2 @@
 // import all modules
-require('./new-entry/new-entry.module');
+require('./entry/new-entry/new-entry.component');

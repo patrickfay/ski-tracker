@@ -3,7 +3,7 @@ angular.module('skiTrackerApp')
     bindings: {
       onEntryCreation: '&onEntryCreation'
     },
-    templateUrl: './modules/new-entry/new-entry.module.html',
+    templateUrl: './modules/entry/new-entry/new-entry.component.html',
     controller: 'newEntryCtrl',
   })
 

@@ -1,4 +1,4 @@
-# new-entry Module
+# new-entry Component
 
 The new-entry component is used for creating a new Ski Day Entry. This component is easy to use and easy to implement into other components/views.
 
@@ -10,7 +10,7 @@ This component only has, and **requires**, one binding attribute:
 
 | Binding Name | Type | Description |
 | ------------ | ---- | ----------- |
-| `onEntryCreation` | Callback Function | Used to pass the Entry object, created by the user, to the parent component. The Entry object will be passed to the parent component through the parameter **`_entry`**. |
+| `onEntryCreation` | Callback Function | Used to pass the Entry object, created by the user, to the parent component. The Entry object is be passed to the parent component through the parameter **`_entry`**. |
 
 **NOTE** - we pass this object, rather than using the `userDataService` within this component, to the parent component because we do not want to manipulate application wide data within this component.  
 The **only** application wide data we update within this component is `skiedWith` data, since the user may have to add people they skied with while interacting with this component. Controlling this data within this component helps keep code simplified in the parent component.
