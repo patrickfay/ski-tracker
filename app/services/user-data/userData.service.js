@@ -16,7 +16,7 @@ angular.module('skiTrackerApp')
 
     // add new ski partner
     $service.addSkiPartner = (_partnerName) => {
-      $service.userData.skiPartners.push(_partnerName)
+      $service.userData.skiPartners.unshift(_partnerName);
     };
 
     // get all user's entries

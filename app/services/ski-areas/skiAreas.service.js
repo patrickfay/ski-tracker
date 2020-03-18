@@ -145,6 +145,10 @@ angular.module('skiTrackerApp')
       return $service.skiAreas;
     };
 
+    $service.getAllSkiAreasNames = () => {
+      return $service.skiAreas.map(_sa => _sa.name);
+    };
+
     $service.getSkiAreaByName = (_name) => {
       let _skiArea = null;
 

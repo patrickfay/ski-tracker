@@ -17,7 +17,7 @@
     <div class="col-md-8 col-sm-8">
       <dropdown dropdown-type="simple"
                 default-val="-- select ski area --"
-                options-arr="$ctrl.testSkiAreas"
+                options-arr="$ctrl.skiAreasNames"
                 on-item-select="$ctrl.setSkiArea(_value)">
       </dropdown>
     </div>
@@ -36,7 +36,7 @@
     <div class="col-md-8 col-sm-8">
       <dropdown dropdown-type="multiselect"
                 default-val="Select Skiers"
-                options-arr="$ctrl.testSkiedWith"
+                options-arr="$ctrl.userSkiPartners"
                 add-new-allowed="true"
                 on-item-select="$ctrl.setSkiedWith(_value)"
                 on-new-item-added="$ctrl.addSkiedWith(_newItem)">
