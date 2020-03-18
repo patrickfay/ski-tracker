@@ -1,6 +1,6 @@
 angular.module('skiTrackerApp')
   .component('startFresh', {
-    templateUrl: './modules/start-fresh/start-fresh.html',
+    templateUrl: './modules/start-fresh/start-fresh.module.html',
     controller: 'startFreshCtrl'
   })
 

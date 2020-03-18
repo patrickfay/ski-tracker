@@ -1,5 +1,11 @@
 <div class="st-playground">
 
+  <div class="st-playground-test-container">
+    <p>New Entry:</p>
+
+    <new-entry on-entry-creation="addNewEntry(_entry)"></new-entry>
+  </div>
+
   <!-- text input field -->
   <div class="st-playground-test-container">
     <p>Text Input Field:</p>
@@ -7,16 +13,33 @@
     <input type=text class="st-input">
   </div>
 
-  <!-- dropdown -->
-  <div class="st-playground-test-container">
-    <p>Dropdown:</p>
 
-    <dropdown-simple default-val="-- select character --"
-                     options-arr="testOptions1"
-                     on-item-select="printSelectedVal(_value)">
-    </dropdown-simple>
+  <!-- dropdown simple -->
+  <div class="st-playground-test-container">
+    <p>Dropdown Simple:</p>
+
+    <dropdown dropdown-type="simple"
+              default-val="-- select character --"
+              options-arr="testOptions1"
+              on-item-select="printSelectedVal(_value)">
+    </dropdown>
   </div>
 
+  
+  <!-- dropdown multiselect -->
+  <div class="st-playground-test-container">
+    <p>Dropdown Multiselect:</p>
+
+    <dropdown dropdown-type="multiselect"
+              default-val="Select Ski Partners"
+              options-arr="testOptions3"
+              add-new-allowed="true"
+              on-item-select="printSelectedVal(_value)"
+              on-new-item-added="addToTestOptions3(_newItem)">
+    </dropdown>
+  </div>
+
+  
   <!-- datepicker -->
   <div class="st-playground-test-container">
     <p>Datepicker:</p>
@@ -44,10 +67,11 @@
     </div>
 
     <div class="col-md-3">
-      <dropdown-simple default-val="-- select character --"
-                       options-arr="testOptions2"
-                       on-item-select="printSelectedVal(_value)">
-      </dropdown-simple>
+      <dropdown dropdown-type="simple"
+                default-val="-- select character --"
+                options-arr="testOptions2"
+                on-item-select="printSelectedVal(_value)">
+      </dropdown>
     </div>
 
     <div class="col-md-3">

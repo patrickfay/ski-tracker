@@ -10,11 +10,16 @@
     min-height: 32px;
     width: 100%;
 
+    &-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
     &:focus {
       box-shadow: $box-shadow-val; 
     }
 
-    // container used for input fields containing a btn and icon within it (ie. datepicker, simple-dropdown, etc.)
+    // container used for input fields containing a btn and icon within it (ie. datepicker, dropdown, etc.)
     &-cust-container {
       $border-rad: 3px;
   
@@ -26,17 +31,17 @@
         border-right: none !important;
         border-radius: $border-rad 0px 0px $border-rad;
         box-shadow: none;
+        min-width: 75%;
       }
   
       // class for button in this container
       & .st-input-icon-btn {
-        @include padding-x(20px);
-  
         display: flex;
         align-items: center;
         background-color: $white;
         border: solid 1px darken($grey, 10%);
         border-radius: 0px $border-rad $border-rad 0px;
+        max-width: 25%;
         
         &:hover {
           background-color: lighten($powder-blue, 32%);
