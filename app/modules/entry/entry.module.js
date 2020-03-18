@@ -1,0 +1,1 @@
+require('./new-entry/new-entry.component');
