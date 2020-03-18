@@ -29,20 +29,20 @@ angular.module('skiTrackerApp')
         description: null     // binded to description text area field
       };
 
-      // used for ng-class to alert user of invalid input
+      // used w/ ng-class to alert user of invalid input
       $ctrl.invalidInput = false;
     };
 
 
-    // set values when input field values change
+    // set values when custom input field values change
     $ctrl.setDate = (_value) => $ctrl.date = _value;
     $ctrl.setSkiedWith = (_value) => $ctrl.entryObj.skiedWith = _value;
 
+    // set value of ski area and reset invalidInput var
     $ctrl.setSkiArea = (_value) => {
       $ctrl.entryObj.skiArea = _value;
       $ctrl.invalidInput = false;
     }
-    
 
     /**
      * Add a new skier to the userDataService and update $ctrl.skiedWith
@@ -55,15 +55,16 @@ angular.module('skiTrackerApp')
       $ctrl.userSkiPartners = userDataService.getSkiPartners();
     };
 
-
+    /**
+     * Create a new Entry object and pass it to the parent component.
+     * We check for valid input before passing the Entry object to the parent.
+     */
     $ctrl.createNewEntry = () => {
       // get ski area obj using ski are name
       $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
 
       // if the user entered valid input, pass entry obj to parent component
-      if (isValidEntry()) {
-        $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
-      }
+      if (isValidEntry()) $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
     };
 
 
