@@ -42,7 +42,7 @@ angular.module('skiTrackerApp')
     $ctrl.setSkiArea = (_value) => {
       $ctrl.entryObj.skiArea = _value;
       $ctrl.invalidInput = false;
-    }
+    };
 
     /**
      * Add a new skier to the userDataService and update $ctrl.skiedWith
@@ -66,7 +66,6 @@ angular.module('skiTrackerApp')
       // if the user entered valid input, pass entry obj to parent component
       if (isValidEntry()) $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
     };
-
 
     /**
      * Returns true if user's input is valid for entry creation, else returns false.
