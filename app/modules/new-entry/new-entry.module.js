@@ -28,13 +28,21 @@ angular.module('skiTrackerApp')
         },
         description: null     // binded to description text area field
       };
+
+      // used for ng-class to alert user of invalid input
+      $ctrl.invalidInput = false;
     };
 
 
     // set values when input field values change
     $ctrl.setDate = (_value) => $ctrl.date = _value;
-    $ctrl.setSkiArea = (_value) => $ctrl.entryObj.skiArea = _value;
     $ctrl.setSkiedWith = (_value) => $ctrl.entryObj.skiedWith = _value;
+
+    $ctrl.setSkiArea = (_value) => {
+      $ctrl.entryObj.skiArea = _value;
+      $ctrl.invalidInput = false;
+    }
+    
 
     /**
      * Add a new skier to the userDataService and update $ctrl.skiedWith
@@ -47,11 +55,28 @@ angular.module('skiTrackerApp')
       $ctrl.userSkiPartners = userDataService.getSkiPartners();
     };
 
+
     $ctrl.createNewEntry = () => {
       // get ski area obj using ski are name
       $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
 
-      // pass entry obj to parent component
-      $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
+      // if the user entered valid input, pass entry obj to parent component
+      if (isValidEntry()) {
+        $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
+      }
     };
+
+
+    /**
+     * Returns true if user's input is valid for entry creation, else returns false.
+     * Also uses $ctrl.invalidInput along with ng-class to alert user of invalid input in template
+     * 
+     * @returns {boolean} true if user's input is valid for entry creation, else false.
+     */
+    function isValidEntry() {
+      if (!!$ctrl.entryObj.date && !!$ctrl.entryObj.skiArea) return true;
+      
+      $ctrl.invalidInput = true;
+      return false;
+    }
   });

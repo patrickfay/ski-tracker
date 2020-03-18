@@ -14,7 +14,8 @@
       </datepicker>
     </div>
 
-    <div class="col-md-8 col-sm-8">
+    <div class="col-md-8 col-sm-8"
+         ng-class="{'st-new-entry-invalid': $ctrl.invalidInput}">
       <dropdown dropdown-type="simple"
                 default-val="-- select ski area --"
                 options-arr="$ctrl.skiAreasNames"
