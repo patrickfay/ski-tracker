@@ -4,12 +4,8 @@ angular.module('skiTrackerApp')
     controller: 'startFreshCtrl'
   })
 
-  .controller('startFreshCtrl', function($scope, $uibModal, userDataService) {
+  .controller('startFreshCtrl', function($uibModal, userDataService) {
     let $ctrl = this;
-
-    $ctrl.$onInit = () => {
-      console.log('fresh start ctrl inited');
-    };
 
     /**
      * Toggle a modal that displays success msg then handles newly created entry.
@@ -17,13 +13,17 @@ angular.module('skiTrackerApp')
      * @param {entry} _entry The entry created by the user.
      */
     $ctrl.onFirstEntryCreated = (_entry) => {
-      $uibModal.open({
+      // open first-entry-modal
+      let _modalInstance = $uibModal.open({
         component: 'firstEntryModal',
         size: 'lg',
-        resolve: {
-          entry: _entry
-        }
+        backdrop: 'static'
       });
+
+      // on modal close, add entry to userDataService
+      // this will cause the 'entries' view to display the entries dashboard module
+      _modalInstance.result
+        .then(() => userDataService.addEntry(_entry));
     };
   });
 

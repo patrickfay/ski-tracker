@@ -17,6 +17,7 @@
 
     &:focus {
       box-shadow: $box-shadow-val; 
+      outline: none;
     }
 
     // container used for input fields containing a btn and icon within it (ie. datepicker, dropdown, etc.)
