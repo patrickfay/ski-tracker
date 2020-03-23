@@ -30,7 +30,7 @@ angular.module('skiTrackerApp')
       };
 
       // used w/ ng-class to alert user of invalid input
-      $ctrl.invalidInput = false;
+      $ctrl.invalidInputFields = [];
     };
 
 
@@ -41,7 +41,7 @@ angular.module('skiTrackerApp')
     // set value of ski area and reset invalidInput var
     $ctrl.setSkiArea = (_value) => {
       $ctrl.entryObj.skiArea = _value;
-      $ctrl.invalidInput = false;
+      $ctrl.removeInvalid('skiArea');
     };
 
     /**
@@ -57,46 +57,50 @@ angular.module('skiTrackerApp')
 
     /**
      * Create a new Entry object and pass it to the parent component.
-     * We check for valid input before passing the Entry object to the parent.
+     * We check for valid input and get a ski area object before passing the Entry object to
+     * the parent component.
      */
     $ctrl.createNewEntry = () => {
-      // get ski area obj using ski are name
-      $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
-
-      // if the user entered valid input, pass entry obj to parent component
-      if (isValidEntry()) $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
+      if (isValidEntry()) {
+        $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
+        $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
+      }
     };
 
     /**
+     * Remove an input field name from $ctrl.invalidInputFields.
+     * 
+     * @param {string} _fieldName the name of an input field
+     */
+    $ctrl.removeInvalid = (_fieldName) => {
+      let _index = $ctrl.invalidInputFields.indexOf(_fieldName);
+      if (_index > -1) $ctrl.invalidInputFields.splice(_index, 1);
+    }
+
+    /**
      * Returns true if user's input is valid for entry creation, else returns false.
-     * Also uses $ctrl.invalidInput along with ng-class to alert user of invalid input in template
+     * $ctrl.invalidInputFields uses ng-class to alert the user of invalid input in template
      * 
      * @returns {boolean} true if user's input is valid for entry creation, else false.
      */
     function isValidEntry() {
-      if (
-        !!$ctrl.entryObj.date &&
-        !!$ctrl.entryObj.skiArea &&
-        isFalsyOrNum($ctrl.entryObj.stats.skiVert) &&
-        isFalsyOrNum($ctrl.entryObj.stats.maxAlt) &&
-        isFalsyOrNum($ctrl.entryObj.stats.skiDist) &&
-        isFalsyOrNum($ctrl.entryObj.stats.maxSpeed)
-      ) {
-        return true;
-      }
-      
-      $ctrl.invalidInput = true;
-      return false;
+      if ($ctrl.entryObj.skiArea === null) $ctrl.invalidInputFields.push('skiArea');
+      if (isTruthyAndNan($ctrl.entryObj.stats.skiVert)) $ctrl.invalidInputFields.push('skiVert');
+      if (isTruthyAndNan($ctrl.entryObj.stats.maxAlt)) $ctrl.invalidInputFields.push('maxAlt');
+      if (isTruthyAndNan($ctrl.entryObj.stats.skiDist)) $ctrl.invalidInputFields.push('skiDist');
+      if (isTruthyAndNan($ctrl.entryObj.stats.maxSpeed)) $ctrl.invalidInputFields.push('maxSpeed');
+
+      return $ctrl.invalidInputFields.length === 0;
     }
 
     /**
-     * Returns true if the passed value has no value (is falsy) OR the value is a number.
-     * Else returns false if the passed value has a value (is truthy) AND is not a number.
+     * Returns true if the passed value has a value (is truth) AND the value is NOT a number.
+     * Else returns false if the passed value no value (is falsy) OR is a number.
      * 
      * @param {<any>} _val the value of a text input field
      * @returns true if _val is falsy OR _val is a number. Else returns false.
      */
-    function isFalsyOrNum(_val) {
-      return !(!!_val && isNaN(_val));
+    function isTruthyAndNan(_val) {
+      return (!!_val && isNaN(_val));
     }
   });

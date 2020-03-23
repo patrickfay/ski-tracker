@@ -43,5 +43,9 @@
       }
     }
   }
+}
 
+// add a red border to invalid text input fields
+input.st-new-entry-invalid {
+  border: solid 1px red;
 }
