@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-md-8 col-sm-8"
-         ng-class="{'st-new-entry-invalid': $ctrl.invalidInput}">
+         ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('skiArea')}">
       <dropdown dropdown-type="simple"
                 default-val="-- select ski area --"
                 options-arr="$ctrl.skiAreasNames"
@@ -58,11 +58,17 @@
     <div class="col-md-4 col-sm-4"></div>
     
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.entryObj.stats.skiVert">
+      <input class="st-input"
+             ng-model="$ctrl.entryObj.stats.skiVert"
+             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('skiVert')}"
+             ng-keydown="$ctrl.removeInvalid('skiVert')">
     </div>
     
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.entryObj.stats.maxAlt">
+      <input class="st-input"
+             ng-model="$ctrl.entryObj.stats.maxAlt"
+             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('maxAlt')}"
+             ng-keydown="$ctrl.removeInvalid('maxAlt')">
     </div>
   </div>
 
@@ -79,11 +85,17 @@
     <div class="col-md-4 col-sm-4"></div>
     
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.entryObj.stats.skiDist">
+      <input class="st-input"
+             ng-model="$ctrl.entryObj.stats.skiDist"
+             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('skiDist')}"
+             ng-keydown="$ctrl.removeInvalid('skiDist')">
     </div>
 
     <div class="col-md-4 col-sm-4">
-      <input class="st-input" ng-model="$ctrl.entryObj.stats.topSpeed">
+      <input class="st-input"
+             ng-model="$ctrl.entryObj.stats.maxSpeed"
+             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('maxSpeed')}"
+             ng-keydown="$ctrl.removeInvalid('maxSpeed')">
     </div>
   </div>
 
