@@ -24,7 +24,7 @@ angular.module('skiTrackerApp')
           skiVert: null,      // binded to ski vertical text input field
           maxAlt: null,       // binded to max altitude text input field
           skiDist: null,      // binded to ski distance text input field
-          topSpeed: null      // binded to top speed text input field
+          maxSpeed: null      // binded to top speed text input field
         },
         description: null     // binded to description text area field
       };
@@ -74,9 +74,29 @@ angular.module('skiTrackerApp')
      * @returns {boolean} true if user's input is valid for entry creation, else false.
      */
     function isValidEntry() {
-      if (!!$ctrl.entryObj.date && !!$ctrl.entryObj.skiArea) return true;
+      if (
+        !!$ctrl.entryObj.date &&
+        !!$ctrl.entryObj.skiArea &&
+        isFalsyOrNum($ctrl.entryObj.stats.skiVert) &&
+        isFalsyOrNum($ctrl.entryObj.stats.maxAlt) &&
+        isFalsyOrNum($ctrl.entryObj.stats.skiDist) &&
+        isFalsyOrNum($ctrl.entryObj.stats.maxSpeed)
+      ) {
+        return true;
+      }
       
       $ctrl.invalidInput = true;
       return false;
+    }
+
+    /**
+     * Returns true if the passed value has no value (is falsy) OR the value is a number.
+     * Else returns false if the passed value has a value (is truthy) AND is not a number.
+     * 
+     * @param {<any>} _val the value of a text input field
+     * @returns true if _val is falsy OR _val is a number. Else returns false.
+     */
+    function isFalsyOrNum(_val) {
+      return !(!!_val && isNaN(_val));
     }
   });
