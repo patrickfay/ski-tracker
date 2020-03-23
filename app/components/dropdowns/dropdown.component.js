@@ -89,11 +89,13 @@ angular.module('skiTrackerApp')
     /**
      * Passes a new item the user added to the multiselect dropdown options to the parent component.
      * The parent component is responsible for updating the options passed to this component.
+     * Add the added item to the selectedOptions arr.
      */
     $ctrl.addNewItemToOptions = () => {
       // if the user entered a value 
       if (!!$ctrl.newOption) {
         $ctrl.onNewItemAdded({_newItem: $ctrl.newOption});
+        $ctrl.addRemoveItem($ctrl.newOption);
         $ctrl.newOption = null;
       }
     };
