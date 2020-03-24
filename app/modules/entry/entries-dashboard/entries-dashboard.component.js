@@ -4,11 +4,14 @@ angular.module('skiTrackerApp')
     controller: 'entriesDashboardCtrl',
   })
 
-  .controller('entriesDashboardCtrl', function() {
+  .controller('entriesDashboardCtrl', function(userDataService) {
     let $ctrl = this;
 
+    $ctrl.allEntries = null;
+
     $ctrl.$onInit = () => {
-      console.log('entries dashboard init');
+      $ctrl.allEntries = userDataService.getEntries();
+      console.log($ctrl.allEntries);
     };
-    
+
   });
