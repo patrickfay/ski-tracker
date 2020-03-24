@@ -35,7 +35,7 @@
 
 // override global modal style rules
 .st-modal {
-  $background-col: lighten($powder-blue, 32%);
+  $background-col: $white;
 
   &-header {
     text-align: center;
