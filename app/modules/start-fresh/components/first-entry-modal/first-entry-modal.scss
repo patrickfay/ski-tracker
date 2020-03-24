@@ -27,7 +27,7 @@
 
     // class appended when second value is changed in timer div
     &.active-change {
-      background-color: lighten(orange, 32%);
+      background-color: lighten($powder-blue, 15%);
       transition: 0.8s background-color cubic-bezier(0, .99, .04, -0.03);
     }
   }
