@@ -38,6 +38,7 @@ Below is the object model for the `Entry` object:
 ```javascript
 EntryObj: {
   date: Date,
+  day: Number,
   description: String,
   skiArea: SkiAreaObj,
   skiedWith: Array<String>,

@@ -18,6 +18,8 @@ angular.module('skiTrackerApp')
       // variables binded to input fields
       $ctrl.entryObj = {
         date: new Date(),     // binded to date input field
+        day: null,            // needed for an entry object, this value is not updated/used in this component
+        description: null,    // binded to description text area field
         skiArea: null,        // binded to ski area dropdown
         skiedWith: null,      // binded to skied with dropdown
         stats: {
@@ -25,8 +27,7 @@ angular.module('skiTrackerApp')
           maxAlt: null,       // binded to max altitude text input field
           skiDist: null,      // binded to ski distance text input field
           maxSpeed: null      // binded to top speed text input field
-        },
-        description: null     // binded to description text area field
+        }
       };
 
       // used w/ ng-class to alert user of invalid input
