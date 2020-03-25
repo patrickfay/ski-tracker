@@ -1,0 +1,19 @@
+.st-ed {
+  $orange: #ffa500;
+
+  &-header {
+    @include rep-lin-grad-header(lighten($orange, 10%), $orange);
+  }
+
+  &-body {
+    padding-top: 10px;
+  }
+
+  &-filter-container {
+    border: solid 1px $powder-blue;
+  }
+
+  &-entries-container {
+    border: solid 1px gold;
+  }
+}
