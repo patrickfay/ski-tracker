@@ -1,4 +1,4 @@
-<div class="st-new-entry-container">
+<div class="st-input-entry-container">
 
   <!-- date and ski areas labels -->
   <div class="row">
@@ -7,7 +7,7 @@
   </div>
 
   <!-- date and ski areas input fields -->
-  <div class="row st-new-entry-input-row">
+  <div class="row st-input-entry-input-row">
     <div class="col-md-4 col-sm-4">
       <datepicker date="$ctrl.entryObj.date"
                   on-date-select="$ctrl.setDate(_value)">
@@ -15,10 +15,11 @@
     </div>
 
     <div class="col-md-8 col-sm-8"
-         ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('skiArea')}">
+         ng-class="{'st-input-entry-invalid': $ctrl.invalidInputFields.includes('skiArea')}">
       <dropdown dropdown-type="simple"
                 default-val="-- select ski area --"
                 options-arr="$ctrl.skiAreasNames"
+                init-selected="$ctrl.entryObj.skiArea.name"
                 on-item-select="$ctrl.setSkiArea(_value)">
       </dropdown>
     </div>
@@ -32,12 +33,13 @@
   </div>
 
   <!-- skied with dropdown -->
-  <div class="row st-new-entry-input-row">
+  <div class="row st-input-entry-input-row">
     <div class="col-md-4 col-sm-4"></div>
     <div class="col-md-8 col-sm-8">
       <dropdown dropdown-type="multiselect"
                 default-val="Select Skiers"
                 options-arr="$ctrl.userSkiPartners"
+                init-selected="$ctrl.entryObj.skiedWith"
                 add-new-allowed="true"
                 on-item-select="$ctrl.setSkiedWith(_value)"
                 on-new-item-added="$ctrl.addSkiedWith(_newItem)">
@@ -54,20 +56,20 @@
   </div>
 
   <!-- skied with, ski vert, and max altitude input fields -->
-  <div class="row st-new-entry-input-row">
+  <div class="row st-input-entry-input-row">
     <div class="col-md-4 col-sm-4"></div>
     
     <div class="col-md-4 col-sm-4">
       <input class="st-input"
              ng-model="$ctrl.entryObj.stats.skiVert"
-             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('skiVert')}"
+             ng-class="{'st-input-entry-invalid': $ctrl.invalidInputFields.includes('skiVert')}"
              ng-keydown="$ctrl.removeInvalid('skiVert')">
     </div>
     
     <div class="col-md-4 col-sm-4">
       <input class="st-input"
              ng-model="$ctrl.entryObj.stats.maxAlt"
-             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('maxAlt')}"
+             ng-class="{'st-input-entry-invalid': $ctrl.invalidInputFields.includes('maxAlt')}"
              ng-keydown="$ctrl.removeInvalid('maxAlt')">
     </div>
   </div>
@@ -81,20 +83,20 @@
   </div>
 
   <!-- ski distance, top speed input fields -->
-  <div class="row st-new-entry-input-row">
+  <div class="row st-input-entry-input-row">
     <div class="col-md-4 col-sm-4"></div>
     
     <div class="col-md-4 col-sm-4">
       <input class="st-input"
              ng-model="$ctrl.entryObj.stats.skiDist"
-             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('skiDist')}"
+             ng-class="{'st-input-entry-invalid': $ctrl.invalidInputFields.includes('skiDist')}"
              ng-keydown="$ctrl.removeInvalid('skiDist')">
     </div>
 
     <div class="col-md-4 col-sm-4">
       <input class="st-input"
              ng-model="$ctrl.entryObj.stats.maxSpeed"
-             ng-class="{'st-new-entry-invalid': $ctrl.invalidInputFields.includes('maxSpeed')}"
+             ng-class="{'st-input-entry-invalid': $ctrl.invalidInputFields.includes('maxSpeed')}"
              ng-keydown="$ctrl.removeInvalid('maxSpeed')">
     </div>
   </div>
@@ -109,16 +111,6 @@
   <div class="row">
     <div class="col-md-12 col-sm-12">
       <textarea class="st-input st-input-textarea" ng-model="$ctrl.entryObj.description"></textarea>
-    </div>
-  </div>
-
-  <!-- create entry btn row -->
-  <div class="row st-new-entry-btn-row">
-    <div class="col-md-12 col-sm-12">
-      <button class="st-btn st-btn-woohoo st-new-entry-create-btn" type="button"
-              ng-click="$ctrl.createNewEntry()">
-        Create New Entry
-      </button>
     </div>
   </div>
 

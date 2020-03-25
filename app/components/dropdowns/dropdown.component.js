@@ -5,6 +5,7 @@ angular.module('skiTrackerApp')
     bindings: {
       dropdownType: '@',
       defaultVal: '@',
+      initSelected: '<',
       optionsArr: '<',
       addNewAllowed: '<',
       onItemSelect: '&onItemSelect',
@@ -24,13 +25,15 @@ angular.module('skiTrackerApp')
 
       // set vars for dropdown type
       if ($ctrl.dropdownType === 'simple') {
-        // add default val to options and set selectModel to default val
+        // add default val to options and set selectModel
         $ctrl.optionsArr.unshift(!!$ctrl.defaultVal ? $ctrl.defaultVal : '-- select --');
-        $ctrl.selectModel = $ctrl.optionsArr[0];
+        setInitSelectedVal('simple')
+
       } else if ($ctrl.dropdownType === 'multiselect') {
-        // set selectModel to defalut val and set selectedOptions to empty arr
+        // set selectModel to defalut val and set selectedOptions
         $ctrl.selectModel = !!$ctrl.defaultVal ? $ctrl.defaultVal : 'Select Options';
-        $ctrl.selectedOptions = [];
+        setInitSelectedVal('multiselect');
+
       } else {
         console.error("No dropdown type identified! Please read the dropdown component's README to understand how to use this component");
       }
@@ -99,4 +102,20 @@ angular.module('skiTrackerApp')
         $ctrl.newOption = null;
       }
     };
+
+    /**
+     * Sets the initial selected value for the dropdown to $ctrl.initSelected.
+     * If a simple dropdown and no init value passed, init dropdown val will be set to $ctrl.defaultVal
+     * If a multiselect dropdown and no init value passed, init selected options will be set to empty arr.
+     * 
+     * @param {string} _dropdownType the type of dropdown being displayed (either 'simple' or 'multiselect')
+     */
+    function setInitSelectedVal(_dropdownType) {
+      if (_dropdownType === 'simple') {
+        let _initValIndex = $ctrl.optionsArr.indexOf($ctrl.initSelected);
+        $ctrl.selectModel = _initValIndex > -1 ? $ctrl.optionsArr[_initValIndex] : $ctrl.optionsArr[0];
+      } else {
+        $ctrl.selectedOptions = Array.isArray($ctrl.initSelected) ? $ctrl.initSelected : [];
+      }
+    }
   });

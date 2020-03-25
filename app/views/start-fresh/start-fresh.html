@@ -21,7 +21,14 @@
     <div class="st-fresh-entry-header">Your First Entry!</div>
 
     <div class="st-fresh-entry-body">
-      <new-entry on-entry-creation="onFirstEntryCreated(_entry)"></new-entry>
+      <input-entry on-entry-generated="onFirstEntryCreated(_entry)"></input-entry>
+
+      <div class="st-fresh-entry-create-btn-container">
+        <button class="st-btn st-fresh-entry-create-btn" type="button"
+                ng-click="$broadcast('generateEntryObject')">
+          Create New Entry
+        </button>
+      </div>
     </div>
   </div>
 </div>
