@@ -37,12 +37,7 @@ angular.module('skiTrackerApp')
             maxSpeed: null      // binded to top speed text input field
           }
         };
-      } else {
-        // set entry object's ski area object to just its name
-        $ctrl.entryObj.skiArea = $ctrl.entryObj.skiArea.name;
       }
-
-
     };
 
 
@@ -51,20 +46,17 @@ angular.module('skiTrackerApp')
      * entry object to the parent component's callback function.
      */
     $scope.$on('generateEntryObject', () => {
-      if (isValidEntry()) {
-        $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
-        $ctrl.onEntryGenerated({_entry: $ctrl.entryObj});
-      }
+      if (isValidEntry()) $ctrl.onEntryGenerated({_entry: $ctrl.entryObj});
     });
 
 
     // set values when custom input field values change
-    $ctrl.setDate = (_value) => $ctrl.date = _value;
+    $ctrl.setDate = (_value) => $ctrl.entryObj.date = _value;
     $ctrl.setSkiedWith = (_value) => $ctrl.entryObj.skiedWith = _value;
 
     // set value of ski area and reset invalidInput var
     $ctrl.setSkiArea = (_value) => {
-      $ctrl.entryObj.skiArea = _value;
+      $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName(_value)
       $ctrl.removeInvalid('skiArea');
     };
 
