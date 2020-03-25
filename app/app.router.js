@@ -8,10 +8,6 @@ angular.module('skiTrackerApp')
         templateUrl: 'views/home/home.html',
         controller: 'homeCtrl'
       })
-      .when('/entries', {
-        templateUrl: 'views/entries/entries.html',
-        controller: 'entriesCtrl'
-      })
       .when('/start-fresh', {
         templateUrl: 'views/start-fresh/start-fresh.html',
         controller: 'startFreshCtrl'
