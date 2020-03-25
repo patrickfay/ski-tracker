@@ -1,0 +1,21 @@
+<div class="st-modal-container">
+  <div class="st-modal-header">
+    First Entry Created!
+  </div>
+  
+  <div class="st-modal-body">
+    <div class="st-fe-modal-msg">
+      <p>Congrats! Your first entry is in the books!</p>
+      <p>Time to redirect to your Entries dashboard.</p>
+      <p class="st-fe-modal-msg-redirect">Redirecting in:</p>
+    </div>
+
+    <div class="st-fe-modal-timer-container">
+      <div class="st-fe-modal-timer" ng-class="{'active-change': $ctrl.timeChanged}">
+        {{$ctrl.timeLeft}}
+      </div>
+    </div>
+  </div>
+
+  <div class="st-modal-footer"></div>
+</div>

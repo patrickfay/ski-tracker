@@ -1,0 +1,45 @@
+.st-fresh {
+  &-header {
+    @include rep-lin-grad-header($powder-blue, darken($powder-blue, 5%));
+  }
+
+  &-body {
+    border-top: solid 1px darken($powder-blue, 8%);
+    padding-bottom: 20px;
+  }
+
+  &-description {
+    font-size: 18px;
+    font-weight: 600;
+    color: $title-blue;
+    padding: 20px;
+
+    & > p:last-of-type {
+      margin-bottom: 5px;
+    }
+  }
+
+
+  // Entry container styling
+  &-entry-container {
+    @include margin-x(5%);
+
+    border: solid 1px darken($grey, 40%);
+    border-radius: 3px;
+
+    & > div {
+      padding: 10px;
+    }
+  }
+
+  &-entry-header {
+    background-color: lighten($powder-blue, 2%);
+    border-radius: 2px 2px 0 0;
+    color: $white;
+    font-size: 24px;
+  }
+}
+
+
+// import all other component scss files needed for this module
+// @import './components/first-entry-modal/first-entry-modal';

@@ -17,7 +17,7 @@ angular.module('skiTrackerApp')
      */
     $scope.startFresh = () => {
       userDataService.clearData();
-      $location.url('entries');
+      $location.url('start-fresh');
     };
 
   });
