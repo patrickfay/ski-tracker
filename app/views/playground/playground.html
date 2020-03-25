@@ -1,9 +1,12 @@
 <div class="st-playground">
 
   <div class="st-playground-test-container">
-    <p>New Entry:</p>
+    <p>Input Entry:</p>
 
-    <new-entry on-entry-creation="addNewEntry(_entry)"></new-entry>
+    <input-entry entry-obj="testEntryObj"
+                 onEntryGenerated="addNewEntry(_entry)">
+    </input-entry>
+    <button type="button" ng-click="generateEntryObj()">Generate Entry Obj</button>
   </div>
 
   <!-- text input field -->

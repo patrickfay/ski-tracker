@@ -19,6 +19,7 @@
       <dropdown dropdown-type="simple"
                 default-val="-- select ski area --"
                 options-arr="$ctrl.skiAreasNames"
+                init-selected="$ctrl.entryObj.skiArea"
                 on-item-select="$ctrl.setSkiArea(_value)">
       </dropdown>
     </div>
@@ -38,6 +39,7 @@
       <dropdown dropdown-type="multiselect"
                 default-val="Select Skiers"
                 options-arr="$ctrl.userSkiPartners"
+                init-selected="$ctrl.entryObj.skiedWith"
                 add-new-allowed="true"
                 on-item-select="$ctrl.setSkiedWith(_value)"
                 on-new-item-added="$ctrl.addSkiedWith(_newItem)">
@@ -111,15 +113,5 @@
       <textarea class="st-input st-input-textarea" ng-model="$ctrl.entryObj.description"></textarea>
     </div>
   </div>
-
-  <!-- create entry btn row -->
-  <!-- <div class="row st-new-entry-btn-row">
-    <div class="col-md-12 col-sm-12">
-      <button class="st-btn st-btn-woohoo st-new-entry-create-btn" type="button"
-              ng-click="$ctrl.createNewEntry()">
-        Create New Entry
-      </button>
-    </div>
-  </div> -->
 
 </div>

@@ -1,41 +1,61 @@
 angular.module('skiTrackerApp')
   .component('inputEntry', {
-    // bindings: {
-    //   onEntryCreation: '&onEntryCreation'
-    // },
     bindings: {
-      entryObjNew: '<'
+      entryObj: '<',
+      onEntryGenerated: '&'
     },
     templateUrl: './modules/entry/input-entry/input-entry.component.html',
     controller: 'inputEntryCtrl',
   })
 
-  .controller('inputEntryCtrl', function(userDataService, skiAreaService) {
+  .controller('inputEntryCtrl', function($scope, userDataService, skiAreaService) {
     let $ctrl = this;
+    $ctrl.skiAreasNames = null;
+    $ctrl.userSkiPartners = null;
+    $ctrl.invalidInputFields = null;
 
     $ctrl.$onInit = () => {
-      // get data needed for input fields
+      // get user and ski area data
       $ctrl.skiAreasNames = skiAreaService.getAllSkiAreasNames();
       $ctrl.userSkiPartners = userDataService.getSkiPartners();
-
-      // variables binded to input fields
-      $ctrl.entryObj = {
-        date: new Date(),     // binded to date input field
-        day: null,            // needed for an entry object, this value is not updated/used in this component
-        description: null,    // binded to description text area field
-        skiArea: null,        // binded to ski area dropdown
-        skiedWith: null,      // binded to skied with dropdown
-        stats: {
-          skiVert: null,      // binded to ski vertical text input field
-          maxAlt: null,       // binded to max altitude text input field
-          skiDist: null,      // binded to ski distance text input field
-          maxSpeed: null      // binded to top speed text input field
-        }
-      };
-
+      
       // used w/ ng-class to alert user of invalid input
       $ctrl.invalidInputFields = [];
+
+      // if an entry object was not passed to the component, set $ctrl.entryObj to empty entry object
+      if ($ctrl.entryObj === undefined) {
+        $ctrl.entryObj = {
+          date: new Date(),     // binded to date input field
+          day: null,            // needed for an entry object, this value is not updated/used in this component
+          description: null,    // binded to description text area field
+          skiArea: null,        // binded to ski area dropdown
+          skiedWith: null,      // binded to skied with dropdown
+          stats: {
+            skiVert: null,      // binded to ski vertical text input field
+            maxAlt: null,       // binded to max altitude text input field
+            skiDist: null,      // binded to ski distance text input field
+            maxSpeed: null      // binded to top speed text input field
+          }
+        };
+      } else {
+        // set entry object's ski area object to just its name
+        $ctrl.entryObj.skiArea = $ctrl.entryObj.skiArea.name;
+      }
+
+
     };
+
+
+    /**
+     * Listen for the generateEntryObject $broadcast from the parent component and pass the current
+     * entry object to the parent component's callback function.
+     */
+    $scope.$on('generateEntryObject', () => {
+      if (isValidEntry()) {
+        $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
+        $ctrl.onEntryGenerated({_entry: $ctrl.entryObj});
+      }
+    });
 
 
     // set values when custom input field values change
@@ -57,19 +77,6 @@ angular.module('skiTrackerApp')
     $ctrl.addSkiedWith = (_newItem) => {
       userDataService.addSkiPartner(_newItem);
       $ctrl.userSkiPartners = userDataService.getSkiPartners();
-    };
-
-    /**
-     * Create a new Entry object and pass it to the parent component.
-     * We check for valid input and get a ski area object before passing the Entry object to
-     * the parent component.
-     */
-    $ctrl.generateEntryObj = () => {
-      if (isValidEntry()) {
-        $ctrl.entryObj.skiArea = skiAreaService.getSkiAreaByName($ctrl.entryObj.skiArea);
-        // $ctrl.onEntryCreation({_entry: $ctrl.entryObj});
-        console.log('in generateEntryObj', $ctrl.entryObj);
-      }
     };
 
     /**
