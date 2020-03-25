@@ -35,7 +35,7 @@ angular.module('skiTrackerApp')
     /**
      * Add a new ski entry to userData.entries.
      * This function adds a NEW ski entry to the user's array fo entries.
-     * This function should only be called when the user has manually entered data for a new entry (likely using the 'new-entry' component)
+     * This function should only be called when the user has manually entered data for a new entry (likely using the 'input-entry' component)
      * 
      * @param {entry} _entry An entry for a ski day.
      */

@@ -1,4 +1,4 @@
-.st-new-entry {
+.st-input-entry {
 
   // component container
   &-container {
@@ -46,6 +46,6 @@
 }
 
 // add a red border to invalid text input fields
-input.st-new-entry-invalid {
+input.st-input-entry-invalid {
   border: solid 1px red;
 }
