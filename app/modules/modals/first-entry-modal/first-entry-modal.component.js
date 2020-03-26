@@ -3,7 +3,7 @@ angular.module('skiTrackerApp')
     bindings: {
       close: '&'
     },
-    templateUrl: './modules/entry/first-entry-modal/first-entry-modal.template.html',
+    templateUrl: './modules/modals/first-entry-modal/first-entry-modal.template.html',
     controller: 'firstEntryModalCtrl'
   })
 
