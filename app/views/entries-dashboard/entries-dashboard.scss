@@ -1,6 +1,4 @@
 .st-ed {
-  $orange: #ffa500;
-
   &-header {
     @include rep-lin-grad-header(lighten($orange, 10%), $orange);
   }
