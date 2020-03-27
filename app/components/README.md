@@ -22,7 +22,3 @@ Each file of these files are to be denoted as:
 * `componentName.component.html`
 * `componentName.component.js`
 * `componentName.component.scssl`
-
-## Generating a Component
-
-When generating a component please remember to register it in the file **`components/components.module.js`**. This is the only place you need to register your component!!

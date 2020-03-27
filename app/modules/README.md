@@ -1,6 +1,6 @@
 # Modules
 
-This directory holds all of the reusable modules needed for this application.  
+This directory holds all modules needed for this application.  
 
 **PLEASE NOTE** that these modules are **not** used in the same way as the components found within the `/components` directory. These modules are **NOT GLOBAL**, meaning these modules are used for specific functionalities of the application (ie. for an **entry**).
 

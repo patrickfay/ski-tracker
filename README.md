@@ -5,49 +5,40 @@ This is an AngularJS (v1.7.5) application that allows a user to document their d
 This README has sections on the following:
 
 * General Description
+* Application Data
 * Application Functionality
 * Application Directory & File Structure
 * Gulp Commands
 
 ## General Description
 
-This application is comprised of a few reusable components that makes the application small and efficient. The goal is to maintain a simple and good looking GUI that allows the user to easily navigate and or filter through large sets of data. The displayed data will not cause poor page performance (unless the user has skied a ridiculous number of days and decides to view all data at one time... but hey why would a user do what the developer expects?).
+This application is comprised of a few reusable components that makes the application small and efficient. The goal is to maintain a simple and good looking GUI that allows the user to easily navigate and or filter through large sets of data (we also want the applicaiton to be scalable, readable, and easily navigatable for any developer working on it in the future). Since there is a possibility for the user to have a very large set of data for their ski season, the application only gets and displays data the user wants to view (ie. there must be a click on an entry to view all data the entry object contains). Therefore the displayed data does not cause poor page performance  (unless the user has skied a ridiculous number of days and decides to view all data at one time... but hey why would a user do what the developer expects?).
+
+## Application Data
 
 Since there is not any access to an external server to store data, this application requires the user to upload and download a JSON file. That file contains data that the application displays and manages.
 
+All user data is be stored within the service `userDataService`. This data **can** be manipulated by the user through the application's interface.
+
+All ski area data is stored within the service `skiAreaService`. This data **cannot** be manipulated by the user. If you (the developer) want to update ski area data, add to it, or remove some of it you must manually update this data within `./app/sevices/ski-area/skiArea.service.js`.
+
 ## Application Functionality
 
-See the main functionality for this application below:
+Main functionality for this application:
 
-* Upload JSON file of data
-* View/Filter data
-* Features for an **entry** - *(see definition of an entry in the section titled 'Definition of an Entry')*
+* Upload JSON file of entry data
+* Features for an **entry**
   * Add new **entry** for a day of Skiing
   * Update any **entry**
   * Delete any **entry**
-* Write data to JSON file for user to store on their local machine
+* View/Filter entry data
+* Write entry data to JSON file for user to store on their local machine
 
-### Definition of an Entry
-
-An **entry** represents one day of skiing for the user and stores the following data on the user's day:
-
-* Date
-  * Use's uib-datepicker (and consiquently a JS Date obj) to allow user to select a date in the past. Default value is be curr date
-* Ski Area
-  * The user is able to select ski areas from a list
-  * A Ski Area object also contains other info about the ski area (state, etc.)
-* Who the user skied with (if anyone)
-  * Maintain people the user skied with. Each person is stored and be selectable for the user and the user can also be able to add a new 'person' they skied with.
-* Stats from their day
-  * Vertical, distance skied, top speed, highest/lowest altitude
-* Description
-  * A descritption is a string and hold the user's description for their day. Depending on the user this description can be different (what happened in that day, snow conditions, etc.)
-
-**NOTE** - To find the object model for an entry, please see (dir location (likely to be within `./services`))
+For a description of an **entry** object and to see it's object model, please refer to the `userDataService` README (`./app/services/user-data`).
 
 ## Application Directory & File Structure
 
-Please look over the directory and file structe of this application to gain a sense of how this applicaiton is being built and how to add to it.
+Please look over the directory and file structe of this application to gain a sense of how this applicaiton is built and how to add to it.
 
 ```text
 + app
@@ -91,11 +82,11 @@ Please look over the directory and file structe of this application to gain a se
 | |
 | + theme                           SCSS global style rules
 | |
-| + views                           Components used as views
-| | + componentB
-| | | componentB.component.html
-| | | componentB.component.js
-| | | componentB.component.scss
+| + views                           Views utilize a controller, a template, and SASS styling file
+| | + viewA
+| | | viewA.html
+| | | viewA.controller.js
+| | | viewA.scss
 | | `
 | | + ...
 | | |
@@ -110,9 +101,11 @@ Please look over the directory and file structe of this application to gain a se
 `
 ```
 
+**NOTE** - All major directories within this applicaiton contain two files, `dirName.module.js` and `dirName.scss`. If you are generating a new component, directive, service, or whatever within these major directories you are only required to register your newly generated files within the two mentioned files!!
+
 ## Gulp Commands
 
-This application uses a gulp file for devlopment and building the applicaiton.  
+This application uses a gulp file for development and building the applicaiton.  
 There are **two** main gulp tasks you can run from the terminal. You will need to enter these commands from the root directory of this applicaiton.
 
 This application will be hosted on [localhost:3001](http://localhost:3001)

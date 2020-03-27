@@ -79,7 +79,7 @@ angular.module('skiTrackerApp')
     $ctrl.removeInvalid = (_fieldName) => {
       let _index = $ctrl.invalidInputFields.indexOf(_fieldName);
       if (_index > -1) $ctrl.invalidInputFields.splice(_index, 1);
-    }
+    };
 
     /**
      * Returns true if user's input is valid for entry creation, else returns false.
