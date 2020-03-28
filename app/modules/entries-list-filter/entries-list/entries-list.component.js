@@ -1,6 +1,6 @@
 angular.module('skiTrackerApp')
   .component('entriesList', {
-    templateUrl: './modules/entry/entries-list/entries-list.component.html',
+    templateUrl: './modules/entries-list-filter/entries-list/entries-list.component.html',
     controller: 'entriesListCtrl',
   })
 
@@ -8,7 +8,7 @@ angular.module('skiTrackerApp')
     $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('in entriesList component');
+      console.log('in entriesList main component');
     };
 
   });

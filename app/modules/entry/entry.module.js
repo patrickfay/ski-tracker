@@ -1,3 +1,2 @@
-require('./entries-filter/entries-filter.component');
-require('./entries-list/entries-list.component');
+require('./edit-entry/edit-entry.component');
 require('./input-entry/input-entry.component');

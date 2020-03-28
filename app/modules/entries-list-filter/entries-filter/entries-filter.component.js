@@ -1,6 +1,6 @@
 angular.module('skiTrackerApp')
   .component('entriesFilter', {
-    templateUrl: './modules/entry/entries-filter/entries-filter.component.html',
+    templateUrl: './modules/entries-list-filter/entries-filter/entries-filter.component.html',
     controller: 'entriesFilterCtrl',
   })
 
