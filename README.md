@@ -12,15 +12,20 @@ This README has sections on the following:
 
 ## General Description
 
-This application is comprised of a few reusable components that makes the application small and efficient. The goal is to maintain a simple and good looking GUI that allows the user to easily navigate and or filter through large sets of data (we also want the applicaiton to be scalable, readable, and easily navigatable for any developer working on it in the future). Since there is a possibility for the user to have a very large set of data for their ski season, the application only gets and displays data the user wants to view (ie. there must be a click on an entry to view all data the entry object contains). Therefore the displayed data does not cause poor page performance  (unless the user has skied a ridiculous number of days and decides to view all data at one time... but hey why would a user do what the developer expects?).
+This application is used to allow a user to document their days of skiing/snowboarding over one or more ski seasons.
+
+This application is comprised of a few reusable components that makes the application small and efficient. The goal is to maintain a simple and good looking GUI that allows the user to easily navigate and or filter through large sets of data (we also want the applicaiton to be scalable, readable, and easily navigatable for any developer working on it in the future).  
+Since there is a possibility for the user to have a very large set of data for their ski season, the application only gets and displays data the user wants to view (ie. there must be a user triggered event to view more specific data). Therefore the displayed data does not cause poor page performance  (unless the user has skied a ridiculous number of days and decides to view all data at one time... but hey why would a user do what the developer expects?).
 
 ## Application Data
 
-Since there is not any access to an external server to store data, this application requires the user to upload and download a JSON file. That file contains data that the application displays and manages.
+Since there is no access to an external server to store data, this application requires the user to upload and download a JSON file of data. That file contains data that the application displays and manages. If the user does not have a JSON file of data, they can start fresh and generate their own data by simply interacting with the application.
 
-All user data is be stored within the service `userDataService`. This data **can** be manipulated by the user through the application's interface.
+Global app data is stored in two main services, one for **User Data**, and the other for **Ski Area** data.
 
-All ski area data is stored within the service `skiAreaService`. This data **cannot** be manipulated by the user. If you (the developer) want to update ski area data, add to it, or remove some of it you must manually update this data within `./app/sevices/ski-area/skiArea.service.js`.
+All **user data** is stored within the service `userDataService`. This data **can** be manipulated by the user through the application's interface.
+
+All **ski area** data is stored within the service `skiAreaService`. This data **cannot** be manipulated by the user. If you (the developer) want to update ski area data, add to it, or remove some of it you must manually update this data within `./app/sevices/ski-area/skiArea.service.js`.
 
 ## Application Functionality
 
@@ -53,7 +58,7 @@ Please look over the directory and file structe of this application to gain a se
 | | components.module.js            All components module definition
 | | components.scss                 SCSS wrapper for all components styles
 | `
-| + directives                      App Global Directives (custom dropdowns, etc.)
+| + directives                      App Global Directives
 | | + directiveA
 | | | directiveA.directive.html
 | | | directiveA.directive.js
