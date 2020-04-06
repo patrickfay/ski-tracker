@@ -34,7 +34,8 @@ UserDataObj: {
 }
 ```
 
-Below is the object model for the `Entry` object:
+Below is the object model for the `Entry` object.  
+Please note that each entry object must have a unique date. This is checked for when adding a new entry object to the user's data.
 
 ```javascript
 EntryObj: {

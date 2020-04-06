@@ -34,13 +34,42 @@ angular.module('skiTrackerApp')
 
     /**
      * Add a new ski entry to userData.entries.
-     * This function adds a NEW ski entry to the user's array fo entries.
      * This function should only be called when the user has manually entered data for a new entry (likely using the 'input-entry' component)
+     * Each entry must have a unique date.
      * 
      * @param {entry} _entry An entry for a ski day.
+     * @returns {boolean} true if a new entry was successfully added to user data, else returns false.
      */
     $service.addEntry = (_entry) => {
-      $service.userData.entries.unshift(_entry);
+      let _entryAdded = false;
+
+      // each entry must have a unique date
+      if ($service.getEntryByDate(_entry.date) === null) {
+        $service.userData.entries.unshift(_entry);
+        _entryAdded = true;
+      }
+
+      return _entryAdded;
+    };
+
+    /**
+     * Return an entry object who's date equal to the date passed as a parameter.
+     * We use dates as a unique identifier for entries. If no date matches the parameter return null
+     * 
+     * @param {Date} _date A date object.
+     * @returns {entry} An entry with the same date as _date. If no dates match, return null.
+     */
+    $service.getEntryByDate = (_date) => {
+      let _allEntries = $service.getAllEntries();
+
+      // iterate over all entries and return entry obj if it's date is same as param
+      for (let i = 0; i < _allEntries.length; i++) {
+        if (_allEntries[i].date.getTime() === _date.getTime()) {
+          return _allEntries[i];
+        }
+      }
+
+      return null;
     };
 
     /**
@@ -48,7 +77,7 @@ angular.module('skiTrackerApp')
      * 
      * @returns {array<entry>} An array of all the user's ski entries.
      */
-    $service.getEntries = () => {
+    $service.getAllEntries = () => {
       return $service.userData.entries;
     };
 
