@@ -50,7 +50,7 @@ angular.module('skiTrackerApp')
     $scope.testEntryObj = {
       date: getOffestDate(-15),
       day: null,
-      description: 'Beautiful warm sunny day. Was talking with John Joe about job at Kryiba in AM so got to Solitude around noon. Barely anyone there. They reported 13" from Sunday. Hiked up evergreen and came down towards open bol on side with usually traverse for the first time. Wow. Powder woohoo! Even tho it was warm, sun prob never hits that aspect, so nice!! Did that again and then got a usual burrito.',
+      description: 'Beautiful warm sunny day. Got to Solitude around noon. Barely anyone there. They reported 13" from Sunday. Hiked up evergreen and came down towards open bol on side with usually traverse for the first time. Wow. Powder woohoo! Even tho it was warm, sun prob never hits that aspect, so nice!! Did that again and then got a usual burrito.',
       skiArea: skiAreaService.getSkiAreaByName('Solitude'),
       skiedWith: ['Erin', 'Dad'],
       stats: {

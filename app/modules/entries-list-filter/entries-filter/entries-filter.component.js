@@ -8,7 +8,7 @@ angular.module('skiTrackerApp')
     $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('in entriesFilter component');
+      // console.log('in entriesFilter component');
     };
 
   });
