@@ -45,7 +45,8 @@ angular.module('skiTrackerApp')
 
       // each entry must have a unique date
       if ($service.getEntryByDate(_entry.date) === null) {
-        $service.userData.entries.unshift(_entry);
+        $service.userData.entries.push(_entry);
+        setEntriesDays();
         _entryAdded = true;
       }
 
@@ -60,7 +61,7 @@ angular.module('skiTrackerApp')
      * @returns {entry} An entry with the same date as _date. If no dates match, return null.
      */
     $service.getEntryByDate = (_date) => {
-      let _allEntries = $service.getAllEntries();
+      let _allEntries = $service.userData.entries;
 
       // iterate over all entries and return entry obj if it's date is same as param
       for (let i = 0; i < _allEntries.length; i++) {
@@ -70,6 +71,23 @@ angular.module('skiTrackerApp')
       }
 
       return null;
+    };
+
+    /**
+     * Returns an array of all Entry objs with only data needed for a collapsed entry in the entries-list.
+     * This method is used so we are not constantly storing a large amount of data within the entries-dashboard.
+     * We only get all data for an entry when the user wants to see all data for that entry.
+     * 
+     * @returns {array<simpleEntry>} An array of simpleEntry objects representing all entry objects a user has.
+     */
+    $service.getAllSimpleEntries = () => {
+      return $service.userData.entries.map((_entry) => {
+        return {
+          date: _entry.date,
+          day: _entry.day,
+          skiArea: _entry.skiArea
+        };
+      });
     };
 
     /**
@@ -98,4 +116,22 @@ angular.module('skiTrackerApp')
       $service.userData.entries = [];
       $service.userData.skiPartners = [];
     };
+
+
+    /**
+     * Sets each entries 'day' field.
+     * The 'day' field represents which day of the ski season it is for the user (ie. first (1), tenth (10), etc.)
+     * This function is called each time a new entry is added by the user.
+     */
+    function setEntriesDays() {
+      // sort entries by date (past to present)
+      $service.userData.entries.sort((a, b) => {
+        return a.date.getTime() - b.date.getTime();
+      });
+
+      // update each entries 'day' field based on new index in entries arr
+      for (let i = 0; i < $service.userData.entries.length; i++) {
+        $service.userData.entries[i].day = i + 1;
+      }
+    }
   });

@@ -17,13 +17,15 @@ To find out more about each function (description, params, returns) read each fu
 * setEntries()
 * addSkiPartner()
 * addEntry()
-* getEntries()
+* getEntryByDate()
+* getAllSimpleEntries()
+* getAllEntries()
 * getSkiPartners()
 * clearData()
 
 ## userData Object's and their Models
 
-It is important to understand the object models used for storing user data prior to attempting to use and update the data. Below are object models used to store user data.
+It is important to understand the object models used for storing user data prior to attempting to use and update the data. There are two main types of objects used by this application that this service returns to it, the `entry` object and the `simpleEntry` object.
 
 Below is the object model the the `userData` object:
 
@@ -34,7 +36,7 @@ UserDataObj: {
 }
 ```
 
-Below is the object model for the `Entry` object.  
+Below is the object model for the `Entry` object. This object holds all data related to an entry for a ski day.  
 Please note that each entry object must have a unique date. This is checked for when adding a new entry object to the user's data.
 
 ```javascript
@@ -45,6 +47,16 @@ EntryObj: {
   skiArea: SkiAreaObj,
   skiedWith: Array<String>,
   stats: StatsObj
+}
+```
+
+Below is the object model for the simple entry object. This object is primarily used for the `entries-list` component to minimize the amount of data held by the component. We only get a full `entry` object when the user wants to see all data related to an entry. Before that, we use the data in this object below to 'preview' the entry to the user without holding all of its data within a component local var.
+
+```javascript
+SimpleEntryObj: {
+  date: Date,
+  day: Number,
+  skiArea: SkiAreaObj
 }
 ```
 
