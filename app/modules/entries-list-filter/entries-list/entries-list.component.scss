@@ -17,7 +17,7 @@
 
       border-radius: $border-rad;
       background-color: lighten($orange, 46%);
-      color: lighten($title-blue, 15%);
+      color: darken($powder-blue, 15%);
       font-size: 24px;
       font-weight: 600;
       text-align: center;
@@ -29,7 +29,7 @@
     }
 
     &-body {
-      // border: solid 1px purple;
+      padding: 5px;
     }
   }
 }
