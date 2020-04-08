@@ -54,23 +54,12 @@ angular.module('skiTrackerApp')
     };
 
     /**
-     * Return an entry object who's date equal to the date passed as a parameter.
-     * We use dates as a unique identifier for entries. If no date matches the parameter return null
+     * Get all of the user's ski entries.
      * 
-     * @param {Date} _date A date object.
-     * @returns {entry} An entry with the same date as _date. If no dates match, return null.
+     * @returns {array<entry>} An array of all the user's ski entries.
      */
-    $service.getEntryByDate = (_date) => {
-      let _allEntries = $service.userData.entries;
-
-      // iterate over all entries and return entry obj if it's date is same as param
-      for (let i = 0; i < _allEntries.length; i++) {
-        if (_allEntries[i].date.getTime() === _date.getTime()) {
-          return _allEntries[i];
-        }
-      }
-
-      return null;
+    $service.getAllEntries = () => {
+      return $service.userData.entries;
     };
 
     /**
@@ -91,12 +80,30 @@ angular.module('skiTrackerApp')
     };
 
     /**
-     * Get all of the user's ski entries.
+     * Return an entry object who's date equal to the date passed as a parameter.
+     * We use dates as a unique identifier for entries. If no date matches the parameter return null
      * 
-     * @returns {array<entry>} An array of all the user's ski entries.
+     * @param {Date} _date A date object.
+     * @returns {entry} An entry with the same date as _date. If no dates match, return null.
      */
-    $service.getAllEntries = () => {
-      return $service.userData.entries;
+    $service.getEntryByDate = (_date) => {
+      let _allEntries = $service.userData.entries;
+
+      // iterate over all entries and return entry obj if it's date is same as param
+      for (let i = 0; i < _allEntries.length; i++) {
+        if (_allEntries[i].date.getTime() === _date.getTime()) {
+          return _allEntries[i];
+        }
+      }
+
+      return null;
+    };
+
+    /**
+     * Returns an array of season objects with sorted entries and other season data.
+     */
+    $service.getSeasons = () => {
+
     };
 
     /**
