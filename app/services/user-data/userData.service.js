@@ -12,23 +12,12 @@ angular.module('skiTrackerApp')
       SEASON OBJECT MODEL
       {
         title: str      // ex. '2019 - 2020 SEASON'
-        minDate: num    // a rep of a JS date obj date.getTime(). Reps the first day of the season (aug 1 whatever year)
-        maxDate: num    // a rep of a JS date obj date.getTime(). Reps the last day of the season (aug 1 whatever year + 1)
+        minDate: num    // a rep of a JS date obj date.getTime(). Reps the first day of the season (sept 1 whatever year)
+        maxDate: num    // a rep of a JS date obj date.getTime(). Reps the last day of the season (sept 1 whatever year + 1)
         entries: arr    // array of all entries in this season
       }
-    
     */
 
-
-    /**
-     * Set userData.seasons to an array of ski season objects.
-     * This function should only be called when to add data uploaded by the user.
-     * 
-     * @param {array<entry>} _seasons An array of ski day entries.
-     */
-    $service.setSeasons = (_seasons) => {
-      $service.userData.seasons = _seasons;
-    };
 
     /**
      * Add a new ski partner to userData.skiPartners.
@@ -85,6 +74,15 @@ angular.module('skiTrackerApp')
     };
 
     /**
+     * Clear all of the user's ski data.
+     * PLEASE ensure to add an alert asking the user if they are sure they would like to do this.
+     */
+    $service.clearData = () => {
+      $service.userData.seasons = [];
+      $service.userData.skiPartners = [];
+    };
+
+    /**
      * Returns an array of season objects with sorted entries and other season data.
      */
     $service.getAllSeasons = () => {
@@ -104,7 +102,7 @@ angular.module('skiTrackerApp')
           maxDate: _season.maxDate,
           minDate: _season.minDate,
           title: _season.title,
-          entry: _season.entries.map(_entry => {
+          entries: _season.entries.map(_entry => {
             return {
               date: _entry.date,
               day: _entry.day,
@@ -123,13 +121,13 @@ angular.module('skiTrackerApp')
      * @returns {entry} An entry with the same date as _date. If no dates match, return null.
      */
     $service.getEntryByDate = (_date) => {
-      let _allEntries = $service.userData.seasons;
+      let _allSeasons = $service.userData.seasons;
 
       // iterate over each season and its entries until an entry with the same date as _date is found
-      for (let i = 0; i < _allEntries.length; i++) {
-        for (let j = 0; j < _allEntries[i].entries.length; j++) {
-          if (_allEntries[i].entries[j].date.getTime() === _date.getTime()) {
-            return _allEntries[i].entries[j];
+      for (let i = 0; i < _allSeasons.length; i++) {
+        for (let j = 0; j < _allSeasons[i].entries.length; j++) {
+          if (_allSeasons[i].entries[j].date.getTime() === _date.getTime()) {
+            return _allSeasons[i].entries[j];
           }
         }
       }
@@ -147,12 +145,40 @@ angular.module('skiTrackerApp')
     };
 
     /**
-     * Clear all of the user's ski data.
-     * PLEASE ensure to add an alert asking the user if they are sure they would like to do this.
+     * Removes an entry using an entry's date. Dates are unique ids for entries.
+     * If the entry was the last entry for a season, remove the season object from $service.userData.seasons.
+     * 
+     * @param {Date} _date The date of an entry object.
+     * @returns {array<simpleEntry>} Returns a new array of season objs with simpleEntry objs. If no item was removed, return null.
      */
-    $service.clearData = () => {
-      $service.userData.seasons = [];
-      $service.userData.skiPartners = [];
+    $service.removeEntry = (_date) => {
+      let _allSeasons = $service.userData.seasons;
+      let _rmEntrySeason = null;
+
+      // iterate over all seasons and entries until the entry to be removed is found
+      for (let i = 0; i < _allSeasons.length; i++) {
+        for (let j = 0; j < _allSeasons[i].entries.length; j++) {
+
+          if (_allSeasons[i].entries[j].date.getTime() === _date.getTime()) {
+            _allSeasons[i].entries.splice(j, 1);
+            _rmEntrySeason = _allSeasons[i];
+            break;
+          }
+
+        }
+      }
+
+      // if an entry was removed
+      if (!!_rmEntrySeason) {
+        // if the season obj containing removed entry now has no entries, remove the season obj, else reorganize the season's entries
+        _rmEntrySeason.entries.length === 0 ? _allSeasons.splice(_allSeasons.indexOf(_rmEntrySeason), 1) : setEntriesDays(_rmEntrySeason.entries);
+
+        // return all seasons containing simpleEntry objs
+        return $service.getAllSeasonsSimple();
+      }
+
+      // return null if no entry was removed
+      return null;
     };
 
 
