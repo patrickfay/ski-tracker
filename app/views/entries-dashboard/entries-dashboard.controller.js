@@ -4,8 +4,18 @@ angular.module('skiTrackerApp')
     // add mock data
     addMockData();
 
-    $scope.allEntries = userDataService.getAllSimpleEntries();  // all entries
-    $scope.displayedEntries = $scope.allEntries;                // filtered entries passed to entries-list to display
+    $scope.allSeasons = userDataService.getAllSeasonsSimple();  // all entries
+    $scope.displayedEntries = $scope.allSeasons;                // filtered entries passed to entries-list to display
+
+
+    // TEST REMOVE ENTRY
+    let removed1 = userDataService.removeEntry($scope.allSeasons[0].entries[0].date);
+    let removed2 = userDataService.removeEntry(removed1[0].entries[0].date);
+    let removed3 = userDataService.removeEntry(removed2[0].entries[0].date);
+
+    console.log(removed1);
+    console.log(removed2);
+    console.log(removed3);
 
 
     // Used for testing the entries-list DELETE WHEN DONE TESTING
@@ -14,13 +24,18 @@ angular.module('skiTrackerApp')
       userDataService.addSkiPartner('Dad');
 
       // add 15 entries (w/ diff dates) to user entries
-      for (let i = 0; i > -15; i--) userDataService.addEntry(getMockEntry(i));
+      // for (let i = 0; i > -15; i--) userDataService.addEntry(getMockEntry(i));
 
       userDataService.addEntry(getMockEntry(-20));
       userDataService.addEntry(getMockEntry(2));
+      userDataService.addEntry(getMockEntry(-450));
       userDataService.addEntry(getMockEntry(-18));
       userDataService.addEntry(getMockEntry(-27));
+      userDataService.addEntry(getMockEntry(-400));
       userDataService.addEntry(getMockEntry(-24));
+      userDataService.addEntry(getMockEntry(-470));
+
+      // console.log(userDataService.getAllSeasons());
     }
 
     // TODO - delete when done testing entries-list

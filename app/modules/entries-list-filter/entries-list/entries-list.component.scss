@@ -1,0 +1,35 @@
+.st-el {
+  &-entries-container {
+
+  }
+
+  &-season {
+    $border-rad: 3px;
+
+    &-container {
+      // poss leave spacing between each season container?
+      border: solid 1px lighten($orange, 10%);
+      border-radius: $border-rad;
+    }
+
+    &-header {
+      @include padding-y(5px);
+
+      border-radius: $border-rad;
+      background-color: lighten($orange, 46%);
+      color: lighten($title-blue, 15%);
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+
+      &.expanded {
+        border-radius: $border-rad $border-rad 0 0;
+        border-bottom: solid 1px darken($powder-blue, 10%);
+      }
+    }
+
+    &-body {
+      // border: solid 1px purple;
+    }
+  }
+}

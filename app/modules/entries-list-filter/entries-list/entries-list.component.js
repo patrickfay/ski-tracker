@@ -1,7 +1,7 @@
 angular.module('skiTrackerApp')
   .component('entriesList', {
     bindings: {
-      entriesArr: '<'
+      seasonsArr: '<'
     },
     templateUrl: './modules/entries-list-filter/entries-list/entries-list.component.html',
     controller: 'entriesListCtrl',
@@ -11,7 +11,7 @@ angular.module('skiTrackerApp')
     $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('in entriesList main component with our arr of entries', $ctrl.entriesArr);
+      console.log('in entriesList main component with our arr of seasons and entries', $ctrl.seasonsArr);
     };
 
   });
