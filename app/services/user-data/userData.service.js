@@ -8,16 +8,6 @@ angular.module('skiTrackerApp')
       skiPartners: []
     };
 
-    /*
-      SEASON OBJECT MODEL
-      {
-        title: str      // ex. '2019 - 2020 SEASON'
-        minDate: num    // a rep of a JS date obj date.getTime(). Reps the first day of the season (sept 1 whatever year)
-        maxDate: num    // a rep of a JS date obj date.getTime(). Reps the last day of the season (sept 1 whatever year + 1)
-        entries: arr    // array of all entries in this season
-      }
-    */
-
 
     /**
      * Add a new ski partner to userData.skiPartners.
@@ -48,7 +38,7 @@ angular.module('skiTrackerApp')
 
       // find the season _entry belongs in using dates
       for (let i = 0; i < _allSeasons.length; i++) {
-        if (_allSeasons[i].minDate < _entry.date.getTime() && _allSeasons[i].maxDate > _entry.date.getTime()) {
+        if (_allSeasons[i].startDate < _entry.date.getTime() && _allSeasons[i].endDate > _entry.date.getTime()) {
           _entrySeason = _allSeasons[i];
           break;
         }
@@ -60,7 +50,7 @@ angular.module('skiTrackerApp')
         _entrySeason = _allSeasons[_allSeasons.push(createNewSeasonObj(_entry.date)) - 1];
         
         // sort all seasons by year (old to new)
-        _allSeasons.sort((a, b) => a.minDate - b.minDate);
+        _allSeasons.sort((a, b) => a.startDate - b.startDate);
       }
 
       // push entry object to the correct season's entries array (each entry must have a unique date)
@@ -99,9 +89,9 @@ angular.module('skiTrackerApp')
     $service.getAllSeasonsSimple = () => {
       return $service.userData.seasons.map(_season => {
         return {
-          maxDate: _season.maxDate,
-          minDate: _season.minDate,
           title: _season.title,
+          startDate: _season.startDate,
+          endDate: _season.endDate,
           entries: _season.entries.map(_entry => {
             return {
               date: _entry.date,
@@ -196,17 +186,17 @@ angular.module('skiTrackerApp')
       _startEndDate.setMonth(8);
       _startEndDate.setDate(1);
 
-      let _minDate = new Date(_startEndDate.getTime());
-      let _maxDate = new Date(_startEndDate.getTime());
+      let _startDate = new Date(_startEndDate.getTime());
+      let _endDate = new Date(_startEndDate.getTime());
 
-      // update min or max date by +/- one year based on the value of _date
-      _date.getTime() >= _startEndDate.getTime() ? _maxDate.setFullYear(_startEndDate.getFullYear() + 1) : _minDate.setFullYear(_startEndDate.getFullYear() - 1);
+      // update start or end date by +/- one year based on the value of _date
+      _date.getTime() >= _startEndDate.getTime() ? _endDate.setFullYear(_startEndDate.getFullYear() + 1) : _startDate.setFullYear(_startEndDate.getFullYear() - 1);
 
       // return a new season object
       return {
-        title: `${_minDate.getFullYear()} - ${_maxDate.getFullYear()} Season`,
-        minDate: _minDate.getTime(),
-        maxDate: _maxDate.getTime(),
+        title: `${_startDate.getFullYear()} - ${_endDate.getFullYear()} Season`,
+        startDate: _startDate.getTime(),
+        endDate: _endDate.getTime(),
         entries: []
       };
     }
