@@ -1,17 +1,27 @@
 <div class="st-el-entries-container">
-  <!-- TODO - add container for season (year) -->
 
-  <div class="st-el-season-container">
-    <div class="st-el-season-header expanded">
-      <!-- TODO - imp functionality for splitting seasons and place season here -->
-      2019 - 2020 SEASON
+  <!-- iterate over each season -->
+  <div ng-repeat="season in $ctrl.seasonsArr">
+
+    <div class="st-el-season-container">
+      <div class="st-el-season-header"
+           ng-class="{'expanded': season.isExpanded}"
+           ng-click="$ctrl.expandSeason(season)">
+        {{season.title}}
+      </div>
+
+      <div class="st-el-season-body"
+           ng-class="{'hidden': !season.isExpanded}">
+        <p>I am the season's body. Here's some entry highlights yo:</p>
+
+        <div class="st-el-season-test-entry-container"
+             ng-repeat="entry in season.entries">
+          <p>{{entry.day}}</p>
+          <p>{{entry.date | date: 'longDate'}}</p>
+          <p>{{entry.skiArea.name}}</p>
+        </div>
+      </div>
     </div>
 
-    <div class="st-el-season-body">
-      <p>I am the season's body</p>
-    </div>
   </div>
-
-
-  <!-- {{$ctrl.seasonsArr[0].date | date: 'MMMM d'}} -->
 </div>
