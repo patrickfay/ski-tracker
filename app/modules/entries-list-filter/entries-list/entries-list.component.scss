@@ -43,7 +43,7 @@
     &-container {
       border-bottom: solid 1px $powder-blue;
       background-color: lighten($powder-blue, 32%);
-      padding: 10px 0px;
+      padding: 8px 0px;
 
       &:last-of-type {
         border-bottom: none;
@@ -56,40 +56,30 @@
 
       display: flex;
 
-      &-items {
+      &-items-row {
+        width: 100%;
         display: flex;
-        align-items: center;
-        width: 75%;
-        font-size: 18px;
-
-        & > div {
-          margin-left: 15px;
-
-          &:first-of-type {
-            margin-left: 0;
-          }
-        }
-      }
-
-      &-day-date-container {
-        display: flex;
-        width: 60%;
+        flex-wrap: wrap;
       }
 
       &-day {
         color: $title-blue;
         font-weight: 600;
         margin-left: 10px;
-
       }
       
       &-date {
+        font-size: 12px;
         margin-left: 10px;
       }
 
       &-ski-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: $title-blue;
-        font-weight: 600;
+        font-size: 20px;
+        text-align: center;
       }
     }
   }
