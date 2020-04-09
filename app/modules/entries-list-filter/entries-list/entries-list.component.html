@@ -5,9 +5,22 @@
     <div class="st-el-season-container">
       <!-- season header -->
       <div class="st-el-season-header"
-           ng-class="{'expanded': season.isExpanded}"
-           ng-click="$ctrl.expandSeason(season)">
+           ng-class="{'expanded': season.isExpanded}">
         {{season.title}}
+
+        <!-- expand close icons -->
+        <div class="st-el-season-header-icon-anchor">
+          <div class="st-el-season-header-icon-container"
+               ng-click="$ctrl.expandSeason(season)"
+               uib-tooltip="{{(season.isExpanded ? 'Collapse' : 'Expand') + ' Season'}}"
+               tooltip-class="powder-tooltip"
+               tooltip-append-to-body="true">
+
+            <i class="far fa-caret-square-down" ng-if="!season.isExpanded"></i>
+            <i class="far fa-caret-square-up" ng-if="season.isExpanded"></i>
+
+          </div>
+        </div>
       </div>
 
       <!-- season body -->

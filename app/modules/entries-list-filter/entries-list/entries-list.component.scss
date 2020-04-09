@@ -8,7 +8,7 @@
   // season
   &-season {
     &-container {
-      border: solid 1px lighten($orange, 10%);
+      border: solid 1px lighten($title-blue, 15%);
       border-radius: $border-rad;
       margin-bottom: 20px;
     }
@@ -18,20 +18,33 @@
       @include padding-y(5px);
 
       border-radius: $border-rad;
-      background-color: lighten($orange, 47%);
+      background-color: lighten($orange, 47.5%);
       color: darken($powder-blue, 15%);
       font-size: 24px;
       font-weight: 600;
       text-align: center;
       text-transform: uppercase;
 
-      &:hover {
-        cursor: pointer;
-      }
-
       &.expanded {
         border-radius: $border-rad $border-rad 0 0;
         border-bottom: solid 1px $powder-blue;
+      }
+
+      // expand/close icon in header
+      &-icon {
+        &-anchor {
+          position: relative;
+          float: right;
+        }
+
+        &-container {
+          position: absolute;
+          right: 10px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
 
