@@ -15,26 +15,8 @@
            ng-class="{'hidden': !season.isExpanded}">
 
         <!-- each entry -->
-        <div class="st-el-entry-container"
-             ng-repeat="entry in season.entries">
-
-          <!-- entry header -->
-          <div class="st-el-entry-header">
-            <div class="row st-el-entry-header-items-row">
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="st-el-entry-header-day">Day {{entry.day}}</div>
-                <div class="st-el-entry-header-date">{{entry.date | date: 'mediumDate'}}</div>
-              </div>
-
-              <div class="st-el-entry-header-ski-area col-lg-6 col-md-6 col-sm-6">{{entry.skiArea.name}}</div>
-
-              <!-- TODO - imp entry options (update/delete) when body is expanded -->
-            </div>
-          </div>
-          
-          <!-- TODO - imp entry body -->
-          <!-- <div class="st-el-entry-body"></div> -->
-
+        <div ng-repeat="entry in season.entries">
+          <entries-list-item entry="entry" is-last="$last"></entries-list-item>
         </div>
       </div>
     </div>

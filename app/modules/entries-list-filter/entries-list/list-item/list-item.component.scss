@@ -1,0 +1,70 @@
+.st-eli {
+  $border-rad: 3px;
+
+  // each entry container
+  &-container {
+    border-bottom: solid 1px $powder-blue;
+    background-color: lighten($powder-blue, 32%);
+    padding: 8px 0px;
+
+    &.last-item {
+      border-bottom: none;
+      border-radius: 0 0 $border-rad $border-rad;
+    }
+  }
+
+  // entry headers
+  &-header {
+    @include padding-x(8px);
+
+    display: flex;
+
+    // added for bootstrap row for header items to make col heights the same
+    &-items-row {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-day {
+      color: $title-blue;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+    
+    &-date {
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+    &-ski-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $title-blue;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    &-icons-container {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      padding-right: 0;
+      color: lighten($title-blue, 15%);
+
+      & > i {
+        padding: 5px;
+
+        &:hover {
+          color: $title-blue;
+          cursor: pointer;
+        }
+
+        &:last-of-type {
+          margin-left: 10%;
+        }
+      }
+    }
+  }
+}

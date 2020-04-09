@@ -13,8 +13,6 @@ angular.module('skiTrackerApp')
     $ctrl.$onInit = () => {
       $ctrl.seasonsArr.forEach(_season => _season.isExpanded = false);
       $ctrl.seasonsArr[0].isExpanded = true;
-
-      console.log('in entriesList main component with our arr of seasons and entries', $ctrl.seasonsArr);
     };
 
     
@@ -22,3 +20,5 @@ angular.module('skiTrackerApp')
     $ctrl.expandSeason = (_season) => _season.isExpanded = !_season.isExpanded;
 
   });
+
+require('./list-item/list-item.component');

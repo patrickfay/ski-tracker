@@ -5,14 +5,15 @@
 
   }
 
+  // season
   &-season {
-
     &-container {
       border: solid 1px lighten($orange, 10%);
       border-radius: $border-rad;
       margin-bottom: 20px;
     }
 
+    // season header
     &-header {
       @include padding-y(5px);
 
@@ -38,49 +39,6 @@
       // padding: 5px;
     }
   }
-
-  &-entry {
-    &-container {
-      border-bottom: solid 1px $powder-blue;
-      background-color: lighten($powder-blue, 32%);
-      padding: 8px 0px;
-
-      &:last-of-type {
-        border-bottom: none;
-        border-radius: 0 0 $border-rad $border-rad;
-      }
-    }
-
-    &-header {
-      @include padding-x(8px);
-
-      display: flex;
-
-      &-items-row {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      &-day {
-        color: $title-blue;
-        font-weight: 600;
-        margin-left: 10px;
-      }
-      
-      &-date {
-        font-size: 12px;
-        margin-left: 10px;
-      }
-
-      &-ski-area {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $title-blue;
-        font-size: 20px;
-        text-align: center;
-      }
-    }
-  }
 }
+
+@import './list-item/list-item.component';

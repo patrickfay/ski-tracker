@@ -1,0 +1,26 @@
+<div class="st-eli-container" ng-class="{'last-item': $ctrl.isLast}">
+
+  <!-- entry header -->
+  <div class="st-eli-header">
+    <div class="row st-eli-header-items-row">
+      <!-- entry day and date -->
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="st-eli-header-day">Day {{$ctrl.entry.day}}</div>
+        <div class="st-eli-header-date">{{$ctrl.entry.date | date: 'mediumDate'}}</div>
+      </div>
+
+      <!-- ski area name -->
+      <div class="st-eli-header-ski-area col-lg-6 col-md-6 col-sm-6">{{$ctrl.entry.skiArea.name}}</div>
+
+      <!-- edit delete icons (only show when expanded) -->
+      <div class="st-eli-header-icons-container col-lg-3 col-md-3 col-sm-3"
+           ng-class="{'hidden': !$ctrl.entry.isExpanded}">
+        <i class="far fa-edit" title="edit"></i>
+        <i class="far fa-trash-alt" title="delete"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO - imp entry body -->
+  <!-- <div class="st-eli-body"></div> -->
+</div>
