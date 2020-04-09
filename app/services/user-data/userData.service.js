@@ -49,8 +49,8 @@ angular.module('skiTrackerApp')
         // push new season obj to _allSeasons and set _entrySeason
         _entrySeason = _allSeasons[_allSeasons.push(createNewSeasonObj(_entry.date)) - 1];
         
-        // sort all seasons by year (old to new)
-        _allSeasons.sort((a, b) => a.startDate - b.startDate);
+        // sort all seasons by year (new to old)
+        _allSeasons.sort((a, b) => b.startDate - a.startDate);
       }
 
       // push entry object to the correct season's entries array (each entry must have a unique date)

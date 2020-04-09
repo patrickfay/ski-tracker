@@ -1,13 +1,13 @@
 .st-el {
+  $border-rad: 3px;
+
   &-entries-container {
 
   }
 
   &-season {
-    $border-rad: 3px;
 
     &-container {
-      // poss leave spacing between each season container?
       border: solid 1px lighten($orange, 10%);
       border-radius: $border-rad;
       margin-bottom: 20px;
@@ -17,8 +17,7 @@
       @include padding-y(5px);
 
       border-radius: $border-rad;
-      background-color: lighten($orange, 46%);
-      // background-color: lighten($powder-blue, 31%);
+      background-color: lighten($orange, 47%);
       color: darken($powder-blue, 15%);
       font-size: 24px;
       font-weight: 600;
@@ -31,20 +30,67 @@
 
       &.expanded {
         border-radius: $border-rad $border-rad 0 0;
-        border-bottom: solid 1px darken($powder-blue, 10%);
+        border-bottom: solid 1px $powder-blue;
       }
     }
 
     &-body {
-      padding: 5px;
+      // padding: 5px;
+    }
+  }
+
+  &-entry {
+    &-container {
+      border-bottom: solid 1px $powder-blue;
+      background-color: lighten($powder-blue, 32%);
+      padding: 10px 0px;
+
+      &:last-of-type {
+        border-bottom: none;
+        border-radius: 0 0 $border-rad $border-rad;
+      }
     }
 
-    &-test-entry-container {
-      border: solid 1px gold;
-      border-radius: 15px;
-      background-color: lighten($powder-blue, 31%);
-      padding: 10px;
-      margin: 10px 5px;
+    &-header {
+      @include padding-x(8px);
+
+      display: flex;
+
+      &-items {
+        display: flex;
+        align-items: center;
+        width: 75%;
+        font-size: 18px;
+
+        & > div {
+          margin-left: 15px;
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+
+      &-day-date-container {
+        display: flex;
+        width: 60%;
+      }
+
+      &-day {
+        color: $title-blue;
+        font-weight: 600;
+        margin-left: 10px;
+
+      }
+      
+      &-date {
+        margin-left: 10px;
+      }
+
+      &-ski-area {
+        color: $title-blue;
+        font-weight: 600;
+      }
     }
   }
 }

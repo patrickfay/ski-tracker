@@ -4,21 +4,29 @@
   <div ng-repeat="season in $ctrl.seasonsArr">
 
     <div class="st-el-season-container">
+      <!-- season header -->
       <div class="st-el-season-header"
            ng-class="{'expanded': season.isExpanded}"
            ng-click="$ctrl.expandSeason(season)">
         {{season.title}}
       </div>
 
+      <!-- season body -->
       <div class="st-el-season-body"
            ng-class="{'hidden': !season.isExpanded}">
-        <p>I am the season's body. Here's some entry highlights yo:</p>
 
-        <div class="st-el-season-test-entry-container"
+        <div class="st-el-entry-container"
              ng-repeat="entry in season.entries">
-          <p>{{entry.day}}</p>
-          <p>{{entry.date | date: 'longDate'}}</p>
-          <p>{{entry.skiArea.name}}</p>
+             
+          <div class="st-el-entry-header">
+
+            <div class="st-el-entry-header-items">
+                <div class="st-el-entry-header-day">Day {{entry.day}}</div>
+                <div class="st-el-entry-header-date">{{entry.date | date: 'mediumDate'}}</div>
+                <div class="st-el-entry-header-ski-area">{{entry.skiArea.name}}</div>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>
