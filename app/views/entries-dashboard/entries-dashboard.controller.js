@@ -17,6 +17,7 @@ angular.module('skiTrackerApp')
       // for (let i = 0; i > -15; i--) userDataService.addEntry(getMockEntry(i));
 
       userDataService.addEntry(getMockEntry(-20));
+      userDataService.addEntry(getMockEntry(-20));
       userDataService.addEntry(getMockEntry(2));
       userDataService.addEntry(getMockEntry(-450));
       userDataService.addEntry(getMockEntry(-18));

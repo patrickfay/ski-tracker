@@ -116,7 +116,7 @@ angular.module('skiTrackerApp')
       // iterate over each season and its entries until an entry with the same date as _date is found
       for (let i = 0; i < _allSeasons.length; i++) {
         for (let j = 0; j < _allSeasons[i].entries.length; j++) {
-          if (_allSeasons[i].entries[j].date.getTime() === _date.getTime()) {
+          if (sameDate(_date, _allSeasons[i].entries[j].date)) {
             return _allSeasons[i].entries[j];
           }
         }
@@ -149,7 +149,7 @@ angular.module('skiTrackerApp')
       for (let i = 0; i < _allSeasons.length; i++) {
         for (let j = 0; j < _allSeasons[i].entries.length; j++) {
 
-          if (_allSeasons[i].entries[j].date.getTime() === _date.getTime()) {
+          if (sameDate(_date, _allSeasons[i].entries[j].date)) {
             _allSeasons[i].entries.splice(j, 1);
             _rmEntrySeason = _allSeasons[i];
             break;
@@ -212,5 +212,23 @@ angular.module('skiTrackerApp')
 
       // update each entries 'day' field based on new index in entries arr
       for (let i = 0; i < _entriesArr.length;) _entriesArr[i].day = ++i;
+    }
+
+    /**
+     * Returns true if the two date objects have the same Year, Month, and Day.
+     * We use this method because date.getTime() accounts for hours, seconds, and milliseconds which
+     * are determined when a date object is generated. We only want unique dates (ie. specific day) so
+     * hours, seconds, and millisecond values of a date object should not determine date equality for this applicaiton.
+     * 
+     * @param {Date} _date1 a JS Date obj 
+     * @param {Date} _date2 a JS Date obj
+     * @returns {Boolean} true if the dates are equal (see desc of equality above) else returns false
+     */
+    function sameDate(_date1, _date2) {
+      return (
+        _date1.getFullYear() === _date2.getFullYear() &&
+        _date1.getMonth() === _date2.getMonth() &&
+        _date1.getDate() === _date2.getDate()
+      );
     }
   });

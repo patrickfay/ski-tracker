@@ -50,8 +50,10 @@ angular.module('skiTrackerApp')
     });
 
 
-    // set values when custom input field values change
+    // set date when new date selected
     $ctrl.setDate = (_value) => $ctrl.entryObj.date = _value;
+
+    // set skied with when skiers are selected
     $ctrl.setSkiedWith = (_value) => $ctrl.entryObj.skiedWith = _value;
 
     // set value of ski area and reset invalidInput var
