@@ -141,7 +141,7 @@ angular.module('skiTrackerApp')
      * @param {Date} _date The date of an entry object.
      * @returns {array<simpleEntry>} Returns a new array of season objs with simpleEntry objs. If no item was removed, return null.
      */
-    $service.removeEntry = (_date) => {
+    $service.removeEntryByDate = (_date) => {
       let _allSeasons = $service.userData.seasons;
       let _rmEntrySeason = null;
 

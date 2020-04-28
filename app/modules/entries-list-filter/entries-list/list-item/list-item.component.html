@@ -1,7 +1,9 @@
-<div class="st-eli-container" ng-class="{'last-item': $ctrl.isLast}">
+<div class="st-eli-container" ng-class="{'st-eli-last-item': $ctrl.isLast}">
 
-  <!-- entry header -->
-  <div class="st-eli-header">
+  <!-- entry list item header (user can't toggle body if they're currently editing an entry) -->
+  <div class="st-eli-header"
+       ng-class="{'st-eli-last-item': $ctrl.isLast && $ctrl.bodyContent === 'none'}"
+       ng-click="$ctrl.bodyContent !== 'edit' && $ctrl.updateBodyView('toggle')">
     <div class="row st-eli-header-items-row">
       <!-- entry day and date -->
       <div class="col-lg-3 col-md-3 col-sm-3">
@@ -14,13 +16,18 @@
 
       <!-- edit delete icons (only show when expanded) -->
       <div class="st-eli-header-icons-container col-lg-3 col-md-3 col-sm-3"
-           ng-class="{'hidden': !$ctrl.entry.isExpanded}">
-        <i class="far fa-edit" title="edit"></i>
-        <i class="far fa-trash-alt" title="delete"></i>
+           ng-class="{'hidden': $ctrl.bodyContent === 'none'}">
+
+        <i class="far fa-edit" ng-click="$ctrl.updateBodyView('edit')" title="edit"></i>
+        <i class="far fa-trash-alt" ng-click="$ctrl.updateBodyView('delete')" title="delete"></i>
+
       </div>
     </div>
   </div>
 
-  <!-- TODO - imp entry body -->
-  <!-- <div class="st-eli-body"></div> -->
+  <!-- entry list item body -->
+  <div class="st-eli-body" ng-class="{'hidden': $ctrl.bodyContent === 'none', 'st-eli-last-item': $ctrl.isLast && $ctrl.bodyContent !== 'none'}">
+    <view-entry ng-if="$ctrl.bodyContent === 'view'"></view-entry>
+    <edit-entry ng-if="$ctrl.bodyContent === 'edit'"></edit-entry>
+  </div>
 </div>

@@ -1,14 +1,15 @@
 angular.module('skiTrackerApp')
   .component('entriesList', {
     bindings: {
-      seasonsArr: '<'
+      seasonsArr: '<',
+      vitalListChange: '&onVitalListChange'
     },
     templateUrl: './modules/entries-list-filter/entries-list/entries-list.component.html',
     controller: 'entriesListCtrl',
   })
 
   .controller('entriesListCtrl', function() {
-    $ctrl = this;
+    let $ctrl = this;
 
     $ctrl.$onInit = () => {
       $ctrl.seasonsArr.forEach(_season => _season.isExpanded = false);
@@ -18,7 +19,6 @@ angular.module('skiTrackerApp')
     
     // expand season container to show body
     $ctrl.expandSeason = (_season) => _season.isExpanded = !_season.isExpanded;
-
   });
 
 require('./list-item/list-item.component');

@@ -4,7 +4,7 @@
   <div ng-repeat="season in $ctrl.seasonsArr">
     <div class="st-el-season-container">
       <!-- season header -->
-      <div class="st-el-season-header"
+      <div class="st-el-season-header" ng-click="$ctrl.callCallback()"
            ng-class="{'expanded': season.isExpanded}">
         {{season.title}}
 
@@ -29,7 +29,7 @@
 
         <!-- each entry -->
         <div ng-repeat="entry in season.entries">
-          <entries-list-item entry="entry" is-last="$last"></entries-list-item>
+          <entries-list-item entry="entry" on-vital-entry-change="$ctrl.vitalListChange({_season: season})" is-last="$last"></entries-list-item>
         </div>
       </div>
     </div>

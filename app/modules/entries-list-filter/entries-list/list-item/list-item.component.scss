@@ -4,20 +4,23 @@
   // each entry container
   &-container {
     border-bottom: solid 1px $powder-blue;
-    background-color: lighten($powder-blue, 32%);
-    padding: 8px 0px;
+  }
 
-    &.last-item {
-      border-bottom: none;
-      border-radius: 0 0 $border-rad $border-rad;
-    }
+  &-last-item {
+    border-bottom: none;
+    border-radius: 0 0 $border-rad $border-rad;
   }
 
   // entry headers
   &-header {
-    @include padding-x(8px);
+    padding: 8px;
 
     display: flex;
+    background: linear-gradient(lighten($grey, 4.5%), lighten($powder-blue, 31%));
+
+    &:hover {
+      cursor: pointer;
+    }
 
     // added for bootstrap row for header items to make col heights the same
     &-items-row {
@@ -66,5 +69,11 @@
         }
       }
     }
+  }
+
+  &-body {
+    border-top: solid 1px darken($grey, 35%);
+    background-color: lighten($grey, 4%);
+    padding: 8px;
   }
 }
