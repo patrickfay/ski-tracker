@@ -1,6 +1,7 @@
 .st-de-modal {
-
   &-body {
+    @include padding-y(20px);
+
     & > p {
       font-size: 16px;
 
@@ -10,8 +11,21 @@
     }
   }
 
-  &-footer {
-    padding-top: 5px;
-  }
+  &-footer-btn {
+    &-delete {
+      color: $red;
 
+      &:hover {
+        background-color: lighten($red, 45%);
+      }
+    }
+
+    &-cancel {
+      color: $black;
+
+      &:hover {
+        background-color: lighten($grey, 1%);
+      }
+    }
+  }
 }
