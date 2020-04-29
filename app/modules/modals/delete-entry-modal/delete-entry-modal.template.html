@@ -1,0 +1,18 @@
+<div class="st-modal-container">
+  <!-- header -->
+  <div class="st-modal-header">Delete Entry</div>
+  
+  <!-- body -->
+  <div class="st-modal-body st-de-modal-body">
+    <p>Are you sure you want to <b>delete</b> this entry?</p>
+    <p>This action cannot be undone and all information will be lost forever.</p>
+  </div>
+
+  <!-- footer -->
+  <div class="st-modal-footer st-de-modal-footer">
+    <div class="st-modal-footer-btn-container">
+      <button class="st-btn st-btn-danger" ng-click="$ctrl.close({$value: 'delete'})">Delete</button>
+      <button class="st-btn st-btn-cancel" ng-click="$ctrl.close({$value: 'cancel'})">Cancel</button>      
+    </div>
+  </div>
+</div>

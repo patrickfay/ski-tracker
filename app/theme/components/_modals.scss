@@ -19,20 +19,14 @@
 
   &-footer {
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
 
     &-btn-container {
       display: flex;
       justify-content: flex-end;
 
       & > button {
-        @include st-btn-style($black, $white, lighten($black, 5%));
-
-        margin-left: 5px;
-  
-        &:hover {
-          @include st-btn-style($black, $grey, lighten($black, 5%));
-        }
+        margin-left: 10px;
       }
     }
   }

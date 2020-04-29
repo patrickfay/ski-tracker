@@ -1,27 +1,20 @@
 .st-btn {
   @include st-btn-tmp;
 
-  &-powder {
-    @include st-btn-style($black, darken($grey, 5%), $black);
+  &-danger {
+    @include st-btn-style($red, $white, $red);
 
     &:hover {
-      background-color: #fff;
+      @include st-btn-style($red, lighten($red, 48%), $red);
     }
   }
 
-  &-woohoo {
-    @include st-btn-style(rgb(47, 161, 255), lighten($powder-blue, 30%), $black);
+  
+  &-cancel {
+    @include st-btn-style(lighten($black, 25%), $white, $black);
 
     &:hover {
-      @include st-btn-style($black, $white, $powder-blue);
-    }
-  }
-
-  &-powder-woohoo {
-    @include st-btn-style($black, darken($grey, 5%), $black);
-
-    &:hover {
-      @include st-btn-style($black, $white, $powder-blue);
+      @include st-btn-style(lighten($black, 25%), lighten($grey, 1%), $black);
     }
   }
 }

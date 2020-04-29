@@ -4,8 +4,7 @@
   <div ng-repeat="season in $ctrl.seasonsArr">
     <div class="st-el-season-container">
       <!-- season header -->
-      <div class="st-el-season-header" ng-click="$ctrl.callCallback()"
-           ng-class="{'expanded': season.isExpanded}">
+      <div class="st-el-season-header" ng-class="{'expanded': season.isExpanded}">
         {{season.title}}
 
         <!-- expand close icons -->
@@ -18,21 +17,20 @@
 
             <i class="far fa-caret-square-down" ng-if="!season.isExpanded"></i>
             <i class="far fa-caret-square-up" ng-if="season.isExpanded"></i>
-
           </div>
         </div>
       </div>
 
       <!-- season body -->
-      <div class="st-el-season-body"
-           ng-class="{'hidden': !season.isExpanded}">
-
+      <div class="st-el-season-body" ng-class="{'hidden': !season.isExpanded}">
+        
         <!-- each entry -->
         <div ng-repeat="entry in season.entries">
           <entries-list-item entry="entry" on-vital-entry-change="$ctrl.vitalListChange({_season: season})" is-last="$last"></entries-list-item>
         </div>
+
       </div>
     </div>
-
   </div>
+  
 </div>
