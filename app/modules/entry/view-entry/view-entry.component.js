@@ -1,5 +1,8 @@
 angular.module('skiTrackerApp')
   .component('viewEntry', {
+    bindings: {
+      entry: '<'
+    },
     templateUrl: './modules/entry/view-entry/view-entry.component.html',
     controller: 'viewEntryCtrl',
   })
@@ -7,8 +10,8 @@ angular.module('skiTrackerApp')
   .controller('viewEntryCtrl', function() {
     $ctrl = this;
 
-    $ctrl.$onInit = () => {
-      console.log('in view-entry component');
-    };
+    // $ctrl.$onInit = () => {
+
+    // };
 
   });

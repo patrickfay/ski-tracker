@@ -2,6 +2,8 @@
 
 .tooltip {
   &.powder-tooltip {
+    z-index: 100000;
+
     & .tooltip-inner {
       border: solid 1px $powder-blue;
       background-color: $white;

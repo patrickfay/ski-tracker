@@ -20,14 +20,14 @@
 
         <i class="far fa-edit" ng-click="$ctrl.updateBodyView('edit')" title="edit"></i>
         <i class="far fa-trash-alt" ng-click="$ctrl.updateBodyView('delete')" title="delete"></i>
-        
+
       </div>
     </div>
   </div>
 
   <!-- entry list item body -->
   <div class="st-eli-body" ng-class="{'hidden': $ctrl.bodyContent === 'none', 'st-eli-last-item': $ctrl.isLast && $ctrl.bodyContent !== 'none'}">
-    <view-entry ng-if="$ctrl.bodyContent === 'view'"></view-entry>
+    <view-entry ng-if="$ctrl.bodyContent === 'view'" entry="$ctrl.entry"></view-entry>
     <edit-entry ng-if="$ctrl.bodyContent === 'edit'"></edit-entry>
   </div>
 </div>

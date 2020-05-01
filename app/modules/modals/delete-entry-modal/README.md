@@ -35,3 +35,5 @@ angular.module('skiTrackerApp')
 
 **NOTE** - Please use the parameter **`backdrop: 'static'`** for the modal instance!! This prevents any clicks outside of the modal from closing the modal, this way the user must click the 'DELETE' or 'CANCEL' button to close the modal.  
 These values (which are passed through the `$value` parameter) allow us to know what action the user has selected.
+
+When the modal is closed, the parameter **`$value`** will either have the value `'delete'` or `'cancel'`.
