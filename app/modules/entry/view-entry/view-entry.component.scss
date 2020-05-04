@@ -6,6 +6,7 @@ $panel-body-height: 175px;
     padding: 10px 15px;
   }
 
+  // statistics panel
   &-stats {
     $stats-row-height: #{($panel-body-height - 1) / 2};
     $stats-border-col: lighten($title-blue, 15%);
@@ -51,6 +52,32 @@ $panel-body-height: 175px;
     }
   }
 
+  // skied with panel
+  &-skied-with {
+    &-panel-body {
+      padding: 5px 10px !important;
+    }
+
+    &-ul {
+      margin: 0px;
+      padding: 0px 15px;
+
+      & > li {
+        padding-bottom: 1px;
+      }
+    }
+  }
+
+  &-desc {
+    &-panel {
+      margin-bottom: 0;
+    }
+
+    &-span {
+      white-space: pre-wrap;
+    }
+  }
+
 }
 
 
@@ -62,6 +89,7 @@ $panel-body-height: 175px;
 
     &:hover {
       border-color: darken($powder-blue, 3%);
+      box-shadow: 0 1px 1px rgba(206, 206, 206, 0.5);
     }
   }
 

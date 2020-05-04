@@ -11,20 +11,20 @@
 
         <!-- skied with -->
         <div class="col-lg-3 col-md-3 col-sm-3">
-
           <div class="panel panel-default">
             <div class="panel-heading">
               <i class="fas fa-child"></i>
               Skied With
             </div>
-            <div class="panel-body">
-              <p ng-repeat="skier in $ctrl.entry.skiedWith">
-                <!-- <i class="far fa-smile"></i> -->
-                {{skier}}
-              </p>
+
+            <div class="panel-body st-view-entry-skied-with-panel-body">
+              <ul class="st-view-entry-skied-with-ul">
+                <li ng-repeat="skier in $ctrl.entry.skiedWith">
+                  {{skier}}
+                </li>
+              </ul>
             </div>
           </div>
-
         </div>
 
         <!-- stats -->
@@ -40,22 +40,30 @@
               <div class="row st-view-entry-stats-row">
                 <div class="col-lg-6 col-md-6 col-sm-6 st-view-entry-stats-item">
                   <div class="st-view-entry-stats-item-title">Total Vertical</div>
-                  <div class="st-view-entry-stats-item-value">{{$ctrl.entry.stats.skiVert | number : fractionSize}} ft</div>
+                  <div class="st-view-entry-stats-item-value">
+                    {{!!$ctrl.entry.stats.skiVert ? $ctrl.getFormattedVal($ctrl.entry.stats.skiVert) : 'N/A'}}
+                  </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 st-view-entry-stats-item">
                   <div class="st-view-entry-stats-item-title">Max Altitude</div>
-                  <div class="st-view-entry-stats-item-value">{{$ctrl.entry.stats.maxAlt | number : fractionSize}} ft</div>
+                  <div class="st-view-entry-stats-item-value">
+                    {{!!$ctrl.entry.stats.maxAlt ? $ctrl.getFormattedVal($ctrl.entry.stats.maxAlt) : 'N/A'}}
+                  </div>
                 </div>
               </div>
-
+              
               <div class="row st-view-entry-stats-row">
                 <div class="col-lg-6 col-md-6 col-sm-6 st-view-entry-stats-item">
                   <div class="st-view-entry-stats-item-title">Distance Skied</div>
-                  <div class="st-view-entry-stats-item-value">{{$ctrl.entry.stats.skiDist}} mi</div>
+                  <div class="st-view-entry-stats-item-value">
+                    {{!!$ctrl.entry.stats.skiDist ? $ctrl.entry.stats.skiDist + ' mi' : 'N/A'}}
+                  </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 st-view-entry-stats-item">
                   <div class="st-view-entry-stats-item-title">Max Speed</div>
-                  <div class="st-view-entry-stats-item-value">{{$ctrl.entry.stats.maxSpeed}} mph</div>
+                  <div class="st-view-entry-stats-item-value">
+                    {{!!$ctrl.entry.stats.maxSpeed ? $ctrl.entry.stats.maxSpeed + ' mph' : 'N/A'}}
+                  </div>
                 </div>
               </div>
             </div>
@@ -71,10 +79,10 @@
   <div class="row st-view-entry-desc-row">
     <div class="col-lg-12 col-md-12 col-sm-12">
 
-      <div class="panel panel-default">
+      <div class="panel panel-default st-view-entry-desc-panel">
         <div class="panel-heading">Description</div>
         <div class="panel-body">
-          <p>{{$ctrl.entry.description}}</p>
+          <span class="st-view-entry-desc-span">{{$ctrl.entry.description}}</span>
         </div>
       </div>
 

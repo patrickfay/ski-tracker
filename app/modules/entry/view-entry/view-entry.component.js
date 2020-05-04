@@ -7,11 +7,11 @@ angular.module('skiTrackerApp')
     controller: 'viewEntryCtrl',
   })
 
-  .controller('viewEntryCtrl', function() {
+  .controller('viewEntryCtrl', function($filter) {
     $ctrl = this;
 
-    // $ctrl.$onInit = () => {
-
-    // };
+    $ctrl.getFormattedVal = (_val) => {
+      return $filter('number')(_val, 0) + ' ft';
+    };
 
   });
