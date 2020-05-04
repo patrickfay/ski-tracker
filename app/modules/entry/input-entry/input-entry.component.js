@@ -13,14 +13,15 @@ angular.module('skiTrackerApp')
     $ctrl.skiAreasNames = null;
     $ctrl.userSkiPartners = null;
     $ctrl.invalidInputFields = null;
+    $ctrl.currDate = null;
 
     $ctrl.$onInit = () => {
       // get user and ski area data
       $ctrl.skiAreasNames = skiAreaService.getAllSkiAreasNames();
       $ctrl.userSkiPartners = userDataService.getSkiPartners();
       
-      // used w/ ng-class to alert user of invalid input
-      $ctrl.invalidInputFields = [];
+      $ctrl.invalidInputFields = [];  // used w/ ng-class to alert user of invalid input
+      $ctrl.currDate = new Date();    // used to set max-date for datepicker
 
       // if an entry object was not passed to the component, set $ctrl.entryObj to empty entry object
       if ($ctrl.entryObj === undefined) {

@@ -10,6 +10,7 @@
   <div class="row st-input-entry-input-row">
     <div class="col-md-4 col-sm-4">
       <datepicker date="$ctrl.entryObj.date"
+                  max-date="$ctrl.currDate"
                   on-date-select="$ctrl.setDate(_value)">
       </datepicker>
     </div>
