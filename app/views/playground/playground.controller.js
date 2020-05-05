@@ -1,6 +1,8 @@
 angular.module('skiTrackerApp')
   .controller('playgroundCtrl', function($scope, userDataService, skiAreaService) {
 
+    $scope.calendarDate = new Date();
+
     $scope.datepicker = {
       date: new Date(),
       format: 'MM/dd/yyyy',
