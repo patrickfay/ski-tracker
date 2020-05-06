@@ -24,6 +24,10 @@
         }
       }
 
+      & tbody tr:first-of-type > td {
+        padding-top: 2px;
+      }
+
       & tbody tr td {
         & button {
           border: none;
@@ -54,6 +58,11 @@
                 padding: 3px 5px;
                 margin: -5px;
                 min-width: 24px;
+
+                // days outside of current month
+                &.text-muted {
+                  color: darken($grey, 50%);
+                }
               }
 
               &:active {
@@ -76,5 +85,4 @@
       }
     }
   }
-
 }
