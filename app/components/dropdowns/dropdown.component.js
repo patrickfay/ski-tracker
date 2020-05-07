@@ -115,7 +115,8 @@ angular.module('skiTrackerApp')
         let _initValIndex = $ctrl.optionsArr.indexOf($ctrl.initSelected);
         $ctrl.selectModel = _initValIndex > -1 ? $ctrl.optionsArr[_initValIndex] : $ctrl.optionsArr[0];
       } else {
-        $ctrl.selectedOptions = Array.isArray($ctrl.initSelected) ? $ctrl.initSelected : [];
+        // set selectedOptions to shallow copy of initSelected or an empty arr 
+        $ctrl.selectedOptions = Array.isArray($ctrl.initSelected) ? $ctrl.initSelected.slice(0, $ctrl.initSelected.length) : [];
       }
     }
   });
