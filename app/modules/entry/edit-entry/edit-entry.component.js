@@ -1,5 +1,8 @@
 angular.module('skiTrackerApp')
   .component('editEntry', {
+    bindings: {
+      entry: '<',
+    },
     templateUrl: './modules/entry/edit-entry/edit-entry.component.html',
     controller: 'editEntryCtrl',
   })
@@ -8,7 +11,7 @@ angular.module('skiTrackerApp')
     $ctrl = this;
 
     $ctrl.$onInit = () => {
-      console.log('in edit-entry component');
+      console.log('in edit-entry component', $ctrl.entry);
     };
 
   });

@@ -42,7 +42,33 @@ angular.module('skiTrackerApp')
 
       // display the edit-entry component in the body
       } else if (_action === 'edit') {
-        $ctrl.bodyContent = 'edit';
+        // $ctrl.bodyContent = 'edit';
+        $ctrl.modalIsOpen = true;
+
+        let _modalInstance = $uibModal.open({
+          component: 'editEntryModal',
+          size: 'lg',
+          backdrop: 'static',
+          resolve: {
+            entryObj: function() {
+              return $ctrl.entry;
+            }
+          }
+        });
+
+        // on delete confirmation, delete the entry and alert parent component of vital change to data struct
+        _modalInstance.result
+          .then(($value) => {
+            // if ($value === 'updated') {
+            //   // userDataService.removeEntryByDate($ctrl.entry.date);
+            //   // $ctrl.vitalChange();
+            //   console.log('VALUE UPDATED YO');
+            // }
+
+            console.log('IN LIST-ITEM WITH ENTRY OBJ\n', $value);
+
+            $ctrl.modalIsOpen = false;
+          });        
 
       // toggle delete confirm modal and delete entry
       } else if (_action === 'delete') {

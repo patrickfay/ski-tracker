@@ -74,7 +74,24 @@
   &-body {
     border-top: solid 1px darken($grey, 35%);
     background-color: $white;
-    // background-color: lighten($grey, 4%);
-    // padding: 8px;
   }
+
+  // edit entry styling
+  // &-edit {
+  //   &-container {
+  //     background-color: lighten($orange, 45%);
+  //     padding: 10px;
+  //   }
+
+  //   &-title {
+  //     font-weight: 600;
+  //     font-size: 1.5em;
+  //     color: darken($orange, 1%);
+  //   }
+
+  //   &-body {
+  //     border: solid 1px $orange;
+  //     border-radius: 3px;
+  //   }
+  // }
 }
