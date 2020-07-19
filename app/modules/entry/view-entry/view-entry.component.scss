@@ -1,0 +1,112 @@
+$panel-body-height: 175px;
+
+.st-view-entry {
+
+  &-container {
+    padding: 10px 15px;
+  }
+
+  // statistics panel
+  &-stats {
+    $stats-row-height: #{($panel-body-height - 1) / 2};
+    $stats-border-col: lighten($title-blue, 15%);
+
+    &-panel-body {
+      padding: 0px !important;
+      background-color: lighten($powder-blue, 32%);
+      border-radius: 0 0 3px 3px;
+    }
+
+    &-row {
+     margin-left: 0;
+     margin-right: 0;
+     min-height: $stats-row-height;
+
+     &:last-of-type {
+       border-top: solid 1px $stats-border-col;
+     }
+    }
+
+    &-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      min-height: $stats-row-height;
+      padding: 5px;
+
+      &:last-of-type {
+        border-left: solid 1px $stats-border-col;
+      }
+
+      &-title {
+        font-weight: 600;
+        color: $title-blue;
+        width: 100%;
+      }
+
+      &-value {
+        align-content: center;
+        font-size: 1.6em;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // skied with panel
+  &-skied-with {
+    &-panel-body {
+      padding: 5px 10px !important;
+    }
+
+    &-ul {
+      margin: 0px;
+      padding: 0px 15px;
+
+      & > li {
+        padding-bottom: 1px;
+      }
+    }
+  }
+
+  &-desc {
+    &-panel {
+      margin-bottom: 0;
+    }
+
+    &-span {
+      white-space: pre-wrap;
+    }
+  }
+
+}
+
+
+// override bootstrap panel styling
+.panel {
+
+  &.panel-default {
+    border: solid 1px lighten($powder-blue, 12%);
+
+    &:hover {
+      border-color: darken($powder-blue, 3%);
+      box-shadow: 0 1px 1px rgba(206, 206, 206, 0.5);
+    }
+  }
+
+  & .panel {
+    &-heading {
+      border-bottom: solid 1px lighten($powder-blue, 15%);
+      background-color: lighten($powder-blue, 27%);
+      font-weight: 600;
+      padding: 8px 10px;
+    }
+
+    &-body {
+      min-height: $panel-body-height;
+      max-height: $panel-body-height;
+      overflow-y: auto;
+      padding: 10px;
+    }
+  }
+
+}

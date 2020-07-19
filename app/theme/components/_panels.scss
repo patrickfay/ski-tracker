@@ -1,0 +1,21 @@
+.st-panel {
+
+  &-container {
+    border: solid 1px $title-blue;
+    border-radius: 3px;
+    background-color: $white;
+  }
+
+  &-header {
+    border-bottom: solid 1px $title-blue;
+    font-weight: 600;
+    padding: 5px;
+  }
+
+  &-body {
+    min-height: 150px;
+    max-height: 150px;
+    padding: 5px;
+  }
+
+}

@@ -1,17 +1,36 @@
 <div class="st-el-entries-container">
-  <!-- TODO - add container for season (year) -->
 
-  <div class="st-el-season-container">
-    <div class="st-el-season-header expanded">
-      <!-- TODO - imp functionality for splitting seasons and place season here -->
-      2019 - 2020 SEASON
-    </div>
+  <!-- iterate over each season -->
+  <div ng-repeat="season in $ctrl.seasonsArr">
+    <div class="st-el-season-container">
+      <!-- season header -->
+      <div class="st-el-season-header" ng-class="{'expanded': season.isExpanded}">
+        {{season.title}}
 
-    <div class="st-el-season-body">
-      <p>I am the season's body</p>
+        <!-- expand close icons -->
+        <div class="st-el-season-header-icon-anchor">
+          <div class="st-el-season-header-icon-container"
+               ng-click="$ctrl.expandSeason(season)"
+               uib-tooltip="{{(season.isExpanded ? 'Collapse' : 'Expand') + ' Season'}}"
+               tooltip-class="powder-tooltip"
+               tooltip-append-to-body="true">
+
+            <i class="far fa-caret-square-down" ng-if="!season.isExpanded"></i>
+            <i class="far fa-caret-square-up" ng-if="season.isExpanded"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- season body -->
+      <div class="st-el-season-body" ng-class="{'hidden': !season.isExpanded}">
+        
+        <!-- each entry -->
+        <div ng-repeat="entry in season.entries">
+          <entries-list-item entry="entry" on-vital-entry-change="$ctrl.vitalListChange({_season: season})" is-last="$last"></entries-list-item>
+        </div>
+
+      </div>
     </div>
   </div>
-
-
-  <!-- {{$ctrl.seasonsArr[0].date | date: 'MMMM d'}} -->
+  
 </div>

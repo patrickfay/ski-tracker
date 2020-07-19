@@ -1,0 +1,29 @@
+.st-ee-modal {
+  &-body {
+    background-color: lighten($grey, 5%) !important;
+  }
+
+  &-footer-btn {
+    &-update {
+      color: darken($powder-blue, 15%);
+
+      &:hover {
+        background-color: lighten($powder-blue, 30%);
+      }
+    }
+
+    &-cancel {
+      color: $black;
+
+      &:hover {
+        background-color: lighten($grey, 1%);
+      }
+    }
+  }
+
+  // override app global modal body styling
+  & .st-modal-body {
+    padding: 8px 10px;
+  }
+}
+

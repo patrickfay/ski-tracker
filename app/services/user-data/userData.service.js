@@ -28,13 +28,13 @@ angular.module('skiTrackerApp')
      * Each entry must have a unique date.
      * 
      * @param {entry} _entry An entry for a ski day.
-     * @returns {boolean} true if a new entry was successfully added to user data, else returns false.
+     * @returns {entry} The entry object added. If the entry was not added successfully, return null
      */
     $service.addEntry = (_entry) => {
       let _allSeasons = $service.userData.seasons;
 
       let _entrySeason = null;    // will hold the season obj that the entry belongs too
-      let _entryAdded = false;    // boolean returned at end of function indicating if entry was added successfully or not
+      let _addedEntry = null;     // entry added that will be returned at end of function
 
       // find the season _entry belongs in using dates
       for (let i = 0; i < _allSeasons.length; i++) {
@@ -49,18 +49,18 @@ angular.module('skiTrackerApp')
         // push new season obj to _allSeasons and set _entrySeason
         _entrySeason = _allSeasons[_allSeasons.push(createNewSeasonObj(_entry.date)) - 1];
         
-        // sort all seasons by year (old to new)
-        _allSeasons.sort((a, b) => a.startDate - b.startDate);
+        // sort all seasons by year (new to old)
+        _allSeasons.sort((a, b) => b.startDate - a.startDate);
       }
 
       // push entry object to the correct season's entries array (each entry must have a unique date)
       if ($service.getEntryByDate(_entry.date) === null) {
         _entrySeason.entries.push(_entry);
-        _entryAdded = true;
+        _addedEntry = _entry;
         setEntriesDays(_entrySeason.entries);
       }
 
-      return _entryAdded;
+      return _addedEntry;
     };
 
     /**
@@ -116,7 +116,7 @@ angular.module('skiTrackerApp')
       // iterate over each season and its entries until an entry with the same date as _date is found
       for (let i = 0; i < _allSeasons.length; i++) {
         for (let j = 0; j < _allSeasons[i].entries.length; j++) {
-          if (_allSeasons[i].entries[j].date.getTime() === _date.getTime()) {
+          if (sameDate(_date, _allSeasons[i].entries[j].date)) {
             return _allSeasons[i].entries[j];
           }
         }
@@ -141,7 +141,7 @@ angular.module('skiTrackerApp')
      * @param {Date} _date The date of an entry object.
      * @returns {array<simpleEntry>} Returns a new array of season objs with simpleEntry objs. If no item was removed, return null.
      */
-    $service.removeEntry = (_date) => {
+    $service.removeEntryByDate = (_date) => {
       let _allSeasons = $service.userData.seasons;
       let _rmEntrySeason = null;
 
@@ -149,7 +149,7 @@ angular.module('skiTrackerApp')
       for (let i = 0; i < _allSeasons.length; i++) {
         for (let j = 0; j < _allSeasons[i].entries.length; j++) {
 
-          if (_allSeasons[i].entries[j].date.getTime() === _date.getTime()) {
+          if (sameDate(_date, _allSeasons[i].entries[j].date)) {
             _allSeasons[i].entries.splice(j, 1);
             _rmEntrySeason = _allSeasons[i];
             break;
@@ -169,6 +169,46 @@ angular.module('skiTrackerApp')
 
       // return null if no entry was removed
       return null;
+    };
+
+    /**
+     * Update an entry object. If the entry's date was modified, a vital change to the apps data struct will occur.
+     * @param {entry} _updatedEntry The modified entry object the user is updating
+     * @param {Date} _oldEntryDate A javascript date object representing the non updated entry object's date.
+     */
+    $service.updateEntry = (_updatedEntry, _oldEntryDate) => {
+      let vitalChange = null;
+      let returnEntry = null;
+
+      // if the user updated the entry's date
+      if (sameDate(_updatedEntry.date, _oldEntryDate)) {
+        let oldEntry = $service.getEntryByDate(_oldEntryDate);
+
+        // update entry obj fields
+        oldEntry.description = _updatedEntry.description;
+        oldEntry.skiArea = _updatedEntry.skiArea;
+        oldEntry.skiedWith = _updatedEntry.skiedWith;
+        oldEntry.stats.skiVert = _updatedEntry.stats.skiVert;
+        oldEntry.stats.maxAlt = _updatedEntry.stats.maxAlt;
+        oldEntry.stats.skiDist = _updatedEntry.stats.skiDist;
+        oldEntry.stats.maxSpeed = _updatedEntry.stats.maxSpeed;
+
+        // updatereturn vals
+        vitalChange = false;
+        returnEntry = oldEntry;
+      } else {
+        // date was updated, reorganize data struct to compensate for this
+        $service.removeEntryByDate(_oldEntryDate);
+        $service.addEntry(_updatedEntry);
+
+        // return vital change occurred to let component know view needs to be refreshed
+        vitalChange = true;
+      }
+
+      return {
+        isVitalChange: vitalChange,
+        entry: returnEntry
+      };
     };
 
 
@@ -212,5 +252,23 @@ angular.module('skiTrackerApp')
 
       // update each entries 'day' field based on new index in entries arr
       for (let i = 0; i < _entriesArr.length;) _entriesArr[i].day = ++i;
+    }
+
+    /**
+     * Returns true if the two date objects have the same Year, Month, and Day.
+     * We use this method because date.getTime() accounts for hours, seconds, and milliseconds which
+     * are determined when a date object is generated. We only want unique dates (ie. specific day) so
+     * hours, seconds, and millisecond values of a date object should not determine date equality for this applicaiton.
+     * 
+     * @param {Date} _date1 a JS Date obj 
+     * @param {Date} _date2 a JS Date obj
+     * @returns {Boolean} true if the dates are equal (see desc of equality above) else returns false
+     */
+    function sameDate(_date1, _date2) {
+      return (
+        _date1.getFullYear() === _date2.getFullYear() &&
+        _date1.getMonth() === _date2.getMonth() &&
+        _date1.getDate() === _date2.getDate()
+      );
     }
   });

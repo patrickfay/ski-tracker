@@ -8,7 +8,7 @@ angular.module('skiTrackerApp')
      */
     $scope.onFirstEntryCreated = (_entry) => {
       // add new entry to userDataService
-      userDataService.addEntry(_entry)
+      userDataService.addEntry(_entry);
 
       // open first-entry-modal
       let _modalInstance = $uibModal.open({

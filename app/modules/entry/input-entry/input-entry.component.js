@@ -1,7 +1,7 @@
 angular.module('skiTrackerApp')
   .component('inputEntry', {
     bindings: {
-      entryObj: '<',
+      editableEntry: '<',
       onEntryGenerated: '&'
     },
     templateUrl: './modules/entry/input-entry/input-entry.component.html',
@@ -13,17 +13,18 @@ angular.module('skiTrackerApp')
     $ctrl.skiAreasNames = null;
     $ctrl.userSkiPartners = null;
     $ctrl.invalidInputFields = null;
+    $ctrl.currDate = null;
 
     $ctrl.$onInit = () => {
       // get user and ski area data
       $ctrl.skiAreasNames = skiAreaService.getAllSkiAreasNames();
       $ctrl.userSkiPartners = userDataService.getSkiPartners();
       
-      // used w/ ng-class to alert user of invalid input
-      $ctrl.invalidInputFields = [];
+      $ctrl.invalidInputFields = [];  // used w/ ng-class to alert user of invalid input
+      $ctrl.currDate = new Date();    // used to set max-date for datepicker
 
       // if an entry object was not passed to the component, set $ctrl.entryObj to empty entry object
-      if ($ctrl.entryObj === undefined) {
+      if ($ctrl.editableEntry === undefined) {
         $ctrl.entryObj = {
           date: new Date(),     // binded to date input field
           day: null,            // needed for an entry object, this value is not updated/used in this component
@@ -35,6 +36,20 @@ angular.module('skiTrackerApp')
             maxAlt: null,       // binded to max altitude text input field
             skiDist: null,      // binded to ski distance text input field
             maxSpeed: null      // binded to top speed text input field
+          }
+        };
+      } else {
+        $ctrl.entryObj = {
+          date: $ctrl.editableEntry.date,
+          day: $ctrl.editableEntry.day,
+          description: $ctrl.editableEntry.description,
+          skiArea: $ctrl.editableEntry.skiArea,
+          skiedWith: $ctrl.editableEntry.skiedWith,
+          stats: {
+            skiVert: $ctrl.editableEntry.stats.skiVert,
+            maxAlt: $ctrl.editableEntry.stats.maxAlt,
+            skiDist: $ctrl.editableEntry.stats.skiDist,
+            maxSpeed: $ctrl.editableEntry.stats.maxSpeed
           }
         };
       }
@@ -50,8 +65,10 @@ angular.module('skiTrackerApp')
     });
 
 
-    // set values when custom input field values change
+    // set date when new date selected
     $ctrl.setDate = (_value) => $ctrl.entryObj.date = _value;
+
+    // set skied with when skiers are selected
     $ctrl.setSkiedWith = (_value) => $ctrl.entryObj.skiedWith = _value;
 
     // set value of ski area and reset invalidInput var

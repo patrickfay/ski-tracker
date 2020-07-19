@@ -21,7 +21,7 @@ To find out more about each function (description, params, returns) read each fu
 * getAllSeasonsSimple()
 * getEntryByDate()
 * getSkiPartners()
-* removeEntry()
+* removeEntryByDate()
 
 Private functions used by this service will be placed after all `$service` functions.
 

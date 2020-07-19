@@ -1,0 +1,17 @@
+<div class="st-modal-container st-ee-modal">
+  <!-- header -->
+  <div class="st-modal-header">Edit Entry</div>
+  
+  <!-- body -->
+  <div class="st-modal-body st-ee-modal-body">
+    <input-entry editable-entry="$ctrl.resolve.entryObj"
+                 on-entry-generated="$ctrl.returnEntryObj(_entry)">
+    </input-entry>
+  </div>
+
+  <!-- footer -->
+  <div class="st-modal-footer st-modal-footer-btns-container">
+    <button class="st-modal-footer-btn st-ee-modal-footer-btn-update" ng-click="$broadcast('generateEntryObject')">UPDATE</button>
+    <button class="st-modal-footer-btn st-ee-modal-footer-btn-cancel" ng-click="$ctrl.close({$value: 'cancel'})">CANCEL</button>
+  </div>
+</div>
