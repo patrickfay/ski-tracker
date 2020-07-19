@@ -28,13 +28,5 @@
   <!-- entry list item body -->
   <div class="st-eli-body" ng-class="{'hidden': $ctrl.bodyContent === 'none', 'st-eli-last-item': $ctrl.isLast && $ctrl.bodyContent !== 'none'}">
     <view-entry ng-if="$ctrl.bodyContent === 'view'" entry="$ctrl.entry"></view-entry>
-
-    <!-- <div class="st-eli-edit-container" ng-if="$ctrl.bodyContent === 'edit'">
-      <div class="st-eli-edit-title">Edit Entry</div>
-      <div class="st-eli-edit-body">
-        <input-entry editable-entry="$ctrl.entry"></input-entry>
-      </div>
-    </div> -->
-    <!-- <edit-entry ng-if="$ctrl.bodyContent === 'edit'" entry="$ctrl.entry"></edit-entry> -->
   </div>
 </div>

@@ -40,9 +40,8 @@ angular.module('skiTrackerApp')
           $ctrl.bodyContent = 'none';
         }
 
-      // display the edit-entry component in the body
+      // toggle edit entry modal
       } else if (_action === 'edit') {
-        // $ctrl.bodyContent = 'edit';
         $ctrl.modalIsOpen = true;
 
         let _modalInstance = $uibModal.open({
@@ -56,16 +55,13 @@ angular.module('skiTrackerApp')
           }
         });
 
-        // on delete confirmation, delete the entry and alert parent component of vital change to data struct
+        // on update confirmation, update the entry (a vital change will occur if user updates the entry's date)
         _modalInstance.result
           .then(($value) => {
-            // if ($value === 'updated') {
-            //   // userDataService.removeEntryByDate($ctrl.entry.date);
-            //   // $ctrl.vitalChange();
-            //   console.log('VALUE UPDATED YO');
-            // }
+            let entryUpdateStatusObj = userDataService.updateEntry($value, $ctrl.entry.date);
 
-            console.log('IN LIST-ITEM WITH ENTRY OBJ\n', $value);
+            // call for vital change, or update this comonent's entry object
+            entryUpdateStatusObj.isVitalChange ? $ctrl.vitalChange() : $ctrl.entry = entryUpdateStatusObj.entry;
 
             $ctrl.modalIsOpen = false;
           });        

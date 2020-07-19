@@ -28,13 +28,13 @@ angular.module('skiTrackerApp')
      * Each entry must have a unique date.
      * 
      * @param {entry} _entry An entry for a ski day.
-     * @returns {boolean} true if a new entry was successfully added to user data, else returns false.
+     * @returns {entry} The entry object added. If the entry was not added successfully, return null
      */
     $service.addEntry = (_entry) => {
       let _allSeasons = $service.userData.seasons;
 
       let _entrySeason = null;    // will hold the season obj that the entry belongs too
-      let _entryAdded = false;    // boolean returned at end of function indicating if entry was added successfully or not
+      let _addedEntry = null;     // entry added that will be returned at end of function
 
       // find the season _entry belongs in using dates
       for (let i = 0; i < _allSeasons.length; i++) {
@@ -56,11 +56,11 @@ angular.module('skiTrackerApp')
       // push entry object to the correct season's entries array (each entry must have a unique date)
       if ($service.getEntryByDate(_entry.date) === null) {
         _entrySeason.entries.push(_entry);
-        _entryAdded = true;
+        _addedEntry = _entry;
         setEntriesDays(_entrySeason.entries);
       }
 
-      return _entryAdded;
+      return _addedEntry;
     };
 
     /**
@@ -169,6 +169,46 @@ angular.module('skiTrackerApp')
 
       // return null if no entry was removed
       return null;
+    };
+
+    /**
+     * Update an entry object. If the entry's date was modified, a vital change to the apps data struct will occur.
+     * @param {entry} _updatedEntry The modified entry object the user is updating
+     * @param {Date} _oldEntryDate A javascript date object representing the non updated entry object's date.
+     */
+    $service.updateEntry = (_updatedEntry, _oldEntryDate) => {
+      let vitalChange = null;
+      let returnEntry = null;
+
+      // if the user updated the entry's date
+      if (sameDate(_updatedEntry.date, _oldEntryDate)) {
+        let oldEntry = $service.getEntryByDate(_oldEntryDate);
+
+        // update entry obj fields
+        oldEntry.description = _updatedEntry.description;
+        oldEntry.skiArea = _updatedEntry.skiArea;
+        oldEntry.skiedWith = _updatedEntry.skiedWith;
+        oldEntry.stats.skiVert = _updatedEntry.stats.skiVert;
+        oldEntry.stats.maxAlt = _updatedEntry.stats.maxAlt;
+        oldEntry.stats.skiDist = _updatedEntry.stats.skiDist;
+        oldEntry.stats.maxSpeed = _updatedEntry.stats.maxSpeed;
+
+        // updatereturn vals
+        vitalChange = false;
+        returnEntry = oldEntry;
+      } else {
+        // date was updated, reorganize data struct to compensate for this
+        $service.removeEntryByDate(_oldEntryDate);
+        $service.addEntry(_updatedEntry);
+
+        // return vital change occurred to let component know view needs to be refreshed
+        vitalChange = true;
+      }
+
+      return {
+        isVitalChange: vitalChange,
+        entry: returnEntry
+      };
     };
 
 
